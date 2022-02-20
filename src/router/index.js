@@ -10,6 +10,13 @@ const routes = [
     component: () => import('../views/Home.vue'),
   },
   {
+    path: '/story',
+    name: 'Storytelling',
+    beforeEnter: () => {
+        window.location.href = '/OurStory.html';
+    },
+  },
+  {
     path: '/hello_world',
     name: 'hello_world',
     component: () => import('../views/HelloWorld'),

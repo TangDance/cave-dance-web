@@ -2,6 +2,14 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" app>
       <v-list dense>
+        <v-list-item to="/story">
+          <v-list-item-action>
+            <v-icon>home</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Our Story</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item to="/">
           <v-list-item-action>
             <v-icon>home</v-icon>
