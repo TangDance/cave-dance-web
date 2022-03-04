@@ -7,13 +7,22 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('../views/Home.vue'),
+    beforeEnter: () => {
+        window.location.href = '/Home.html';
+    },
   },
   {
-    path: '/story',
-    name: 'Storytelling',
+    path: '/methods',
+    name: 'methods',
     beforeEnter: () => {
-        window.location.href = '/OurStory.html';
+        window.location.href = '/Methods.html';
+    },
+  },
+  {
+    path: '/tang',
+    name: 'Tang',
+    beforeEnter: () => {
+        window.location.href = '/Tang.html';
     },
   },
   {
