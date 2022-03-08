@@ -8,7 +8,14 @@ const routes = [
     path: '/',
     name: 'home',
     beforeEnter: () => {
-        window.location.href = '/Home.html';
+        window.location.href = '/SalParauscoHome.html';
+    },
+  },
+  {
+    path: '/slider',
+    name: 'slider',
+    beforeEnter: () => {
+        window.location.href = '/SalParauscoSlider.html';
     },
   },
   {
