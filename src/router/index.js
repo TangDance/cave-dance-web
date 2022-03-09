@@ -8,28 +8,7 @@ const routes = [
     path: '/',
     name: 'home',
     beforeEnter: () => {
-        window.location.href = '/SalParauscoHome.html';
-    },
-  },
-  {
-    path: '/slider',
-    name: 'slider',
-    beforeEnter: () => {
-        window.location.href = '/SalParauscoSlider.html';
-    },
-  },
-  {
-    path: '/methods',
-    name: 'methods',
-    beforeEnter: () => {
-        window.location.href = '/Methods.html';
-    },
-  },
-  {
-    path: '/tang',
-    name: 'Tang',
-    beforeEnter: () => {
-        window.location.href = '/Tang.html';
+        window.location.href = '/Home.html';
     },
   },
   {

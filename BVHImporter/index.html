@@ -17,12 +17,12 @@
 			var mixer;
 			var skeletonHelper;
 			var camera, controls, scene, renderer;
-			
+
 			init();
 			animate();
 
 			function fileChanged(e) {
- 				for (var i = scene.children.length - 1; i >= 0; i--) { 
+ 				for (var i = scene.children.length - 1; i >= 0; i--) {
 					scene.remove(scene.children[i]);
 				}
 
@@ -31,31 +31,31 @@
 				var reader = new FileReader();
 				reader.onload = function(e) { // parse file
        		var lines = e.target.result.split(/[\r\n]+/g);
-					
+
 					// import BVH file
 					var root = BVHImport.readBvh(lines);
 					var animation = BVHImport.toTHREE(root);
 
 					// create a minimal empty geometry to hold the Bones
-					var geometry = new THREE.Geometry(); 
-	
+					var geometry = new THREE.Geometry();
+
 					var material = new THREE.MeshPhongMaterial({ skinning: true, });
 					var mesh = new THREE.SkinnedMesh(geometry, material);
-	
+
 					// bind skeleton
 					mesh.add(animation.skeleton.bones[0]);
 					mesh.bind(animation.skeleton);
-	
+
 					skeletonHelper = new THREE.SkeletonHelper(mesh);
-					skeletonHelper.material.linewidth = 5;
+					skeletonHelper.material.linewidth = 15;
 
 					scene.add(skeletonHelper);
 					scene.add(mesh);
-	
+
 					mixer = new THREE.AnimationMixer(mesh);
 					mixer.clipAction(animation.clip).setEffectiveWeight(1.0).play()
 				};
-				
+
 				reader.readAsText(file);
 			}
 
@@ -76,9 +76,15 @@
 
 				scene = new THREE.Scene();
 
+				scene.add( new THREE.GridHelper( 400, 10 ) );
+
+				// const loader = new THREE.TextureLoader();
+				// const bgTexture = loader.load('https://chunweb.files.wordpress.com/2022/03/dunhuang-4.jpg');
+				// scene.background = bgTexture;
+
 				// renderer
 				renderer = new THREE.WebGLRenderer( { antialias: false } );
-				renderer.setClearColor( 0x777777 );
+				renderer.setClearColor( 0x101010 ); //0x777777
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 
@@ -110,6 +116,7 @@
 				if (skeletonHelper)
 					skeletonHelper.update();
 
+					scene.add( new THREE.GridHelper( 400, 10 ) );
 				renderer.render(scene, camera);
 			}
 

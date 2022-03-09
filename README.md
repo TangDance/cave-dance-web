@@ -33,4 +33,3 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Sources:
 https://www.salparasuco.com/
 https://github.com/herzig/BVHImporter
-https://www.apple.com/airpods-pro/

@@ -1,0 +1,88 @@
+<!-- Any website -->
+
+<header>
+  <h1>Hidden Website</h1>
+  <nav>
+    <a href=#>About</a>
+    <a href=#>Blog</a>
+    <a href=#>Contact</a>
+  </nav>
+
+
+
+  <!-- Flashlight effect starts -->
+  <style>
+    /* Flashlight Overlay */
+    :root {
+      cursor: none;
+      --cursorX: 50vw;
+      --cursorY: 50vh;
+    }
+    :root:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      pointer-events: none;
+      background: radial-gradient(
+        circle 10vmax at var(--cursorX) var(--cursorY),
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,.5) 80%,
+        rgba(0,0,0,.95) 100%
+      )
+    }
+  </style>
+  <script type="text/javascript">
+    function update(e){
+      var x = e.clientX || e.touches[0].clientX;
+      var y = e.clientY || e.touches[0].clientY;
+
+      document.documentElement.style.setProperty('--cursorX', x + 'px');
+      document.documentElement.style.setProperty('--cursorY', y + 'px');
+    }
+
+    document.addEventListener('mousemove',update);
+    document.addEventListener('touchmove',update);
+  </script>
+  <!-- Flashlight effect ends -->
+
+
+</header>
+<main>
+  <section>
+    <article>
+      <h2>Hidden Headline</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
+    </article>
+    <article>
+      <h2>Headline</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
+    </article>
+    <article>
+      <h2>Headline</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugit earum voluptas officia, quasi saepe et commodi, dolores cumque quam fuga ullam, itaque ea dignissimos asperiores adipisci ad eveniet repellendus!</p>
+    </article>
+  </section>
+  <aside>
+    <div class=capsule>
+      <h3>Widget Headline</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class=capsule>
+      <h3>Widget Headline</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class=capsule>
+      <h3>Widget Headline</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </aside>
+</main>
+<footer>footer content</footer>
