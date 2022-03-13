@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	  <title>Hero</title>
+	  <title>Home (Flashlight)</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -19,6 +19,40 @@
 			}
 		</style>
 
+	  <style>
+	    /* Flashlight Overlay */
+	    :root {
+	      cursor: none;
+	      --cursorX: 50vw;
+	      --cursorY: 50vh;
+	    }
+	    :root:before {
+	      content: '';
+	      display: block;
+	      width: 100%;
+	      height: 100%;
+	      position: fixed;
+	      pointer-events: none;
+	      background: radial-gradient(
+	        circle 20vmax at var(--cursorX) var(--cursorY),
+	        rgba(0,0,0,0) 0%,
+	        rgba(0,0,0,.5) 80%,
+	        rgba(0,0,0,.95) 100%
+	      )
+	    }
+	  </style>
+	  <script type="text/javascript">
+	  	// Flashlight effect
+	    function updateFlashlight(e) {
+	      var x = e.clientX || e.touches[0].clientX;
+	      var y = e.clientY || e.touches[0].clientY;
+	      document.documentElement.style.setProperty('--cursorX', x + 'px');
+	      document.documentElement.style.setProperty('--cursorY', y + 'px');
+	    }
+
+	    document.addEventListener('mousemove',updateFlashlight);
+	    document.addEventListener('touchmove',updateFlashlight);
+	  </script>
 
 
 	</head>
