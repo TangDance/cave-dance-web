@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	  <title>Hero</title>
+	  <title>Home</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -62,7 +62,7 @@
 			// Model
 
 			const loader = new BVHLoader();
-			loader.load( "models/bvh/0-6000.bvh", function ( result ) {
+			loader.load( "models/bvh/male36_08.bvh", function ( result ) {
 
 				skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
 				skeletonHelper.skeleton = result.skeleton; // allow animation mixer to bind to THREE.SkeletonHelper directly
