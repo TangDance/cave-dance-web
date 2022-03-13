@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	  <title>Hero</title>
-		<meta charset="utf-8">
+		<meta charset="utf-8" />
+	  <title>Tang Dance x A.I. </title>
+	  <meta content="Tang Dance x A.I." name="description" />
+	  <meta content="Tang Dance x A.I." property="og:title" />
+	  <meta content="Tang Dance x A.I." property="og:description" />
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
+		<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/61014076aa014a767ce9208c_favicon.png" rel="shortcut icon" type="image/x-icon" />
+		<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/610140795b9a3f0382a58e51_web-clip.png" rel="apple-touch-icon" />
+
 		<style>
 			body {
 				background-color: #000;
@@ -60,7 +66,7 @@
 			// Model
 
 			const loader = new BVHLoader();
-			loader.load( "models/bvh/male36_08.bvh", function ( result ) {
+			loader.load( "models/bvh/0-6000.bvh", function ( result ) {
 
 				skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
 				skeletonHelper.skeleton = result.skeleton; // allow animation mixer to bind to THREE.SkeletonHelper directly
