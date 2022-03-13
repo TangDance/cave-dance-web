@@ -7,15 +7,20 @@
 		<link type="text/css" rel="stylesheet" href="main.css">
 		<style>
 			body {
-				background-color: #eee;
+				background-color: #000;
 				color: #444;
 			}
 			a {
 				color: #08f;
 			}
+			.text {
+				position: absolute;
+				bottom: 0;
+			}
 		</style>
 	</head>
 	<body>
+		<div class="text">SOME TEXT </div>
 		<!-- <div id="info">
 			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - BVH Loader<br/>
 			animation from <a href="http://mocap.cs.cmu.edu/">http://mocap.cs.cmu.edu/</a>
@@ -39,7 +44,7 @@
 
 			import { OrbitControls } from './jsm/controls/OrbitControls.js';
 			import { BVHLoader } from './jsm/loaders/BVHLoader.js';
-				import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
+		  import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
 
 			const clock = new THREE.Clock();
 
@@ -67,16 +72,15 @@
 
 			} );
 
-			// model
 
-			const loader2 = new GLTFLoader().setPath( 'models/glTF/Dunhuang/' );
-			loader2.load( 'wire.glb', function ( gltf ) {
-
-				scene.add( gltf.scene );
-
-				render();
-
-			} );
+			// const loader2 = new GLTFLoader().setPath( 'models/glTF/Dunhuang/' );
+			// loader2.load( 'wire.glb', function ( gltf ) {
+			//
+			// 	scene.add( gltf.scene );
+			//
+			// 	render();
+			//
+			// } );
 
 			function init() {
 
@@ -84,14 +88,14 @@
 				camera.position.set( 0, 200, 300 );
 
 				scene = new THREE.Scene();
-				scene.background = new THREE.Color( 0xeeeeee );
+				scene.background = new THREE.Color( 0x000000 );
 
 				scene.add( new THREE.GridHelper( 400, 10 ) );
 
 				// renderer
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setSize( window.innerWidth, window.innerHeight - 100);
 				document.body.appendChild( renderer.domElement );
 
 				controls = new OrbitControls( camera, renderer.domElement );
@@ -111,11 +115,11 @@
 
 			}
 
-			function render() {
-
-				renderer.render( scene, camera );
-
-			}
+			// function render() {
+			//
+			// 	renderer.render( scene, camera );
+			//
+			// }
 
 
 			function animate() {
