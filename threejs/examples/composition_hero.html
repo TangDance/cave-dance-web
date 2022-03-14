@@ -345,16 +345,18 @@
   				scene.add( new THREE.GridHelper( 400, 10 ) );
 
   				// renderer
-  				renderer = new THREE.WebGLRenderer( { antialias: true } );
+          renderer = new THREE.WebGLRenderer({
+            canvas: document.querySelector('#hero-threejs'),
+            antialias: true
+          });
   				renderer.setPixelRatio( window.devicePixelRatio );
-  				renderer.setSize( window.innerWidth, window.innerHeight - 100);
-  				document.querySelector("#hero-threejs").appendChild( renderer.domElement );
+  				renderer.setSize( window.innerWidth, window.innerHeight);
 
   				controls = new OrbitControls( camera, renderer.domElement );
   				controls.minDistance = 300;
   				controls.maxDistance = 700;
 
-  		window.addEventListener( 'resize', onWindowResize ); //TODO
+  		    window.addEventListener( 'resize', onWindowResize );
 
   			}
 
@@ -382,8 +384,7 @@
   		</script>
 
 
-      <div id="hero-threejs" style="height: 500px; width:100%">
-      </div>
+      <canvas id="hero-threejs" style="height: 500px; width:100%"></canvas>
 
 
       <div data-w-id="f9fa3984-c135-a210-c0e8-a4d556d96064" class="hero-row">
