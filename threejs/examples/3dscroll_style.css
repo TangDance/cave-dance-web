@@ -137,32 +137,30 @@ canvas {
   font-style: normal;
 }
 
-main {
-  width: 100vw;
-  color: white;
-  z-index: 99;
-  position: absolute;
-  width: 100%;
-  margin: 0px auto;
-  padding: 120px 0px;
+  main {
+    width: 100vw;
+    color: white;
+    z-index: 99;
+    position: absolute;
+    width: 100%;
+    margin: 0px auto;
+    padding: 120px 0px;
 
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-}
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
 
-h1, h2, h3, blockquote {
-  /* font-family: elevon, sans-serif; */
-  font-weight: 700;
-  font-style: normal;
-}
+  h1, h2, h3, blockquote {
+    /* font-family: elevon, sans-serif; */
+    font-weight: 700;
+    font-style: normal;
+  }
 
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
 
   header {
     background: var(--dark-bg);
