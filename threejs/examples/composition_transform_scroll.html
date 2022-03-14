@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html data-wf-domain="www.salparasuco.com" data-wf-page="61c5e06d4c32b4d823aaf556" data-wf-site="603fe89ec4bbcece7ee6a53a" lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Tang Dance x A.I. </title>
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <link href="master.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript">
-    ! function(o, c) {
-      var n = c.documentElement,
-        t = " w-mod-";
-      n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
-    }(window, document);
-  </script>
-  <link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/61014076aa014a767ce9208c_favicon.png" rel="shortcut icon" type="image/x-icon" />
-  <link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/610140795b9a3f0382a58e51_web-clip.png" rel="apple-touch-icon" />
+	<meta charset="utf-8" />
+	<title>Tang Dance x A.I. </title>
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<link href="master.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		! function(o, c) {
+			var n = c.documentElement,
+				t = " w-mod-";
+			n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+		}(window, document);
+	</script>
+	<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/61014076aa014a767ce9208c_favicon.png" rel="shortcut icon" type="image/x-icon" />
+	<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/610140795b9a3f0382a58e51_web-clip.png" rel="apple-touch-icon" />
+	<link href="composition_transform_scroll_style.css" rel="stylesheet" type="text/css" />
 
-  <link href="composition_transform_scroll_style.css" rel="stylesheet" type="text/css" />
-
-  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-208403829-1"></script>
-  <script type="importmap">
-    {
+	<script type="importmap">
+		{
       "imports": {
         "three": "../build/three.module.js"
       }
     }
   </script>
 
-  <script type="module">
+	<script type="module">
 
-    import * as THREE from 'three';
+		import * as THREE from 'three';
     import { OrbitControls } from './jsm/controls/OrbitControls.js';
     import { BVHLoader } from './jsm/loaders/BVHLoader.js';
     import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
@@ -55,8 +53,6 @@
 
     renderer.render(scene, camera);
 
-
-
     // Lights
 
     const pointLight = new THREE.PointLight(0xffffff);
@@ -80,7 +76,6 @@
     const torus = new THREE.Mesh(geometry, material);
 
     scene.add(torus);
-
 
     // function addStar() {
     //   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -225,60 +220,62 @@
 </head>
 
 <body class="body threeDscroll">
-  <canvas id="bg"></canvas>
+	<canvas id="bg"></canvas>
 
-  <main>
+	<main>
 
-    <header>
-      <h1 class="gradient">Tang Dance / A.I.</h1>
-      <p></p>
-    </header>
-
-
-    <blockquote>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisci</p>
-    </blockquote>
-
-    <section>
-      <h2>Manifesto</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+		<header>
+			<h1 class="gradient">Tang Dance / A.I.</h1>
+			<p></p>
+		</header>
 
 
-    </section>
+		<blockquote>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisci</p>
+		</blockquote>
 
-    <section class="light">
-      <h2>Topic</h2>
-
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-
-
-    </section>
-
-    <blockquote>
-      <p>Some text here<br>and here</p>
-    </blockquote>
-
-    <section class="left">
-      <h2>Subject</h2>
+		<section>
+			<h2>Manifesto</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
 
 
-      <h3>Topic 3</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+		</section>
 
-    </section>
+		<section class="light">
+			<h2>Topic</h2>
 
-    <blockquote>
-      <p>Some text here</p>
-    </blockquote>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
 
 
-  </main>
+		</section>
+
+		<blockquote>
+			<p>Some text here<br>and here</p>
+		</blockquote>
+
+		<section class="left">
+			<h2>Subject</h2>
+
+			<h3>Topic 3</h3>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+
+		</section>
+
+		<blockquote>
+			<p>Some text here</p>
+		</blockquote>
+
+
+	</main>
 
 
 </body>

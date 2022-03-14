@@ -699,7 +699,7 @@
         </div>
         <div class="tab__wrapper">
           <div class="tab-wrap w-dyn-list">
-            <header id="selected-products" role="list" class="tab w-dyn-items">
+            <header id="selected-items" role="list" class="tab w-dyn-items">
               <div role="listitem" class="tab-item w-dyn-item">
                 <div class="tab__title h-h3 prod-title">
                   <h3 class="h-h3 prod-title">Overview</h3>
@@ -1040,10 +1040,10 @@
         }
       });
     }
-    const selectedWorkRoot = document.getElementById("selected-products");
-    if (selectedWorkRoot) {
-      const items = selectedWorkRoot.querySelectorAll("[role='listitem']");
-      const selectedWorksElements = Array.from(items).map((item) => {
+    const selectedItemRoot = document.getElementById("selected-items");
+    if (selectedItemRoot) {
+      const items = selectedItemRoot.querySelectorAll("[role='listitem']");
+      const selectedItemsElements = Array.from(items).map((item) => {
         const label = item.getElementsByTagName("div");
         const imageWrapper = item.getElementsByClassName("tab-link");
         return {
@@ -1051,15 +1051,15 @@
           imageWrapper: imageWrapper && imageWrapper.length > 0 ? imageWrapper[0] : null
         };
       });
-      showElementFromArray(selectedWorksElements, 0);
+      showElementFromArray(selectedItemsElements, 0);
 
       if (window.innerWidth > 991) {
-        selectedWorksElements.forEach(({
+        selectedItemsElements.forEach(({
           label
         }, i) => {
           if (label) {
             label.addEventListener("click", () => {
-              showElementFromArray(selectedWorksElements, i);
+              showElementFromArray(selectedItemsElements, i);
             });
           }
         });
