@@ -7,9 +7,15 @@ body {
   margin: 0;
 }
 
+#toggle {
+  height: 24px;
+  color: black;
+  position: fixed;
+  bottom: 6px;
+  right: 12px;
+}
 
 .threeDscroll main {
-  opacity: 0;
   color: white;
   /*  z-index: 99; */
   position: absolute;
@@ -21,9 +27,18 @@ body {
   grid-template-columns: repeat(12, 1fr);
 }
 
+.threeDscroll main .text {
+  opacity: 1;
+}
+
 .threeDscroll h1, h2, h3, blockquote {
   font-weight: 700;
   font-style: normal;
+}
+
+.threeDscroll h3 {
+  font-family: 'Theinhardt Pan';
+  padding: 2vw 0 0 1.5vw;
 }
 
 .threeDscroll canvas {
@@ -35,18 +50,29 @@ body {
 .threeDscroll header {
   background: var(--dark-bg);
   grid-column: 2 / span 5;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   padding: 2rem;
+  padding-top: 0;
+  padding-left: 0;
   margin-bottom: var(--spacing);
 }
 
 .threeDscroll section {
   grid-column: 2 / 8;
   padding: 1rem;
+  padding-left: 0;
   background: var(--dark-bg);
   font-size: 1.25rem;
   line-height: 1.5;
   margin-bottom: var(--spacing);
+}
+
+.threeDscroll header p {
+  padding: 2vw 0 0 1.5vw;
+}
+
+.threeDscroll section p {
+  padding: 2vw 0 0 1.5vw;
 }
 
 .threeDscroll blockquote {
@@ -54,6 +80,7 @@ body {
   padding: 0;
   grid-column: 2 / span 9;
   margin-bottom: var(--spacing);
+  padding-left: 3vw;
 }
 
 .threeDscroll blockquote p {

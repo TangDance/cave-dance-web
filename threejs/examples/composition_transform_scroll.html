@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html data-wf-domain="www.tangdanceai.com" data-wf-page="61c5e06d4c32b4d823aaf556" data-wf-site="603fe89ec4bbcece7ee6a53a" lang="en">
+
 <head>
 	<meta charset="utf-8" />
 	<title>Tang Dance x A.I. </title>
@@ -15,7 +16,7 @@
 	<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/61014076aa014a767ce9208c_favicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/610140795b9a3f0382a58e51_web-clip.png" rel="apple-touch-icon" />
 	<link href="composition_transform_scroll_style.css" rel="stylesheet" type="text/css" />
-  <!-- <link rel="preload" href="./scene.spline" as="fetch"> -->
+	<!-- <link rel="preload" href="./scene.spline" as="fetch"> -->
 
 	<script type="importmap">
 		{
@@ -31,6 +32,7 @@
     import { OrbitControls } from './jsm/controls/OrbitControls.js';
     import { BVHLoader } from './jsm/loaders/BVHLoader.js';
     import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
+    import * as SkeletonUtils from './jsm/utils/SkeletonUtils.js';
 
     let mixer;
 
@@ -65,33 +67,14 @@
     // Helpers
 
     const lightHelper = new THREE.PointLightHelper(pointLight);
-    const gridHelper = new THREE.GridHelper(200, 50);
-    scene.add(lightHelper, gridHelper);
-    //  scene.add( new THREE.AxesHelper( 20 ) );
+    const size = 200;
+    const divisions = 50;
+    const gridHelper = new THREE.GridHelper( size, divisions );
+    const axesHelper = new THREE.AxesHelper( 20 );
+
+    //scene.add(lightHelper, gridHelper, axesHelper);
+    scene.add(axesHelper);
     const controls = new OrbitControls(camera, renderer.domElement);
-
-    // Torus
-
-    const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-    const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
-    const torus = new THREE.Mesh(geometry, material);
-
-    //scene.add(torus);
-
-    // function addStar() {
-    //   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-    //   const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
-    //   const star = new THREE.Mesh(geometry, material);
-    //
-    //   const [x, y, z] = Array(3)
-    //     .fill()
-    //     .map(() => THREE.MathUtils.randFloatSpread(100));
-    //
-    //   star.position.set(x, y, z);
-    //   scene.add(star);
-    // }
-
-    //Array(200).fill().forEach(addStar);
 
 
     // Background
@@ -99,21 +82,35 @@
     // const spaceTexture = new THREE.TextureLoader().load('textures/dunhuang/dunhuang-1.jpg');
     // scene.background = spaceTexture;
 
+    // Torus
 
-    // Image 1 Mural
+    // const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+    // const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
+    // const torus = new THREE.Mesh(geometry, material);
+
+    //scene.add(torus);
+
+
+    // Image Mural
 
     const muralTexture = new THREE.TextureLoader().load('textures/dunhuang/mural_500.png');
     const mural = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: muralTexture }));
+
+    const scaleMural = 2;
+    mural.scale.set(scaleMural, scaleMural, scaleMural);
 
     scene.add(mural);
 
     mural.position.z = -5;
     mural.position.x = 2;
 
-    // Image 2 Mural
+    // Image Drawing
 
     const drawingTexture = new THREE.TextureLoader().load('textures/dunhuang/drawing.png');
     const drawing = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: drawingTexture }));
+
+    const scaleDrawing = 1.5;
+    drawing.scale.set(scaleDrawing, scaleDrawing, scaleDrawing);
 
     scene.add(drawing);
 
@@ -121,26 +118,23 @@
     drawing.position.x = 2;
 
 
-    // Image 3 Skeleton
+    // Image Skeleton
 
-    const skeletonTexture = new THREE.TextureLoader().load('textures/dunhuang/skeleton.png');
-    const skeleton = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: skeletonTexture }));
+    // const skeletonTexture = new THREE.TextureLoader().load('textures/dunhuang/skeleton.png');
+    // const skeleton = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: skeletonTexture }));
+    //
+    // scene.add(skeleton);
+    //
+    // skeleton.position.z = 15;
+    // skeleton.position.x = -5;
 
-    scene.add(skeleton);
 
-    skeleton.position.z = 15;
-    skeleton.position.x = -5;
-
-
-    // BVH Model Skeleton
-
+    // 3D Object - BVH Mo-Cap Skeleton
     const bvh = new BVHLoader();
     bvh.load( "models/bvh/0-6000.bvh", function ( result ) {
 
       const skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
       skeletonHelper.skeleton = result.skeleton; // allow animation mixer to bind to THREE.SkeletonHelper directly
-
-      // console.log(skeletonHelper.skeleton);
 
       const boneContainer = new THREE.Group();
       boneContainer.add( result.skeleton.bones[ 0 ] );
@@ -148,82 +142,121 @@
       scene.add( skeletonHelper );
       scene.add( boneContainer );
 
+      const scale = 0.07;
+      boneContainer.scale.set(scale, scale, scale);
+      skeletonHelper.scale.set(scale, scale, scale);
+
+      boneContainer.translateX(-2);
+      boneContainer.translateY(-6);
+      boneContainer.translateZ(13);
+      skeletonHelper.translateX(-2);
+      skeletonHelper.translateY(-6);
+      skeletonHelper.translateZ(13);
+
       // play animation
       mixer = new THREE.AnimationMixer( skeletonHelper );
       mixer.clipAction( result.clip ).setEffectiveWeight( 1.0 ).play();
+
     } );
 
 
-    // Moon
+    // 3D Object - Jam's model
 
-    const moonTexture = new THREE.TextureLoader().load('textures/dunhuang/moon.jpg');
-    const normalTexture = new THREE.TextureLoader().load('textures/dunhuang/normal.jpg');
+    const loader = new GLTFLoader().setPath( 'models/glTF/Dunhuang/' );
+    loader.load( 'wire.glb', function ( gltf ) {
 
-    const moon = new THREE.Mesh(
-      new THREE.SphereGeometry(3, 32, 32),
-      new THREE.MeshStandardMaterial({
-        map: moonTexture,
-        normalMap: normalTexture,
-      })
-    );
+      const wire = SkeletonUtils.clone( gltf.scene );
 
-    scene.add(moon);
+      const scale = 20;
+      wire.scale.set(scale, scale, scale);
 
-    moon.position.z = 20;
-    moon.position.setX(-10);
+      scene.add( wire);
+      wire.position.x = 0;
+      wire.position.z = 20;
+
+      animate();
+
+    } );
+
+
+    // // Moon
+    //
+    // const moonTexture = new THREE.TextureLoader().load('textures/dunhuang/moon.jpg');
+    // const normalTexture = new THREE.TextureLoader().load('textures/dunhuang/normal.jpg');
+    //
+    // const moon = new THREE.Mesh(
+    //   new THREE.SphereGeometry(3, 32, 32),
+    //   new THREE.MeshStandardMaterial({
+    //     map: moonTexture,
+    //     normalMap: normalTexture,
+    //   })
+    // );
+    //
+    // scene.add(moon);
+    //
+    // moon.position.z = 20;
+    // moon.position.setX(-10);
 
 
     // Scroll Animation
 
     function moveCamera() {
-      const t = document.body.getBoundingClientRect().top;
+    	const t = document.body.getBoundingClientRect().top;
 
-      //mural.rotation.y += 0.01;
-      //mural.rotation.z += 0.01;
+    	//mural.rotation.y += 0.01;
+    	//mural.rotation.z += 0.01;
 
-      moon.rotation.x += 0.05;
-      moon.rotation.y += 0.075;
-      moon.rotation.z += 0.05;
+    	// moon.rotation.x += 0.05;
+    	// moon.rotation.y += 0.075;
+    	// moon.rotation.z += 0.05;
 
-      camera.position.z = t * -0.01;
-      camera.position.x = t * -0.0002;
-      camera.rotation.y = t * -0.0002;
+    	camera.position.z = t * -0.01;
+    	camera.position.x = t * -0.0002;
+    	camera.rotation.y = t * -0.0002;
     }
 
     document.body.onscroll = moveCamera;
     moveCamera();
 
+
     // Animation Loop
 
     function animate() {
       requestAnimationFrame(animate);
-      //
+
       // torus.rotation.x += 0.01;
       // torus.rotation.y += 0.005;
       // torus.rotation.z += 0.01;
 
-      moon.rotation.x += 0.005;
+      //moon.rotation.x += 0.005;
 
       // animate the skeleton
       const delta = clock.getDelta();
       if ( mixer ) mixer.update( delta );
 
-      controls.update(); // for the helpers
+    //  controls.update(); // for the helpers
 
       renderer.render(scene, camera);
     }
 
     animate();
 
-  </script>
 
+    document.querySelector("#toggle").addEventListener( 'click'	, () => {
+      document.querySelectorAll(".text").forEach(e => {
+          e.style.opacity = (e.style.opacity === "1" || e.style.opacity === 1) ? "0" : "1";
+      });
+
+    }, false );
+
+  </script>
 
 </head>
 
 <body class="body threeDscroll">
 	<canvas id="bg"></canvas>
 
-  <!-- <div id='container'>
+	<!-- <div id='container'>
     <canvas id="canvas3d"></canvas>
   </div>
   <script type="module">
@@ -232,48 +265,50 @@
     const app = new Application(canvas);
     app.load('./scene.spline');
   </script> -->
+	<main id="mainText">
 
-	<main>
-
-		<header>
-			<h1 class="gradient">Tang Dance / A.I.</h1>
-			<p></p>
+		<header class="text">
+			<h1>Tang Dance x A.I. </h1>
+			<p>Research Methods</p>
 		</header>
 
-
-		<blockquote>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisci</p>
-		</blockquote>
-
-		<section>
-			<h2>Manifesto</h2>
+		<section class="text" style="margin-top: 5rem">
+			<h2>Mural</h2>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
 				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 			</p>
-
-
 		</section>
 
-		<section class="light">
-			<h2>Topic</h2>
-
+		<section class="text" style="margin-top: 3rem">
+			<h2>Drawing</h2>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
 				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 			</p>
-
-
 		</section>
 
-		<blockquote>
+		<blockquote class="text">
 			<p>Some text here<br>and here</p>
 		</blockquote>
 
-		<section class="left">
-			<h2>Subject</h2>
+		<section class="text" style="margin-top: 3rem">
+			<h2>Restoration</h2>
+			<h3>Notations & Kinesiology</h3>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
 
-			<h3>Topic 3</h3>
+			<h3>Motion Capture</h3>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		</section>
+
+		<section class="text" style="margin-top: 3rem">
+			<h2>Computer Graphics</h2>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
 				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -281,12 +316,11 @@
 
 		</section>
 
-		<blockquote>
-			<p>Some text here</p>
-		</blockquote>
 
-
+		<button id="toggle">toggle </button>
 	</main>
+
+
 
 
 </body>
