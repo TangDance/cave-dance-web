@@ -10,13 +10,21 @@ body {
 #toggle {
   height: 24px;
   position: fixed;
-  bottom: 6px;
-  right: 12px;
+  bottom: 1vw;
+    right: 2vw;
   cursor: pointer;
   text-decoration: underline;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  /* No support for these yet */
+  -o-user-select: none;
+  user-select: none;
 }
 .footer {
       padding-top: 5vw;
+      padding-bottom: 0;
 }
 .threeDscroll main {
   color: white;
