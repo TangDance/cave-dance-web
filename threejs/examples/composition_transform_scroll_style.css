@@ -9,12 +9,15 @@ body {
 
 #toggle {
   height: 24px;
-  color: black;
   position: fixed;
   bottom: 6px;
   right: 12px;
+  cursor: pointer;
+  text-decoration: underline;
 }
-
+.footer {
+      padding-top: 5vw;
+}
 .threeDscroll main {
   color: white;
   /*  z-index: 99; */
