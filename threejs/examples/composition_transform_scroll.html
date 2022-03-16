@@ -109,7 +109,7 @@
     const drawingTexture = new THREE.TextureLoader().load('textures/dunhuang/drawing.png');
     const drawing = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: drawingTexture }));
 
-    const scaleDrawing = 1.5;
+    const scaleDrawing = 1;
     drawing.scale.set(scaleDrawing, scaleDrawing, scaleDrawing);
 
     scene.add(drawing);
@@ -167,8 +167,10 @@
 
       const wire = SkeletonUtils.clone( gltf.scene );
 
-      const scale = 20;
+      const scale = 25;
+      const angle = 90;
       wire.scale.set(scale, scale, scale);
+      wire.rotateY(angle);
 
       scene.add( wire);
       wire.position.x = 0;
