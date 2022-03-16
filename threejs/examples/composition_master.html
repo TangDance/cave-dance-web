@@ -159,7 +159,7 @@
     .hero.home,
     .wait {
         height: 100vh;
-        height: calc(var(--vh, 1vh) * 100);
+        /* height: calc(var(--vh, 1vh) * 100); */
     }
   </style>
 
@@ -188,13 +188,13 @@
         </div>
       </div>
       <div class="menu">
-        <div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99b" class="m-inner"><a aria-label="Sal Parausco – Shop" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99c" href="/Slide.html" class="m-link w-inline-block">
+        <div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99b" class="m-inner"><a rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99c" href="/" class="m-link w-inline-block">
             <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99d" class="h-h2 menu-li">About</h2>
           </a>
-          <link rel="prefetch" href="/" /><a aria-label="Database" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="/Slider.html" class="m-link w-inline-block">
+          <link rel="prefetch" href="/" /><a aria-label="Database" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="/" class="m-link w-inline-block">
             <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li">Database</h2>
           </a>
-          <link rel="prerender" href="/" /><a aria-label="Exhibition" draggable="false" rel="noopener" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a2" href="/Slide.html" class="m-link w-inline-block">
+          <link rel="prerender" href="/" /><a aria-label="Exhibition" draggable="false" rel="noopener" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a2" href="/" class="m-link w-inline-block">
             <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a3" class="h-h2 menu-li">Exhibition</h2>
           </a></div>
         <div class="menu-content">
@@ -788,7 +788,6 @@
   				mixer.clipAction( result.clip ).setEffectiveWeight( 1.0 ).play();
 
           const domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-          /* console.log("domEvents", domEvents); */
 
           function callback(event){
             console.log('you clicked on the boneContainer');
@@ -886,7 +885,17 @@
         </div>
       </div>
     </div>
-    <div class="intro">
+
+    <a style="text-align: center; margin-left: auto; margin-right: auto;  margin-top: -5vw;
+    width: 2rem;
+    opacity: 0.6; z-index:9 !important"
+    data-animation="cursor" rel="noopener"
+    href="#project-intro" class="cta-wrap w-inline-block">
+        <img src="kindpng_258307.png" loading="lazy" alt="" class="img ico" />
+    </a>
+
+
+    <div class="intro" id="project-intro">
       <div class="intro-inner">
         <div class="intro-desc">
           <h2 class="h-h2 desc">Dunhuang Dance x A.I. is a project in research of Celestial Dance of Dunhuang Mural Drawings and Documentations of Dance and Music Scores. Combining <span class="color">Dunhuang Dance</span> and <span class="color">Music
@@ -894,6 +903,13 @@
             <span class="color">Kinesiology</span> as well as <span class="color">Machine Learning</span>, the project aims to revive the ancient dance and music of Dunhuang, and create an immersive art experience with the spiritual imagination of
             the Pure Land. </h2>
         </div>
+
+        <!-- <div data-w-id="4402b558-a632-6d55-b633-93cbaf7f02b7" class="video">
+          <video playsinline autoplay muted loop class="b-hero__bg-video" aria-label="Background Video" style="height:56vw">
+            <source src="https://chunweb.files.wordpress.com/2022/03/body.mp4" type="video/mp4">
+          </video>
+        </div> -->
+
         <div class="tab__wrapper">
           <div class="tab-wrap w-dyn-list">
             <header id="selected-items" role="list" class="tab w-dyn-items">
@@ -966,12 +982,6 @@
         </div>
       </div>
 
-      <div data-w-id="4402b558-a632-6d55-b633-93cbaf7f02b7" class="video">
-
-        <video playsinline autoplay muted loop class="b-hero__bg-video" aria-label="Background Video" style="height:56vw">
-          <source src="https://chunweb.files.wordpress.com/2022/03/body.mp4" type="video/mp4">
-        </video>
-      </div>
 
 
       <div data-w-id="4402b558-a632-6d55-b633-93cbaf7f02b7" class="video">
@@ -1008,12 +1018,12 @@
       </div>
       <div class="campaign-grid">
         <div data-animation="blendmode" class="campaign-col">
-          <img src="https://chunweb.files.wordpress.com/2022/03/mural.png" loading="eager" sizes="(max-width: 479px) 70vw, 48vw" srcset="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60f104b4fb0e0b18cb8edada_left-p-500.jpeg 500w, https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60f104b4fb0e0b18cb8edada_left-p-800.jpeg 800w, https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/https://chunweb.files.wordpress.com/2022/03/mural.png 1080w, https://chunweb.files.wordpress.com/2022/03/mural.png 1472w"
+          <img src="https://chunweb.files.wordpress.com/2022/03/mural.png" loading="eager" sizes="(max-width: 479px) 70vw, 48vw" srcset="https://chunweb.files.wordpress.com/2022/03/mural.png 500w, https://chunweb.files.wordpress.com/2022/03/mural.png 800w, https://chunweb.files.wordpress.com/2022/03/mural.png 1080w, https://chunweb.files.wordpress.com/2022/03/mural.png 1472w"
             class="campaign-img" />
         </div>
         <div data-animation="blendmode" class="campaign-col">
-          <img src="https://chunweb.files.wordpress.com/2022/03/amo3.png" loading="eager" sizes="(max-width: 479px) 70vw, 48vw" srcset="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60f104c488a1fabd9c8a0514_right-p-500.jpeg 500w, https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60f104c488a1fabd9c8a0514_right-p-800.jpeg 800w, https://assets-global.website-files.com/https://chunweb.files.wordpress.com/2022/03/amo3.png 1080w, https://chunweb.files.wordpress.com/2022/03/amo3.png 1472w"
-            class="campaign-img" /></div><a data-animation="cursor" rel="noopener" data-w-id="740433ea-e33f-7d52-87dd-ecc44107db3e" href="/Slider.html" class="cta-wrap look w-inline-block">
+          <img src="https://chunweb.files.wordpress.com/2022/03/amo3.png" loading="eager" sizes="(max-width: 479px) 70vw, 48vw" srcset="https://chunweb.files.wordpress.com/2022/03/amo3.png 500w, https://chunweb.files.wordpress.com/2022/03/amo3.png 800w, https://chunweb.files.wordpress.com/2022/03/amo3.png 1080w, https://chunweb.files.wordpress.com/2022/03/amo3.png 1472w"
+            class="campaign-img" /></div><a data-animation="cursor" rel="noopener" data-w-id="740433ea-e33f-7d52-87dd-ecc44107db3e" href="../examples/composition_transform_scroll.html" class="cta-wrap look w-inline-block">
           <div class="cta-bg"></div>
           <div class="cta-img menu-close"><img src="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60c339990e8c2e33a380b5c6_arrow.svg" loading="lazy" alt="" class="img ico" /></div>
           <div class="cta-back">
