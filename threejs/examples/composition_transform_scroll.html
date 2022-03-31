@@ -13,46 +13,11 @@
 			n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
 		}(window, document);
 	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/61014076aa014a767ce9208c_favicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/610140795b9a3f0382a58e51_web-clip.png" rel="apple-touch-icon" />
 	<link href="composition_transform_scroll_style.css" rel="stylesheet" type="text/css" />
 	<!-- <link rel="preload" href="./scene.spline" as="fetch"> -->
-
-	<style>
-		/* Flashlight Overlay */
-		:root {
-			cursor: none;
-			--cursorX: 50vw;
-			--cursorY: 50vh;
-		}
-		:root:before {
-			content: '';
-			display: block;
-			width: 100%;
-			height: 100%;
-			position: fixed;
-			pointer-events: none;
-			background: radial-gradient(
-				circle 20vmax at var(--cursorX) var(--cursorY),
-				rgba(0,0,0,0) 0%,
-				rgba(0,0,0,.5) 80%,
-				rgba(0,0,0,.95) 100%
-			)
-		}
-	</style>
-	<script type="text/javascript">
-		// Flashlight effect
-		function updateFlashlight(e) {
-			var x = e.clientX || e.touches[0].clientX;
-			var y = e.clientY || e.touches[0].clientY;
-			document.documentElement.style.setProperty('--cursorX', x + 'px');
-			document.documentElement.style.setProperty('--cursorY', y + 'px');
-		}
-
-		document.addEventListener('mousemove',updateFlashlight);
-		document.addEventListener('touchmove',updateFlashlight);
-	</script>
-
 
 	<script type="importmap">
 		{
@@ -62,33 +27,42 @@
     }
   </script>
 
-	<script type="module">
+	<!-- <script type="module">
 
 		import * as THREE from 'three';
     import { OrbitControls } from './jsm/controls/OrbitControls.js';
     import { BVHLoader } from './jsm/loaders/BVHLoader.js';
     import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
     import * as SkeletonUtils from './jsm/utils/SkeletonUtils.js';
+		import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
+		import { RenderPass } from './jsm/postprocessing/RenderPass.js';
+		import { ShaderPass } from './jsm/postprocessing/ShaderPass.js';
+		import { LuminosityShader } from './jsm/shaders/LuminosityShader.js';
+		import { SobelOperatorShader } from './jsm/shaders/SobelOperatorShader.js';
 
-    let mixer;
+    let mixer, composer, effectSobel;
 
     // Setup
+
+		const HERO_HEIGHT = 300;
 
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
     const renderer = new THREE.WebGLRenderer({
-      canvas: document.querySelector('#bg'),
+      canvas: document.querySelector('#hero'),
+			antialias: true
     });
 
     const clock = new THREE.Clock();
 
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.position.setZ(30);
+    renderer.setSize(window.innerWidth, HERO_HEIGHT);
+
+    camera.position.setZ(15);
     camera.position.setY(0);
-    camera.position.setX(0);
+    camera.position.setX(10);
 
     renderer.render(scene, camera);
 
@@ -96,9 +70,15 @@
 
     const pointLight = new THREE.PointLight(0xffffff);
     pointLight.position.set(5, 5, 5);
-
     const ambientLight = new THREE.AmbientLight(0xffffff);
-    scene.add(pointLight, ambientLight);
+
+
+		// const light = new THREE.SpotLight( 0xffffff );
+		// light.castShadow = true;            // default false
+		// scene.add( light );
+    // scene.add(pointLight, ambientLight);
+		//
+
 
     // Helpers
 
@@ -106,12 +86,43 @@
     const size = 200;
     const divisions = 50;
     const gridHelper = new THREE.GridHelper( size, divisions );
-    const axesHelper = new THREE.AxesHelper( 20 );
+    const axesHelper = new THREE.AxesHelper( 100 );
 
-    //scene.add(lightHelper, gridHelper, axesHelper);
-    scene.add(axesHelper);
+    //scene.add(lightHelper, gridHelper);
+    //scene.add(axesHelper);
     const controls = new OrbitControls(camera, renderer.domElement);
 
+
+		// Line experiment
+		//create a blue LineBasicMaterial
+		// const material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
+		// const points = [];
+		// // points.push( new THREE.Vector3( - 10, 0, 0 ) );
+		// // points.push( new THREE.Vector3( 0, 10, 0 ) );
+		// // points.push( new THREE.Vector3( 10, 0, 0 ) );
+		// points.push( new THREE.Vector3( -10, 0, 0 ) );
+		// points.push( new THREE.Vector3( -10, 0, 10 ) );
+		// const geometry = new THREE.BufferGeometry().setFromPoints( points );
+		// const line = new THREE.Line( geometry, material );
+		// scene.add( line );
+
+		// postprocessing
+		// composer = new EffectComposer( renderer );
+		// const renderPass = new RenderPass( scene, camera );
+		// composer.addPass( renderPass );
+		//
+		// // color to grayscale conversion
+		// const effectGrayScale = new ShaderPass( LuminosityShader );
+		// composer.addPass( effectGrayScale );
+		//
+		// // you might want to use a gaussian blur filter before
+		// // the next pass to improve the result of the Sobel operator
+		// // Sobel operator
+		// effectSobel = new ShaderPass( SobelOperatorShader );
+		// effectSobel.uniforms[ 'resolution' ].value.x = window.innerWidth * window.devicePixelRatio * 2;
+		// effectSobel.uniforms[ 'resolution' ].value.y = window.innerHeight * window.devicePixelRatio * 2;
+		// composer.addPass( effectSobel );
+		//
 
     // Background
 
@@ -123,46 +134,54 @@
     // const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
     // const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
     // const torus = new THREE.Mesh(geometry, material);
-
     //scene.add(torus);
+
 
 
     // Image Mural
 
-    const muralTexture = new THREE.TextureLoader().load('textures/dunhuang/mural_500.png');
-    const mural = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: muralTexture }));
+    // const muralTexture = new THREE.TextureLoader().load('textures/dunhuang/mural_500.png');
+    // const mural = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: muralTexture }));
+		//
+    // const scaleMural = 2;
+    // mural.scale.set(scaleMural, scaleMural, scaleMural);
+		//
+    // scene.add(mural);
+		//
+    // mural.position.z = 0;
+    // mural.position.x = 2;
+		//
+    // // Image Drawing
+		//
+    // const drawingTexture = new THREE.TextureLoader().load('textures/dunhuang/drawing_210_invert.jpg');
+    // const drawing = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: drawingTexture }));
+		//
+    // const scaleDrawing = 3;
+    // drawing.scale.set(scaleDrawing, scaleDrawing, scaleDrawing);
+		//
+    // scene.add(drawing);
+		//
+    // drawing.position.z = 5;
+    // drawing.position.x = 2;
 
-    const scaleMural = 2;
-    mural.scale.set(scaleMural, scaleMural, scaleMural);
+		const geometry = new THREE.BoxGeometry(3, 3, 0.1);
 
-    scene.add(mural);
+		const loader = new THREE.TextureLoader();
+    const cubeMaterials = [
+        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/black.jpg') }), //right side
+        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/black.jpg')}), //left side
+        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/black.jpg')}), //top side
+        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/black.jpg')}), //bottom side
+        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/drawing_210_invert.jpg')}), //front side
+        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/mural_500.png')}), //back side
+    ];
+		const cube = new THREE.Mesh(geometry, cubeMaterials);
+		const scaleDrawing = 3;
+  	cube.scale.set(scaleDrawing, scaleDrawing, scaleDrawing);
 
-    mural.position.z = -5;
-    mural.position.x = 2;
-
-    // Image Drawing
-
-    const drawingTexture = new THREE.TextureLoader().load('textures/dunhuang/drawing.png');
-    const drawing = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: drawingTexture }));
-
-    const scaleDrawing = 1;
-    drawing.scale.set(scaleDrawing, scaleDrawing, scaleDrawing);
-
-    scene.add(drawing);
-
-    drawing.position.z = 5;
-    drawing.position.x = 2;
-
-
-    // Image Skeleton
-
-    // const skeletonTexture = new THREE.TextureLoader().load('textures/dunhuang/skeleton.png');
-    // const skeleton = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: skeletonTexture }));
-    //
-    // scene.add(skeleton);
-    //
-    // skeleton.position.z = 15;
-    // skeleton.position.x = -5;
+    scene.add(cube);
+		cube.position.z = 5;
+    cube.position.x = 2;
 
 
     // 3D Object - BVH Mo-Cap Skeleton
@@ -178,16 +197,26 @@
       scene.add( skeletonHelper );
       scene.add( boneContainer );
 
-      const scale = 0.07;
+      const scale = 0.08;
       boneContainer.scale.set(scale, scale, scale);
       skeletonHelper.scale.set(scale, scale, scale);
+			skeletonHelper.material = new THREE.MeshBasicMaterial({
+				 color:"white",
+				 transparent:"true",
+				 opacity:"0.9",
+				 wireframe: "true",
+				 wireframeLinewidth: "10.0"
+			});
 
-      boneContainer.translateX(-2);
-      boneContainer.translateY(-6);
-      boneContainer.translateZ(13);
-      skeletonHelper.translateX(-2);
-      skeletonHelper.translateY(-6);
-      skeletonHelper.translateZ(13);
+			let x = -2;
+			let y = -10;
+			let z = 5;
+      boneContainer.translateX(x);
+      boneContainer.translateY(y);
+      boneContainer.translateZ(z);
+      skeletonHelper.translateX(x);
+      skeletonHelper.translateY(y);
+      skeletonHelper.translateZ(z);
 
       // play animation
       mixer = new THREE.AnimationMixer( skeletonHelper );
@@ -196,26 +225,26 @@
     } );
 
 
-    // 3D Object - Jam's model
-
-    const loader = new GLTFLoader().setPath( 'models/glTF/Dunhuang/' );
-    loader.load( 'wire.glb', function ( gltf ) {
-
-      const wire = SkeletonUtils.clone( gltf.scene );
-
-      const scale = 25;
-      const angle = 90;
-      wire.scale.set(scale, scale, scale);
-      wire.rotateY(angle);
-
-      scene.add( wire);
-      wire.position.x = 0;
-      wire.position.y = -1;
-      wire.position.z = 20;
-
-      animate();
-
-    } );
+    // // 3D Object - Jam's model
+		//
+    // const loader = new GLTFLoader().setPath( 'models/glTF/Dunhuang/' );
+    // loader.load( 'wire.glb', function ( gltf ) {
+		//
+    //   const wire = SkeletonUtils.clone( gltf.scene );
+		//
+    //   const scale = 25;
+    //   const angle = 90;
+    //   wire.scale.set(scale, scale, scale);
+    //   wire.rotateY(angle);
+		//
+    //   scene.add( wire);
+    //   wire.position.x = 0;
+    //   wire.position.y = -1;
+    //   wire.position.z = 20;
+		//
+    //   animate();
+		//
+    // } );
 
 
     // // Moon
@@ -254,8 +283,8 @@
     	camera.rotation.y = t * -0.0002;
     }
 
-    document.body.onscroll = moveCamera;
-    moveCamera();
+    // document.body.onscroll = moveCamera;
+    // moveCamera();
 
 
     // Animation Loop
@@ -269,13 +298,27 @@
 
       //moon.rotation.x += 0.005;
 
+			const time = - performance.now() * 0.0003;
+
+			camera.position.x = 10 * Math.cos( time );
+			camera.position.z = 10 * Math.sin( time );
+			camera.lookAt( scene.position );
+
       // animate the skeleton
       const delta = clock.getDelta();
       if ( mixer ) mixer.update( delta );
 
-    //  controls.update(); // for the helpers
+			// rotate the scene
+			// camera.position.x = 20 * Math.cos( time );
+			// camera.position.z = 20 * Math.sin( time );
+			// camera.lookAt( scene.position );
+
+  		controls.update(); // for the helpers
 
       renderer.render(scene, camera);
+			if (composer) {
+					composer.render();
+			}
     }
 
     animate();
@@ -288,15 +331,349 @@
 
     }, false );
 
-  </script>
+  </script> -->
 
+	<script type="module">
+
+		import * as THREE from 'three';
+    import { OrbitControls } from './jsm/controls/OrbitControls.js';
+    import { BVHLoader } from './jsm/loaders/BVHLoader.js';
+    import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
+    import * as SkeletonUtils from './jsm/utils/SkeletonUtils.js';
+		import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
+		import { RenderPass } from './jsm/postprocessing/RenderPass.js';
+		import { ShaderPass } from './jsm/postprocessing/ShaderPass.js';
+		import { LuminosityShader } from './jsm/shaders/LuminosityShader.js';
+		import { SobelOperatorShader } from './jsm/shaders/SobelOperatorShader.js';
+
+		$('html, body').animate({scrollTop: '0px'}, 0);
+
+    let composer, effectSobel;
+		let animated_drawing, animated_mocap, animated_wire;
+		let animated_drawing_clicked, animated_mocap_clicked, animated_wire_clicked;
+		let mural, drawing, mixer, wire;
+		let skeletonHelper,boneContainer;
+
+    const scene = new THREE.Scene();
+
+		scene.background = new THREE.Color( 0x000000 );
+		scene.fog = new THREE.Fog( 0x000000, 500, 4000 );
+		//
+		// const imageCanvas = document.createElement( "canvas" );
+		// const context = imageCanvas.getContext( "2d" );
+		//
+		// imageCanvas.width = imageCanvas.height = 128;
+		//
+		// context.fillStyle = "#fff";
+		// context.fillRect( 0, 0, 128, 128 );
+		//
+		// context.fillStyle = "#fff";
+		// context.fillRect( 0, 0, 64, 64 );
+		// context.fillRect( 64, 64, 64, 64 );
+
+		const clock = new THREE.Clock();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+		camera.position.set( -7, 2, 20 );
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.querySelector('#bg'),
+			antialias: true
+    });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.render(scene, camera);
+
+    // Lights
+    const pointLight = new THREE.PointLight(0xffffff);
+    pointLight.position.set(5, 5, 5);
+    const ambientLight = new THREE.AmbientLight(0xffffff);
+    scene.add(pointLight, ambientLight);
+
+    // Helpers
+    const lightHelper = new THREE.PointLightHelper(pointLight);
+    const size = 200;
+    const divisions = 50;
+    const gridHelper = new THREE.GridHelper( size, divisions );
+    const axesHelper = new THREE.AxesHelper( 20 );
+    //scene.add(lightHelper, gridHelper);
+    //scene.add(axesHelper);
+    const controls = new OrbitControls(camera, renderer.domElement);
+
+
+		// postprocessing
+		// composer = new EffectComposer( renderer );
+		// const renderPass = new RenderPass( scene, camera );
+		// composer.addPass( renderPass );
+		//
+		// // color to grayscale conversion
+		// const effectGrayScale = new ShaderPass( LuminosityShader );
+		// composer.addPass( effectGrayScale );
+		//
+		// // you might want to use a gaussian blur filter before
+		// // the next pass to improve the result of the Sobel operator
+		// // Sobel operator
+		// effectSobel = new ShaderPass( SobelOperatorShader );
+		// effectSobel.uniforms[ 'resolution' ].value.x = window.innerWidth * window.devicePixelRatio * 2;
+		// effectSobel.uniforms[ 'resolution' ].value.y = window.innerHeight * window.devicePixelRatio * 2;
+		// composer.addPass( effectSobel );
+		//
+
+    // Background
+    // const spaceTexture = new THREE.TextureLoader().load('textures/dunhuang/dunhuang-1.jpg');
+    // scene.background = spaceTexture;
+
+
+		// Constants
+		const Z_offset = 0;
+		let mural_x = 2, mural_y = 0, mural_z = -5 , mural_scale = 3;
+		let drawing_x = 0, drawing_y = 0, drawing_z   = 0, drawing_z_target = 5 , drawing_scale = 2.5;
+		let mocap_x = -2, mocap_y = -8, mocap_z = 7.5;
+		let wire_x = 0, wire_y = -4, wire_z = -4, wire_z_target = 18, wire_scale = 40;
+
+		// Mural Image
+    const muralTexture = new THREE.TextureLoader().load('textures/dunhuang/mural_500.png');
+    mural = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.05), new THREE.MeshBasicMaterial({ map: muralTexture }));
+    mural.scale.set(mural_scale, mural_scale, mural_scale);
+    scene.add(mural);
+
+		// LINE EXPERIMENT
+    // mural.position.set(mural_x, mural_y, mural_z);
+		// const material = new THREE.LineDashedMaterial( { color: 0xF6F5F1, dashSize: 10, gapSize: 10 }) ; // new THREE.LineBasicMaterial( { color: 0x0000ff } );
+		// const points = [];
+		// // points.push( new THREE.Vector3( - 10, 0, 0 ) );
+		// // points.push( new THREE.Vector3( 0, 10, 0 ) );
+		// // points.push( new THREE.Vector3( 10, 0, 0 ) );
+		// points.push( new THREE.Vector3( mural_x, mural_y, mural_z ) );
+		// points.push( new THREE.Vector3( drawing_x, drawing_y, drawing_z ) );
+		// const linegeometry = new THREE.BufferGeometry().setFromPoints( points );
+		// const line = new THREE.Line( linegeometry, material );
+		// scene.add( line );
+
+
+    //  Drawing Image
+
+		const drawingloader = new THREE.TextureLoader();
+		const opacity = 0.5;
+		const drawingCubeMaterials = [
+				new THREE.MeshPhongMaterial({ opacity: opacity,transparent: true, map: drawingloader.load('textures/dunhuang/black.jpg') }), //right side
+				new THREE.MeshPhongMaterial({ opacity: opacity, transparent: true,map: drawingloader.load('textures/dunhuang/black.jpg')}), //left side
+				new THREE.MeshPhongMaterial({ opacity: opacity,transparent: true, map: drawingloader.load('textures/dunhuang/black.jpg')}), //top side
+				new THREE.MeshPhongMaterial({ opacity: opacity,transparent: true,map: drawingloader.load('textures/dunhuang/black.jpg')}), //bottom side
+				new THREE.MeshPhongMaterial({ opacity: opacity,transparent: true,map: drawingloader.load('textures/dunhuang/drawing_210_invert.jpg')}), //front side
+				new THREE.MeshPhongMaterial({ opacity: opacity, transparent: true,map: drawingloader.load('textures/dunhuang/drawing_210_invert.jpg')}), //back side
+		];
+		const geometry = new THREE.BoxGeometry(3, 3, 0.01);
+		drawing = new THREE.Mesh(geometry, drawingCubeMaterials);
+		drawing.scale.set(drawing_scale, drawing_scale, drawing_scale);
+    scene.add(drawing);
+		drawing.position.set(drawing_x, drawing_y, drawing_z);
+
+
+    // 3D Object - BVH Mo-Cap Skeleton
+    const bvh = new BVHLoader();
+    bvh.load( "models/bvh/0-6000.bvh", function ( result ) {
+       skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
+      skeletonHelper.skeleton = result.skeleton; // allow animation mixer to bind to THREE.SkeletonHelper directly
+
+       boneContainer = new THREE.Group();
+      boneContainer.add( result.skeleton.bones[ 0 ] );
+
+      scene.add( skeletonHelper );
+      scene.add( boneContainer );
+
+      const scale = 0.08;
+      boneContainer.scale.set(scale, scale, scale);
+      skeletonHelper.scale.set(scale, scale, scale);
+			skeletonHelper.material = new THREE.MeshBasicMaterial({
+				 color:"white",
+				 transparent:"true",
+				 opacity:"0.0",
+				 wireframe: "true",
+				 wireframeLinewidth: "10.0"
+			});
+
+			let x = mocap_x;
+			let y = mocap_y;
+			let z = mocap_z;
+      boneContainer.translateX(x);
+      boneContainer.translateY(y);
+      boneContainer.translateZ(z);
+      skeletonHelper.translateX(x);
+      skeletonHelper.translateY(y);
+      skeletonHelper.translateZ(z);
+
+      // play animation
+      mixer = new THREE.AnimationMixer( skeletonHelper );
+      mixer.clipAction( result.clip ).setEffectiveWeight( 1.0 ).play();
+
+    } );
+
+
+    // 3D Object - Jam's model
+
+    const loader = new GLTFLoader().setPath( 'models/glTF/Dunhuang/' );
+    loader.load( 'wire.glb', function ( gltf ) {
+      wire = SkeletonUtils.clone( gltf.scene );
+      const angle = 90;
+      wire.scale.set(wire_scale, wire_scale, wire_scale);
+      wire.rotateY(angle);
+
+      scene.add( wire);
+      wire.position.x = wire_x;
+      wire.position.y = wire_y;
+      wire.position.z = wire_z;
+
+
+
+
+      animate();
+    } );
+
+
+    // // Moon
+    // const moonTexture = new THREE.TextureLoader().load('textures/dunhuang/moon.jpg');
+    // const normalTexture = new THREE.TextureLoader().load('textures/dunhuang/normal.jpg');
+    //
+    // const moon = new THREE.Mesh(
+    //   new THREE.SphereGeometry(3, 32, 32),
+    //   new THREE.MeshStandardMaterial({
+    //     map: moonTexture,
+    //     normalMap: normalTexture,
+    //   })
+    // );
+    //
+    // scene.add(moon);
+    //
+    // moon.position.z = 20;
+    // moon.position.setX(-10);
+
+
+    // Scroll Animation
+
+    // function moveCamera() {
+    // 	const t = document.body.getBoundingClientRect().top;
+    // 	camera.position.z = t * -0.01;
+    // 	camera.position.x = t * -0.0002;
+    // 	camera.rotation.y = t * -0.0002;
+    // }
+
+	  //  document.body.onscroll = moveCamera;
+	  //  moveCamera();
+
+		function scrollToTop() {
+			$('html, body').animate({scrollTop: '0px'}, 0);
+		}
+
+    // Animation Loop
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+			const time = - performance.now() * 0.0003;
+			controls.update(); // for the helpers
+
+      // 	animate the skeleton
+      const delta = clock.getDelta();
+      if ( mixer ) mixer.update( delta );
+
+
+			// animations on demand
+			if (animated_drawing_clicked && !animated_drawing) {
+				if (drawing.position.z <= drawing_z_target) {
+	        drawing.position.z += 0.05;
+	    	} else {
+					animated_drawing = true;
+				}
+			}
+
+			if (animated_mocap_clicked && !animated_mocap) {
+				const o = Number(skeletonHelper.material.opacity);
+				if (o <= 1) {
+	        skeletonHelper.material.opacity = String(o + 0.005) ;
+	    	} else {
+					animated_mocap = true;
+				}
+			}
+
+			if (animated_wire_clicked && !animated_wire) {
+				if (wire.position.z <= wire_z_target) {
+	        wire.position.z += 0.05;
+					const s = wire.scale.x;
+	    	} else {
+					animated_wire = true;
+				}
+			}
+
+      renderer.render(scene, camera);
+
+			if (composer) {
+					composer.render();
+			}
+    }
+
+    animate();
+
+    document.querySelector("#toggle").addEventListener( 'click'	, () => {
+      document.querySelectorAll(".text").forEach(e => {
+          e.style.opacity = (e.style.opacity === "1" || e.style.opacity === 1) ? "0" : "1";
+      });
+    }, false );
+
+		$("#1").click( () => {
+			animated_drawing_clicked = true;
+			$('html,body').animate({
+		   scrollTop: $("#section_1").offset().top
+		});
+		});
+
+		$("#2").click( () => {
+			animated_mocap_clicked = true;
+			$('html,body').animate({
+		   scrollTop: $("#section_2").offset().top
+		});
+		});
+
+		$("#3").click( () => {
+			animated_wire_clicked = true;
+			$('html,body').animate({
+		   scrollTop: $("#section_3").offset().top
+		});
+		});
+
+		$(window).scroll(function() {
+		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+					 console.log("user has reached the bottom");
+					 if (!animated_drawing_clicked) animated_drawing_clicked = true;
+					 if (!animated_mocap_clicked) animated_mocap_clicked = true;
+					 if (!animated_wire_clicked) animated_wire_clicked = true;
+
+			     camera.position.x = -20;
+			     camera.position.y = 10;
+					 camera.position.z = 30;
+		   }
+		});
+  </script>
 </head>
 
 <body class="body threeDscroll">
-	<canvas id="bg"></canvas>
+
+	<!-- <canvas id="hero" ></canvas> -->
+
+
+	<div class="n-block right" style="z-index:9999; opacity:1; position: absolute;  right:0 ; top: 2rem;">
+		<a href="https://camlab.fas.harvard.edu/" aria-label="button" class=" w-inline-block">
+			<div class="h-h4 bold nav w-inline-block">
+				<img style="opacity:0.8" src="https://freight.cargo.site/w/217/q/94/i/fb2b46cd634f8600d388c1fddfc23c48e2c1e3593988f576bbec4237426c8fcb/CAMLab.png" class="n-brand">
+			</div>
+		</a>
+	</div>
+	</div>
+
+
+	<canvas id="bg" style="top: 0;"></canvas>
 
 	<!-- <div id='container'>
-    <canvas id="canvas3d"></canvas>
+  <canvas id="canvas3d"></canvas>
   </div>
   <script type="module">
     import { Application } from './runtime.js';
@@ -304,15 +681,16 @@
     const app = new Application(canvas);
     app.load('./scene.spline');
   </script> -->
-	<main id="mainText">
+	<main id="mainText" style="top: 0;">
 
-		<header class="text">
-			<h1>Tang Dance x A.I. </h1>
+		<header class="text" id="section_0">
+			<!-- <h2 class="h-h2 gradient large">Tang </h2>-->
+			<h2>Dance x A.I. </h2>
 			<p>Research Methods</p>
 		</header>
 
-		<section class="text" style="margin-top: 5rem">
-			<h2>Mural</h2>
+		<section class="text" id="section_1" style="margin-top: 5rem">
+			<h3>Mural Drawings</h3>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
 				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -320,19 +698,20 @@
 		</section>
 
 		<section class="text" style="margin-top: 3rem">
-			<h2>Drawing</h2>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
+				adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
 				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 			</p>
 		</section>
 
-		<blockquote class="text">
+		<!-- <blockquote class="text">
 			<p>Some text here<br>and here</p>
-		</blockquote>
+		</blockquote> -->
 
-		<section class="text" style="margin-top: 3rem">
-			<h2>Restoration</h2>
+		<section class="text" id="section_2" style="margin-top: 3rem">
+			<h2>Mo-Cap</h2>
 			<h3>Notations & Kinesiology</h3>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
@@ -346,51 +725,92 @@
 			</p>
 		</section>
 
-		<section class="text" style="margin-top: 3rem">
-			<h2>Computer Graphics</h2>
+		<section class="text" id="section_3" style="margin-top: 3rem">
+			<h2>Title</h2>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
 				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 			</p>
-
 		</section>
 
-    <section>
-      <div class="footer">
-        <div class="f-row foot">
-          <div class="h-h4 colophon">On the nexus of cognitive study and art, <br />
-            <a href="http://camlab.fas.harvard.edu/" aria-label="Gens Sauvages" rel="noopener" draggable="false" target="_blank" class="link disc underline">Harvard CAMLab</a>
-            <link rel="prerender" href="http://camlab.fas.harvard.edu/" /> explores multimedia storyliving and immersive artistic-cum-spiritual experience,
-            <br />combining humanistic research and creative sensorial media practice.
-          </div>
-        </div>
-        <div class="f-row bottom">
-          <div class="f-col left">
-            <div class="h-h4 disclaimer bold endless copy"></div>
-          </div>
-          <div class="f-col center">
-            <div class="h-h4 disclaimer bold endless">©2022. Harvard CAMLab</div>
-          </div>
-          <div class="f-col right pr">
-          </div>
+		<section class="text" style="margin-top: 3rem">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
+				adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		</section>
 
-        </div>
-      </div>
-    </section>
-		
-    <div id="toggle" class="h-h4 disclaimer bold">
-      toggle text visibility
-    </div>
 
-<!--
-		<button id="toggle">toggle </button> -->
+		<section style="margin-top: 500px; border: none;">
+			<div class="footer">
+				<div class="f-row foot">
+					<div class="h-h4 colophon">On the nexus of cognitive study and art, <br />
+						<a href="http://camlab.fas.harvard.edu/" aria-label="Gens Sauvages" rel="noopener" draggable="false" target="_blank" class="link disc underline">Harvard CAMLab</a>
+						<link rel="prerender" href="http://camlab.fas.harvard.edu/" /> explores multimedia storyliving and immersive artistic-cum-spiritual experience,
+						<br />combining humanistic research and creative sensorial media practice.
+					</div>
+				</div>
+				<div class="f-row bottom">
+					<div class="f-col left">
+						<div class="h-h4 disclaimer bold endless copy"></div>
+					</div>
+					<div class="f-col center">
+						<div class="h-h4 disclaimer bold endless">©2022. Harvard CAMLab</div>
+					</div>
+					<div class="f-col right pr">
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<div class="listitems">
+			<div role="listitem" class="lookbook__navigation__media" id="1">
+				Start </div>
+
+			<div role="listitem" class="lookbook__navigation__media dot">
+				.
+			</div>
+			<div role="listitem" class="lookbook__navigation__media dot">
+				.
+			</div>
+			<div role="listitem" class="lookbook__navigation__media dot">
+				.
+			</div>
+
+			<div role="listitem" class="lookbook__navigation__media" id="2">
+				Mo-cap </div>
+
+			<div role="listitem" class="lookbook__navigation__media dot">
+				.
+			</div>
+			<div role="listitem" class="lookbook__navigation__media dot">
+				.
+			</div>
+			<div role="listitem" class="lookbook__navigation__media dot">
+				.
+			</div>
+
+
+			<div role="listitem" class="lookbook__navigation__media" id="3">
+				CG </div>
+
+		</div>
+
+		<div class="toggle">
+
+
+			<div id="toggle" class="toggle h-h4 disclaimer bold">
+				toggle text
+			</div>
+
+
+		</div>
+
+
 	</main>
-
-
-
-
-
-
 </body>
 
 </html>

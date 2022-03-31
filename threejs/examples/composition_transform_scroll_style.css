@@ -7,27 +7,55 @@ body {
   margin: 0;
 }
 
-#toggle {
+.toggle {
   height: 24px;
   position: fixed;
   bottom: 1vw;
-    right: 2vw;
+  right: 2vw;
   cursor: pointer;
   text-decoration: underline;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
 
+.listitems {
+  text-align: center;
+  position: fixed;
+  bottom: 50%;
+  text-decoration: none;
+  right: 2vw;
+  cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   /* No support for these yet */
   -o-user-select: none;
   user-select: none;
 }
-.footer {
-      padding-top: 5vw;
-      padding-bottom: 0;
+
+.listitems .lookbook__navigation__media {
+  margin-bottom: 0vw;
 }
+
+.listitems .lookbook__navigation__media.dot {
+  margin-bottom: 0vw;
+  opacity: 0.5;
+}
+
+.footer {
+  padding-top: 5vw;
+  padding-bottom: 0;
+}
+
+.threeDscroll h2 {
+  font-size: 8vw;
+}
+
 .threeDscroll main {
-  color: white;
+  color: rgb(187, 185, 185);
   /*  z-index: 99; */
   position: absolute;
   width: 100vw;
@@ -69,17 +97,26 @@ body {
 }
 
 .threeDscroll section {
-  grid-column: 2 / 8;
-  padding: 1rem;
-  padding-left: 0;
+  grid-column: 2 / 7;
   background: var(--dark-bg);
   font-size: 1.25rem;
   line-height: 1.5;
   margin-bottom: var(--spacing);
+  margin-top: 3rem;
+  opacity: 1;
+  margin: 35px 0px 0px 20px;
+  height: auto;
+  width: auto;
+  backdrop-filter: blur(2PX);
+  -webkit-backdrop-filter: blur(10PX);
+  border-radius: 1rem;
+  border: 1px solid RGBA(255, 255, 255, 0.18);
+  box-shadow: 0px 2PX 20PX 0px RGBA(0, 0, 0, 0.3);
+  padding: 0.5rem;
 }
 
 .threeDscroll header p {
-  padding: 2vw 0 0 1.5vw;
+  padding: 2vw 0 0 1vw;
 }
 
 .threeDscroll section p {
