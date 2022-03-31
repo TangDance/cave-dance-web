@@ -341,6 +341,7 @@
     import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
     import * as SkeletonUtils from './jsm/utils/SkeletonUtils.js';
 		import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
+		import { OutlinePass } from './jsm/postprocessing/OutlinePass.js';
 		import { RenderPass } from './jsm/postprocessing/RenderPass.js';
 		import { ShaderPass } from './jsm/postprocessing/ShaderPass.js';
 		import { LuminosityShader } from './jsm/shaders/LuminosityShader.js';
@@ -351,14 +352,18 @@
 		}
 		scrollToTop(); // not working?
 
-    let composer, effectSobel;
+    let composer, effectSobel, outlinePass;
 		let animated_drawing, animated_mocap, animated_wire;
 		let animated_drawing_clicked, animated_mocap_clicked, animated_wire_clicked;
 		let mural, drawing, mixer, wire;
 		let skeletonHelper,boneContainer;
 
-    const scene = new THREE.Scene();
+		const OUTLINE_ON_MOUSEPOINT = true;
+		let selectedObjects = [];
+		const raycaster = new THREE.Raycaster();
+		const mouse = new THREE.Vector2();
 
+    const scene = new THREE.Scene();
 		scene.background = new THREE.Color( 0x000000 );
 		scene.fog = new THREE.Fog( 0x000000, 500, 4000 );
 		//
@@ -436,6 +441,14 @@
 		// Mural Image
     const muralTexture = new THREE.TextureLoader().load('textures/dunhuang/mural_500.png');
     mural = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.05), new THREE.MeshBasicMaterial({ map: muralTexture }));
+		composer = new EffectComposer( renderer );
+
+		const renderPass = new RenderPass( scene, camera );
+		composer.addPass( renderPass );
+
+		outlinePass = new OutlinePass( new THREE.Vector2( window.innerWidth, window.innerHeight ), scene, camera );
+		composer.addPass( outlinePass );
+
     mural.scale.set(mural_scale, mural_scale, mural_scale);
     scene.add(mural);
 
@@ -634,6 +647,49 @@
     }
 
     animate();
+
+		if (OUTLINE_ON_MOUSEPOINT) {
+			renderer.domElement.addEventListener( 'pointermove', onPointerMove );
+		}
+
+		function onPointerMove( event ) {
+
+			if ( event.isPrimary === false ) return;
+
+			mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+			mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+			checkIntersection();
+
+		}
+
+		function addSelectedObject( object ) {
+
+			selectedObjects = [];
+			selectedObjects.push( object );
+
+		}
+
+		function checkIntersection() {
+
+			raycaster.setFromCamera( mouse, camera );
+
+			const intersects = raycaster.intersectObject( scene, true );
+
+			if ( intersects.length > 0 ) {
+
+				const selectedObject = intersects[ 0 ].object;
+				addSelectedObject( selectedObject );
+				outlinePass.selectedObjects = selectedObjects;
+
+			} else {
+
+				// outlinePass.selectedObjects = [];
+
+			}
+
+		}
+
 
     document.querySelector("#toggle").addEventListener( 'click'	, () => {
       document.querySelectorAll(".text").forEach(e => {
