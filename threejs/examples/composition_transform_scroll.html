@@ -346,7 +346,10 @@
 		import { LuminosityShader } from './jsm/shaders/LuminosityShader.js';
 		import { SobelOperatorShader } from './jsm/shaders/SobelOperatorShader.js';
 
-		$('html, body').animate({scrollTop: '0px'}, 0);
+		function scrollToTop() {
+			$('html, body').animate({scrollTop: '0px'}, 0);
+		}
+		scrollToTop(); // not working?
 
     let composer, effectSobel;
 		let animated_drawing, animated_mocap, animated_wire;
@@ -567,9 +570,6 @@
 	  //  document.body.onscroll = moveCamera;
 	  //  moveCamera();
 
-		function scrollToTop() {
-			$('html, body').animate({scrollTop: '0px'}, 0);
-		}
 
     // Animation Loop
 
@@ -587,7 +587,7 @@
 			// animations on demand
 			if (animated_drawing_clicked && !animated_drawing) {
 				if (drawing.position.z <= drawing_z_target) {
-	        drawing.position.z += 0.05;
+	        drawing.position.z += 0.02;
 	    	} else {
 					animated_drawing = true;
 				}
@@ -596,7 +596,7 @@
 			if (animated_mocap_clicked && !animated_mocap) {
 				const o = Number(skeletonHelper.material.opacity);
 				if (o <= 1) {
-	        skeletonHelper.material.opacity = String(o + 0.005) ;
+	        skeletonHelper.material.opacity = String(o + 0.002) ;
 	    	} else {
 					animated_mocap = true;
 				}
@@ -605,7 +605,7 @@
 			if (animated_wire_clicked && !animated_wire) {
 				const model = wire.children[0];
 				if (model.material.opacity <= 1) {
-					model.material.opacity = model.material.opacity + 0.001;
+					model.material.opacity = model.material.opacity + 0.002;
 					model.traverse(n => { if ( n.isMesh ) {
 						n.castShadow = true;
 						n.receiveShadow = true;
@@ -733,7 +733,7 @@
 		</blockquote> -->
 
 		<section class="text" id="section_2" style="margin-top: 3rem">
-			<h3>Mo-Cap</h3>
+			<h2>Mo-Cap</h2>
 			<h3>Notations & Kinesiology</h3>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
