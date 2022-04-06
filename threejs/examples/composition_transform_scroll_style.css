@@ -76,7 +76,7 @@ body {
 }
 
 .threeDscroll h3 {
-  font-family: 'Theinhardt Pan';
+  font-family: 'Theinhardt Pan' !important;
   padding: 2vw 0 0 1.5vw;
 }
 

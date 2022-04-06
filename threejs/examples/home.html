@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html data-wf-domain="www.tangdanceai.com" data-wf-page="61c5e06d4c32b4d376aaf502" data-wf-site="603fe89ec4bbcece7ee6a53a" lang="en">
+<html data-wf-page="61c5e06d4c32b4d376aaf502" data-wf-site="603fe89ec4bbcece7ee6a53a" lang="en">
 
 <head>
   <meta charset="utf-8" />
-  <title>Tang Dance x A.I. </title>
-  <meta content="Tang Dance x A.I." name="description" />
-  <meta content="Tang Dance x A.I." property="og:title" />
-  <meta content="Tang Dance x A.I." property="og:description" />
+  <title>Dunhuang Cave Dance </title>
+  <meta content="Dunhuang Cave Dance" name="description" />
+  <meta content="Dunhuang Cave Dance" property="og:title" />
+  <meta content="Dunhuang Cave Dance" property="og:description" />
   <meta property="og:type" content="website" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <link href="master.css" rel="stylesheet" type="text/css" />
   <link href="master.css" rel="stylesheet" type="text/css" />
 
   <style>
@@ -190,8 +189,11 @@
         <div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99b" class="m-inner"><a rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99c" href="/" class="m-link w-inline-block">
             <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99d" class="h-h2 menu-li">About</h2>
           </a>
-          <link rel="prefetch" href="/" /><a aria-label="Database" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="/" class="m-link w-inline-block">
-            <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li">Database</h2>
+          <link rel="prefetch" href="data.html" /><a aria-label="Data" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="data.html" class="m-link w-inline-block">
+            <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li">Data</h2>
+          </a>
+          <link rel="prefetch" href="methods.html" /><a aria-label="Methods" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="methods.html" class="m-link w-inline-block">
+            <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li">Method</h2>
           </a>
           <link rel="prerender" href="/" /><a aria-label="Exhibition" draggable="false" rel="noopener" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a2" href="/" class="m-link w-inline-block">
             <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a3" class="h-h2 menu-li">Exhibition</h2>
@@ -205,11 +207,11 @@
           <div class="footer">
             <div class="f-row">
               <div class="f-col left">
-                <div class="f-link"><a aria-label="privacy" rel="noopener" draggable="false" href="#" class="h-h4 disclaimer bold">Terms</a></div>
+                <div class="f-link"><a aria-label="privacy" rel="noopener" draggable="false" href="#" class="h-h4 disclaimer bold">Team</a></div>
                 <div class="f-link last"><a aria-label="privacy" rel="noopener" draggable="false" href="#" class="h-h4 disclaimer bold">Returns</a></div>
               </div>
               <div class="f-col center">
-                <div class="h-h4 disclaimer bold">©2022. Harvard CAMLab</div>
+                <div class="h-h4 disclaimer bold">©2022 Harvard CAMLab</div>
               </div>
               <div class="f-col right">
                 <div class="h-h4 disclaimer bold"><a href="https://camlab.fas.harvard.edu/About" aria-label="Contact" rel="noopener" draggable="false" class="link underline">Contact Us</a></div>
@@ -254,14 +256,14 @@
   <main data-template="home" class="content demo">
     <div class="hero home">
       <div data-w-id="53ee3c76-c537-5088-f0d4-fc00e8f8c98a" class="wait-bar">
-        <div class="outer hero-t">
-          <div class="text disclaimer load" style="font-size: 12px">CAMLab is a multidisciplinary <br /> research lab at Harvard.</div>
+        <div class="outer hero-t" style="line-height: 150%">
+          <div class="text disclaimer load" style="font-size: 12px">CAMLab is a multidisciplinary <br /> research lab at Harvard University.</div>
         </div>
         <div class="progress-bar">
           <div class="progress-side"></div>
           <div data-w-id="59520e50-2513-aecd-1a28-ea8f307e866f" class="progress-face"></div>
           <div class="progress-text">
-            <div class="text-block-2">Loading the Experience</div>
+            <div class="text-block-2">Loading</div>
           </div>
         </div>
       </div>
@@ -806,6 +808,16 @@
   				const boneContainer = new THREE.Group();
   				boneContainer.add( result.skeleton.bones[ 0 ] );
 
+          let x = 0;
+    			let y = -45;
+    			let z = 0;
+          boneContainer.translateX(x);
+          boneContainer.translateY(y);
+          boneContainer.translateZ(z);
+          skeletonHelper.translateX(x);
+          skeletonHelper.translateY(y);
+          skeletonHelper.translateZ(z);
+
   				scene.add( skeletonHelper );
   				scene.add( boneContainer );
 
@@ -911,6 +923,18 @@
 
   		</script>
 
+      <div class="wait">
+        <div class="wait-inner">
+          <div class="wait_img-wrap">
+            <div data-w-id="e8311aee-d434-6a91-e883-eae45438144d" class="wait_img"></div>
+            <div data-w-id="a5f9b580-a290-06a9-c3a9-042380199875" class="wait-overlay"></div>
+          </div>
+          <div class="wait-content">
+            <div class="hero-h1__wrap"><img src="https://chunweb.files.wordpress.com/2022/04/cave220.png" loading="lazy" alt="" class="hero-h1" /></div>
+            <div class="hero-sum__wrap"><img src="https://chunweb.files.wordpress.com/2022/04/cave220.png" loading="lazy" alt="" class="hero-sum" /></div>
+          </div>
+        </div>
+      </div>
 
       <canvas id="hero-threejs" style="height: 500px; width:100%"></canvas>
 
@@ -918,18 +942,23 @@
         <div class="hero-row-wrapper-rotation">
           <div data-animation="translate" data-animation-speed="-2" class="hero-row-wrapper">
             <div data-w-id="2e0b83a3-2ddc-f8d5-5e66-67b4b7f16c12" class="hero-col">
-              <h1 data-w-id="b17efb30-8309-927f-1347-0fd3b6b5f13a" class="h-h1 hero-home">Tang Dance </h1>
+              <h1 data-w-id="b17efb30-8309-927f-1347-0fd3b6b5f13a" class="h-h1 hero-home">Cave Dance </h1>
             </div>
             <div data-w-id="2b8b4a59-2c0d-d6ad-ded6-c96568e0cdca" class="hero-col center"></div>
             <div data-w-id="fed3734d-7289-44d0-92b9-3110190db00e" class="hero-col right">
               <div class="outer h">
-                <div data-w-id="5d3f0eab-9523-e0b7-dfaf-6f3ee809c23f" class="hero-text">Tang Dance </div>
+                <div data-w-id="5d3f0eab-9523-e0b7-dfaf-6f3ee809c23f" class="hero-text">Beyond Body:
+ </div>
               </div>
               <div class="outer h">
-                <div data-w-id="46e854ab-960f-ffc2-dadd-97d129ef5708" class="hero-text">x </div>
+                <div data-w-id="46e854ab-960f-ffc2-dadd-97d129ef5708" class="hero-text">Celestial Dance </div>
               </div>
               <div class="outer h">
-                <div data-w-id="2417627d-dd84-6f04-d421-596950c84d11" class="hero-text">A.I.</div>
+                <div data-w-id="2417627d-dd84-6f04-d421-596950c84d11" class="hero-text">of Tang</div>
+              </div>
+
+              <div class="outer h">
+                <div data-w-id="2417627d-dd84-6f04-d421-596950c84d11" class="hero-text">in Dunhuang</div>
               </div>
             </div>
           </div>
@@ -954,7 +983,6 @@
         <img src="kindpng_258307.png" loading="lazy" alt="" class="img ico" />
     </a>
 
-
     <div class="intro" id="intro">
       <div class="intro-inner">
         <div class="intro-desc">
@@ -970,7 +998,7 @@
           </video>
         </div> -->
 
-        <div class="tab__wrapper">
+        <!-- <div class="tab__wrapper">
           <div class="tab-wrap w-dyn-list">
             <header id="selected-items" role="list" class="tab w-dyn-items">
               <div role="listitem" class="tab-item w-dyn-item">
@@ -1011,18 +1039,19 @@
           <div class="toggle-wrap home">
 
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="collection">
-      <div class="coll-intro">
+      <!-- <div class="coll-intro">
         <div class="lookbook__head__title">
-          <h2 class="h-h2 gradient large">Dance/</h2>
+          <h2 class="h-h2 gradient large">Dance in </h2>
         </div>
         <div class="lookbook__head__title">
-          <h2 class="h-h2 gradient large">A.I.</h2>
+          <h2 class="h-h2 gradient large">Dunhuang Cave</h2>
         </div>
       </div>
+
       <div data-animation="blendmode" class="coll-wrap">
         <img src="https://chunweb.files.wordpress.com/2022/03/dunhuang-1.jpg" loading="lazy" sizes="(max-width: 2219px) 100vw, 2219px"
         srcset="https://chunweb.files.wordpress.com/2022/03/dunhuang-1.jpg 500w, https://chunweb.files.wordpress.com/2022/03/dunhuang-1.jpg 800w,
@@ -1042,67 +1071,85 @@
         </div>
       </div>
 
+       <div data-w-id="4402b558-a632-6d55-b633-93cbaf7f02b7" class="video"
+            <video playsinline autoplay muted loop class="b-hero__bg-video" aria-label="Background Video" style="height:56vw">
+              <source src="https://chunweb.files.wordpress.com/2022/03/combone_1.mp4" type="video/mp4">
+            </video>
+          </div> -->
 
+          <iframe style="border:none; width: 100%; min-height: 800px" src="composition_flashlight_multiple_bg.html" title="W3Schools Free Online Web Tutorials"></iframe>
 
-      <div data-w-id="4402b558-a632-6d55-b633-93cbaf7f02b7" class="video">
-
-        <video playsinline autoplay muted loop class="b-hero__bg-video" aria-label="Background Video" style="height:56vw">
-          <source src="https://chunweb.files.wordpress.com/2022/03/combone_1.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="coll-desc">
-        <h2 class="h-h2 desc">Lorem ipsum dolor sit amet et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          <span class="color"> consectetur</span> sed do eiusmod tempor incididunt ut labore et</h2>
-      </div>
-      <a data-animation="cursor" rel="noopener" data-w-id="73b1b8a3-7054-c5b2-891a-6669786943a8" href="https://camlab.fas.harvard.edu/Dunhuang-Dance" class="cta-wrap w-inline-block">
-        <div class="cta-bg"></div>
-        <div class="cta-img menu-close"><img src="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60c339990e8c2e33a380b5c6_arrow.svg" loading="lazy" alt="" class="img ico" /></div>
-        <div class="cta-back">
-          <div class="cta-inner"></div>
-        </div>
-      </a>
-      <link rel="prefetch" href="/" />
-    </div>
-    <div data-w-id="4402b558-a632-6d55-b633-93cbaf7f02b7" class="video">
-      <video playsinline autoplay muted loop class="b-hero__bg-video" aria-label="Background Video" style="height:56vw">
-        <source src="https://chunweb.files.wordpress.com/2022/03/amosequence01.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="campaign">
-      <div class="lookbook__head__title">
-        <h2 class="h-h2 gradient">methods</h2>
-      </div>
-      <div class="campagin-head">
-        <h4 class="h-h4 disclaimer">This is an overview of our research methods</h4>
-      </div>
-      <div class="campaign-grid">
-        <div data-animation="blendmode" class="campaign-col">
-          <img src="https://chunweb.files.wordpress.com/2022/03/mural.png" loading="eager" sizes="(max-width: 479px) 70vw, 48vw" srcset="https://chunweb.files.wordpress.com/2022/03/mural.png 500w, https://chunweb.files.wordpress.com/2022/03/mural.png 800w, https://chunweb.files.wordpress.com/2022/03/mural.png 1080w, https://chunweb.files.wordpress.com/2022/03/mural.png 1472w"
-            class="campaign-img" />
-        </div>
-        <div data-animation="blendmode" class="campaign-col">
-          <img src="https://chunweb.files.wordpress.com/2022/03/amo3.png" loading="eager" sizes="(max-width: 479px) 70vw, 48vw" srcset="https://chunweb.files.wordpress.com/2022/03/amo3.png 500w, https://chunweb.files.wordpress.com/2022/03/amo3.png 800w, https://chunweb.files.wordpress.com/2022/03/amo3.png 1080w, https://chunweb.files.wordpress.com/2022/03/amo3.png 1472w"
-            class="campaign-img" /></div><a data-animation="cursor" rel="noopener" data-w-id="740433ea-e33f-7d52-87dd-ecc44107db3e" href="../examples/composition_transform_scroll.html" class="cta-wrap look w-inline-block">
-          <div class="cta-bg"></div>
-          <div class="cta-img menu-close"><img src="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60c339990e8c2e33a380b5c6_arrow.svg" loading="lazy" alt="" class="img ico" /></div>
-          <div class="cta-back">
-            <div class="cta-inner"></div>
+          <div class="coll-desc" style="margin-top: 7vw;">
+            <h2 class="h-h2 desc">Lorem ipsum dolor sit amet et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+              esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              <span class="color"> consectetur</span> sed do eiusmod tempor incididunt ut labore et</h2>
           </div>
-        </a>
-        <div class="div-block-25"></div>
-        <div class="invert w-embed">
-          <style>
-            .info-img-gradient.bottom {
-            	transform: scaleY(-1);
-            }
-          </style>
+
+
+          <a data-animation="cursor" rel="noopener" data-w-id="73b1b8a3-7054-c5b2-891a-6669786943a8" href="https://camlab.fas.harvard.edu/Dunhuang-Dance" class="cta-wrap w-inline-block">
+            <div class="cta-bg"></div>
+            <div class="cta-img menu-close"><img src="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60c339990e8c2e33a380b5c6_arrow.svg" loading="lazy" alt="" class="img ico" /></div>
+            <div class="cta-back">
+              <div class="cta-inner"></div>
+            </div>
+          </a>
+          <link rel="prefetch" href="/" />
         </div>
-        <div class="info-img-gradient up"></div>
-        <div class="info-img-gradient bottom"></div>
-      </div>
-    </div>
+
+
+            <div class="campaign">
+              <div class="lookbook__head__title">
+                <h2 class="h-h2 gradient">methods</h2>
+              </div>
+              <div class="campagin-head">
+                <h4 class="h-h4 disclaimer">This is an overview of our research methods</h4>
+              </div>
+
+              <div class="campaign-grid">
+                <div data-animation="blendmode" class="campaign-col">
+                  <img src="https://chunweb.files.wordpress.com/2022/03/mural.png" loading="eager" sizes="(max-width: 479px) 70vw, 48vw" srcset="https://chunweb.files.wordpress.com/2022/03/mural.png 500w, https://chunweb.files.wordpress.com/2022/03/mural.png 800w, https://chunweb.files.wordpress.com/2022/03/mural.png 1080w, https://chunweb.files.wordpress.com/2022/03/mural.png 1472w"
+                    class="campaign-img" />
+                </div>
+                <div data-animation="blendmode" class="campaign-col">
+                  <img src="https://chunweb.files.wordpress.com/2022/03/amo3.png" loading="eager"
+                  sizes="(max-width: 479px) 70vw, 48vw" srcset="https://chunweb.files.wordpress.com/2022/03/amo3.png 500w, https://chunweb.files.wordpress.com/2022/03/amo3.png 800w, https://chunweb.files.wordpress.com/2022/03/amo3.png 1080w, https://chunweb.files.wordpress.com/2022/03/amo3.png 1472w"
+                    class="campaign-img" />
+                </div>
+
+                <a data-animation="cursor" style=
+                "margin-top: -3vw" rel="noopener" data-w-id="740433ea-e33f-7d52-87dd-ecc44107db3e" href="methods.html" class="cta-wrap look w-inline-block">
+                  <div class="cta-bg"></div>
+                  <div class="cta-img menu-close"><img src="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60c339990e8c2e33a380b5c6_arrow.svg" loading="lazy" alt="" class="img ico" /></div>
+                  <div class="cta-back">
+                    <div class="cta-inner"></div>
+                  </div>
+                </a>
+
+                <div class="div-block-25"></div>
+                <div class="invert w-embed">
+                  <style>
+                    .info-img-gradient.bottom {
+                    	transform: scaleY(-1);
+                    }
+                  </style>
+                </div>
+                <div class="info-img-gradient up"></div>
+                <div class="info-img-gradient bottom"></div>
+              </div>
+            </div>
+
+            <div class="campaign">
+            <div class="lookbook__head__title">
+              <h2 class="h-h2 gradient">Exhibition</h2>
+            </div>
+
+            <div data-w-id="4402b558-a632-6d55-b633-93cbaf7f02b7" class="video">
+              <video playsinline autoplay muted loop class="b-hero__bg-video" aria-label="Background Video" style="height:56vw">
+                <source src="https://chunweb.files.wordpress.com/2022/03/amosequence01.mp4" type="video/mp4">
+              </video>
+            </div>
+
+          </div>
 
     <div class="footer">
       <div class="f-row foot">
@@ -1114,7 +1161,7 @@
       </div>
       <div class="f-row bottom">
         <div class="f-col left">
-          <div class="h-h4 disclaimer bold endless copy">©2022. Harvard CAMLab</div>
+          <div class="h-h4 disclaimer bold endless copy">©2022 Harvard CAMLab</div>
         </div>
         <div class="f-col center">
           <div class="h-h4 disclaimer bold endless">Tang Dance Project Short Description goes here.</div>

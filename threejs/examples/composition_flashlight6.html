@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	  <title>Hero (Flashlight)</title>
+		<meta charset="utf-8" />
+	  <title>Tang Dance x A.I. </title>
+	  <meta content="Tang Dance x A.I." name="description" />
+	  <meta content="Tang Dance x A.I." property="og:title" />
+	  <meta content="Tang Dance x A.I." property="og:description" />
+		<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/61014076aa014a767ce9208c_favicon.png" rel="shortcut icon" type="image/x-icon" />
+		<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/610140795b9a3f0382a58e51_web-clip.png" rel="apple-touch-icon" />
+		<script src="./composition_master.js" type="text/javascript"></script>
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="master.css">
+		<style>
+			body {
+				overflow: hidden;
+				background-color: #000;
+				color: #444;
+			}
+			a {
+				color: #08f;
+			}
+			.text {
+				position: absolute;
+				bottom: 0;
+			}
+
+
+		</style>
+
+	  <style>
+	    /* Flashlight Overlay */
+	    :root {
+	      cursor: none;
+	      --cursorX: 50vw;
+	      --cursorY: 50vh;
+	    }
+	    :root:before {
+	      content: '';
+	      display: block;
+	      width: 100%;
+	      height: 100%;
+	      position: fixed;
+	      pointer-events: none;
+	      background: radial-gradient(
+	        circle 20vmax at var(--cursorX) var(--cursorY),
+	        rgba(0,0,0,0) 0%,
+	        rgba(0,0,0,.5) 80%,
+	        rgba(0,0,0,.95) 100%
+	      )
+	    }
+	  </style>
+	  <script type="text/javascript">
+	  	// Flashlight effect
+	    function updateFlashlight(e) {
+	      var x = e.clientX || e.touches[0].clientX;
+	      var y = e.clientY || e.touches[0].clientY;
+	      document.documentElement.style.setProperty('--cursorX', x + 'px');
+	      document.documentElement.style.setProperty('--cursorY', y + 'px');
+	    }
+
+	    document.addEventListener('mousemove',updateFlashlight);
+	    document.addEventListener('touchmove',updateFlashlight);
+	  </script>
+
+
+	</head>
+	<body>
+
+		<video playsinline autoplay muted loop class="b-hero__bg-video" aria-label="Background Video" style="height:56vw">
+			<source src="https://chunweb.files.wordpress.com/2022/03/amosequence01.mp4" type="video/mp4">
+		</video>
+<!--
+<div class="collection" style="padding-top:0">
+		<a data-animation="cursor" rel="noopener" data-w-id="73b1b8a3-7054-c5b2-891a-6669786943a8" href="https://camlab.fas.harvard.edu/Dunhuang-Dance" style="margin-top: 0vw;" class="cta-wrap w-inline-block" target="_blank">
+        <div class="cta-bg"></div>
+        <div class="cta-img menu-close"><img src="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60c339990e8c2e33a380b5c6_arrow.svg" loading="lazy" alt="" class="img ico"></div>
+        <div class="cta-back" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+          <div class="cta-inner"></div>
+        </div>
+      </a>
+		</div> -->
+
+	</body>
+</html>

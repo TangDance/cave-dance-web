@@ -6496,11 +6496,13 @@ h5 {
   flex-direction: column
 }
 
+.hero-col.right {
+  color: white;
+}
+
 .hero-col.center {
   width: 34vw;
   height: 1px;
-  margin-right: 2vw;
-  margin-left: 2vw;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;

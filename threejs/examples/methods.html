@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Tang Dance x A.I. </title>
+	<title>Dunhuang Cave Dance </title>
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<link href="master.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript">
@@ -17,7 +17,13 @@
 	<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/61014076aa014a767ce9208c_favicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/610140795b9a3f0382a58e51_web-clip.png" rel="apple-touch-icon" />
 	<link href="composition_transform_scroll_style.css" rel="stylesheet" type="text/css" />
-	<!-- <link rel="preload" href="./scene.spline" as="fetch"> -->
+	<link href="header.css" rel="stylesheet" type="text/css" />
+
+	<style>
+
+
+	</style>
+	<!-- <link href="data.css" rel="stylesheet" type="text/css" /> -->
 
 	<script type="importmap">
 		{
@@ -26,312 +32,6 @@
       }
     }
   </script>
-
-	<!-- <script type="module">
-
-		import * as THREE from 'three';
-    import { OrbitControls } from './jsm/controls/OrbitControls.js';
-    import { BVHLoader } from './jsm/loaders/BVHLoader.js';
-    import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
-    import * as SkeletonUtils from './jsm/utils/SkeletonUtils.js';
-		import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
-		import { RenderPass } from './jsm/postprocessing/RenderPass.js';
-		import { ShaderPass } from './jsm/postprocessing/ShaderPass.js';
-		import { LuminosityShader } from './jsm/shaders/LuminosityShader.js';
-		import { SobelOperatorShader } from './jsm/shaders/SobelOperatorShader.js';
-
-    let mixer, composer, effectSobel;
-
-    // Setup
-
-		const HERO_HEIGHT = 300;
-
-    const scene = new THREE.Scene();
-
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-    const renderer = new THREE.WebGLRenderer({
-      canvas: document.querySelector('#hero'),
-			antialias: true
-    });
-
-    const clock = new THREE.Clock();
-
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, HERO_HEIGHT);
-
-    camera.position.setZ(15);
-    camera.position.setY(0);
-    camera.position.setX(10);
-
-    renderer.render(scene, camera);
-
-    // Lights
-
-    const pointLight = new THREE.PointLight(0xffffff);
-    pointLight.position.set(5, 5, 5);
-    const ambientLight = new THREE.AmbientLight(0xffffff);
-
-
-		// const light = new THREE.SpotLight( 0xffffff );
-		// light.castShadow = true;            // default false
-		// scene.add( light );
-    // scene.add(pointLight, ambientLight);
-		//
-
-
-    // Helpers
-
-    const lightHelper = new THREE.PointLightHelper(pointLight);
-    const size = 200;
-    const divisions = 50;
-    const gridHelper = new THREE.GridHelper( size, divisions );
-    const axesHelper = new THREE.AxesHelper( 100 );
-
-    //scene.add(lightHelper, gridHelper);
-    //scene.add(axesHelper);
-    const controls = new OrbitControls(camera, renderer.domElement);
-
-
-		// Line experiment
-		//create a blue LineBasicMaterial
-		// const material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
-		// const points = [];
-		// // points.push( new THREE.Vector3( - 10, 0, 0 ) );
-		// // points.push( new THREE.Vector3( 0, 10, 0 ) );
-		// // points.push( new THREE.Vector3( 10, 0, 0 ) );
-		// points.push( new THREE.Vector3( -10, 0, 0 ) );
-		// points.push( new THREE.Vector3( -10, 0, 10 ) );
-		// const geometry = new THREE.BufferGeometry().setFromPoints( points );
-		// const line = new THREE.Line( geometry, material );
-		// scene.add( line );
-
-		// postprocessing
-		// composer = new EffectComposer( renderer );
-		// const renderPass = new RenderPass( scene, camera );
-		// composer.addPass( renderPass );
-		//
-		// // color to grayscale conversion
-		// const effectGrayScale = new ShaderPass( LuminosityShader );
-		// composer.addPass( effectGrayScale );
-		//
-		// // you might want to use a gaussian blur filter before
-		// // the next pass to improve the result of the Sobel operator
-		// // Sobel operator
-		// effectSobel = new ShaderPass( SobelOperatorShader );
-		// effectSobel.uniforms[ 'resolution' ].value.x = window.innerWidth * window.devicePixelRatio * 2;
-		// effectSobel.uniforms[ 'resolution' ].value.y = window.innerHeight * window.devicePixelRatio * 2;
-		// composer.addPass( effectSobel );
-		//
-
-    // Background
-
-    // const spaceTexture = new THREE.TextureLoader().load('textures/dunhuang/dunhuang-1.jpg');
-    // scene.background = spaceTexture;
-
-    // Torus
-
-    // const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-    // const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
-    // const torus = new THREE.Mesh(geometry, material);
-    //scene.add(torus);
-
-
-
-    // Image Mural
-
-    // const muralTexture = new THREE.TextureLoader().load('textures/dunhuang/mural_500.png');
-    // const mural = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: muralTexture }));
-		//
-    // const scaleMural = 2;
-    // mural.scale.set(scaleMural, scaleMural, scaleMural);
-		//
-    // scene.add(mural);
-		//
-    // mural.position.z = 0;
-    // mural.position.x = 2;
-		//
-    // // Image Drawing
-		//
-    // const drawingTexture = new THREE.TextureLoader().load('textures/dunhuang/drawing_210_invert.jpg');
-    // const drawing = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.1), new THREE.MeshBasicMaterial({ map: drawingTexture }));
-		//
-    // const scaleDrawing = 3;
-    // drawing.scale.set(scaleDrawing, scaleDrawing, scaleDrawing);
-		//
-    // scene.add(drawing);
-		//
-    // drawing.position.z = 5;
-    // drawing.position.x = 2;
-
-		const geometry = new THREE.BoxGeometry(3, 3, 0.1);
-
-		const loader = new THREE.TextureLoader();
-    const cubeMaterials = [
-        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/black.jpg') }), //right side
-        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/black.jpg')}), //left side
-        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/black.jpg')}), //top side
-        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/black.jpg')}), //bottom side
-        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/drawing_210_invert.jpg')}), //front side
-        new THREE.MeshBasicMaterial({ map: loader.load('textures/dunhuang/mural_500.png')}), //back side
-    ];
-		const cube = new THREE.Mesh(geometry, cubeMaterials);
-		const scaleDrawing = 3;
-  	cube.scale.set(scaleDrawing, scaleDrawing, scaleDrawing);
-
-    scene.add(cube);
-		cube.position.z = 5;
-    cube.position.x = 2;
-
-
-    // 3D Object - BVH Mo-Cap Skeleton
-    const bvh = new BVHLoader();
-    bvh.load( "models/bvh/0-6000.bvh", function ( result ) {
-
-      const skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
-      skeletonHelper.skeleton = result.skeleton; // allow animation mixer to bind to THREE.SkeletonHelper directly
-
-      const boneContainer = new THREE.Group();
-      boneContainer.add( result.skeleton.bones[ 0 ] );
-
-      scene.add( skeletonHelper );
-      scene.add( boneContainer );
-
-      const scale = 0.08;
-      boneContainer.scale.set(scale, scale, scale);
-      skeletonHelper.scale.set(scale, scale, scale);
-			skeletonHelper.material = new THREE.MeshBasicMaterial({
-				 color:"white",
-				 transparent:"true",
-				 opacity:"0.9",
-				 wireframe: "true",
-				 wireframeLinewidth: "10.0"
-			});
-
-			let x = -2;
-			let y = -10;
-			let z = 5;
-      boneContainer.translateX(x);
-      boneContainer.translateY(y);
-      boneContainer.translateZ(z);
-      skeletonHelper.translateX(x);
-      skeletonHelper.translateY(y);
-      skeletonHelper.translateZ(z);
-
-      // play animation
-      mixer = new THREE.AnimationMixer( skeletonHelper );
-      mixer.clipAction( result.clip ).setEffectiveWeight( 1.0 ).play();
-
-    } );
-
-
-    // // 3D Object - Jam's model
-		//
-    // const loader = new GLTFLoader().setPath( 'models/glTF/Dunhuang/' );
-    // loader.load( 'wire.glb', function ( gltf ) {
-		//
-    //   const wire = SkeletonUtils.clone( gltf.scene );
-		//
-    //   const scale = 25;
-    //   const angle = 90;
-    //   wire.scale.set(scale, scale, scale);
-    //   wire.rotateY(angle);
-		//
-    //   scene.add( wire);
-    //   wire.position.x = 0;
-    //   wire.position.y = -1;
-    //   wire.position.z = 20;
-		//
-    //   animate();
-		//
-    // } );
-
-
-    // // Moon
-    //
-    // const moonTexture = new THREE.TextureLoader().load('textures/dunhuang/moon.jpg');
-    // const normalTexture = new THREE.TextureLoader().load('textures/dunhuang/normal.jpg');
-    //
-    // const moon = new THREE.Mesh(
-    //   new THREE.SphereGeometry(3, 32, 32),
-    //   new THREE.MeshStandardMaterial({
-    //     map: moonTexture,
-    //     normalMap: normalTexture,
-    //   })
-    // );
-    //
-    // scene.add(moon);
-    //
-    // moon.position.z = 20;
-    // moon.position.setX(-10);
-
-
-    // Scroll Animation
-
-    function moveCamera() {
-    	const t = document.body.getBoundingClientRect().top;
-
-    	//mural.rotation.y += 0.01;
-    	//mural.rotation.z += 0.01;
-
-    	// moon.rotation.x += 0.05;
-    	// moon.rotation.y += 0.075;
-    	// moon.rotation.z += 0.05;
-
-    	camera.position.z = t * -0.01;
-    	camera.position.x = t * -0.0002;
-    	camera.rotation.y = t * -0.0002;
-    }
-
-    // document.body.onscroll = moveCamera;
-    // moveCamera();
-
-
-    // Animation Loop
-
-    function animate() {
-      requestAnimationFrame(animate);
-
-      // torus.rotation.x += 0.01;
-      // torus.rotation.y += 0.005;
-      // torus.rotation.z += 0.01;
-
-      //moon.rotation.x += 0.005;
-
-			const time = - performance.now() * 0.0003;
-
-			camera.position.x = 10 * Math.cos( time );
-			camera.position.z = 10 * Math.sin( time );
-			camera.lookAt( scene.position );
-
-      // animate the skeleton
-      const delta = clock.getDelta();
-      if ( mixer ) mixer.update( delta );
-
-			// rotate the scene
-			// camera.position.x = 20 * Math.cos( time );
-			// camera.position.z = 20 * Math.sin( time );
-			// camera.lookAt( scene.position );
-
-  		controls.update(); // for the helpers
-
-      renderer.render(scene, camera);
-			if (composer) {
-					composer.render();
-			}
-    }
-
-    animate();
-
-
-    document.querySelector("#toggle").addEventListener( 'click'	, () => {
-      document.querySelectorAll(".text").forEach(e => {
-          e.style.opacity = (e.style.opacity === "1" || e.style.opacity === 1) ? "0" : "1";
-      });
-
-    }, false );
-
-  </script> -->
 
 	<script type="module">
 
@@ -366,6 +66,7 @@
     const scene = new THREE.Scene();
 		scene.background = new THREE.Color( 0x000000 );
 		scene.fog = new THREE.Fog( 0x000000, 500, 4000 );
+
 		//
 		// const imageCanvas = document.createElement( "canvas" );
 		// const context = imageCanvas.getContext( "2d" );
@@ -426,8 +127,8 @@
 		// composer.addPass( effectSobel );
 		//
 
-    // Background
-    // const spaceTexture = new THREE.TextureLoader().load('textures/dunhuang/dunhuang-1.jpg');
+    // // Background
+    // const spaceTexture = new THREE.TextureLoader().load('textures/dunhuang/datagrid1.jpg');
     // scene.background = spaceTexture;
 
 
@@ -690,7 +391,6 @@
 
 		}
 
-
     document.querySelector("#toggle").addEventListener( 'click'	, () => {
       document.querySelectorAll(".text").forEach(e => {
           e.style.opacity = (e.style.opacity === "1" || e.style.opacity === 1) ? "0" : "1";
@@ -700,21 +400,21 @@
 		$("#1").click( () => {
 			animated_drawing_clicked = true;
 			$('html,body').animate({
-		   scrollTop: $("#section_1").offset().top
+		   scrollTop: $("#section_1").offset().top - 80
 		});
 		});
 
 		$("#2").click( () => {
 			animated_mocap_clicked = true;
 			$('html,body').animate({
-		   scrollTop: $("#section_2").offset().top
+		   scrollTop: $("#section_2").offset().top - 80
 		});
 		});
 
 		$("#3").click( () => {
 			animated_wire_clicked = true;
 			$('html,body').animate({
-		   scrollTop: $("#section_3").offset().top
+		   scrollTop: $("#section_3").offset().top - 80
 		});
 		});
 
@@ -735,11 +435,21 @@
 
 <body class="body threeDscroll">
 
-	<!-- <canvas id="hero" ></canvas> -->
+	<div class="css-1juldvp eh4913t0" style="  font-weight: 100;">
+		<div class="css-qsma6a eh4913t1">
+
+		</div>
+		<div class="css-jkr0hl exqoan60"><a href="home.html">Cave Dance in Dunhuang</a></div>
+		<div class="css-jkr0hl exqoan60" style="font-weight: 700;">Method</div>
+		<div class="css-jkr0hl exqoan60"><a href="data.html">Data</a></div>
+		<div class="css-1dknnje exqoan61"><span style="transition:opacity 100ms ease-in-out;grid-column:1/1;grid-row:1/1;opacity:1;display:block"></span></div>
+		<div class="css-12ub4gk exqoan62"><span style="transition:opacity 100ms ease-in-out;grid-column:1/1;grid-row:1/1;opacity:1;display:block"></span></div>
+
+	</div>
 
 
-	<div class="n-block right" style="z-index:9999; opacity:1; position: absolute;  right:0 ; top: 2rem;">
-		<a href="https://camlab.fas.harvard.edu/" aria-label="button" class=" w-inline-block">
+	<div class="n-block right" style="z-index:9999; opacity:1; position: fixed;  right:0 ; ">
+		<a href="https://camlab.fas.harvard.edu/" target="_blank" aria-label="button" class=" w-inline-block">
 			<div class="h-h4 bold nav w-inline-block">
 				<img style="opacity:0.8" src="https://freight.cargo.site/w/217/q/94/i/fb2b46cd634f8600d388c1fddfc23c48e2c1e3593988f576bbec4237426c8fcb/CAMLab.png" class="n-brand">
 			</div>
@@ -762,9 +472,8 @@
 	<main id="mainText" style="top: 0;">
 
 		<header class="text" id="section_0">
-			<!-- <h2 class="h-h2 gradient large">Tang </h2>-->
-			<h2>Dance x A.I. </h2>
-			<p>Research Methods</p>
+			<h2>Cave Dance in Dunhuang</h2>
+			<p>Research Process</p>
 		</header>
 
 		<section class="text" id="section_1" style="margin-top: 5rem">
@@ -804,7 +513,7 @@
 		</section>
 
 		<section class="text" id="section_3" style="margin-top: 3rem">
-			<h3>Title</h3>
+			<h3>Generative Art</h3>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
 				irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
