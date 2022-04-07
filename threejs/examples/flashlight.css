@@ -1,0 +1,23 @@
+.explore {
+  position: fixed;
+    bottom: 10vw;
+    right: 2vw;
+    z-index: 9;
+    margin: auto;
+    text-align: right;
+    width: 100%;
+    text-decoration: underline;
+    font-size: 1.2rem;
+    font-family: 'Theinhardt Pan', sans-serif !important;
+}
+.explore a {
+    color: white;
+    opacity: 0.2;
+}
+.explore img {
+  width: 100px;
+}
+.explore a:hover {
+    opacity: 1;
+  text-decoration: underline;
+}

@@ -489,43 +489,46 @@
     			import { TrackballControls } from './jsm/controls/TrackballControls.js';
     			import { CSS3DRenderer, CSS3DObject } from './jsm/renderers/CSS3DRenderer.js';
 
+
+					// data table
+
     			const table = [
-    				'textures/dunhuang/drawing_210_invert.jpg', 'Hydrogen', '', 1, 1,
-    				'He', 'Helium', '', 2, 1,
-    				'Li', 'Lithium', '', 3,1,
-    				'Be', 'Beryllium', '', 4,1,
-    				'B', 'Boron', '', 5,1,
-    				'C', 'Carbon', '', 6,1,
-            'C', 'Carbon', '', 7,1,
-            'textures/dunhuang/drawing_210_invert.jpg', 'Carbon', '', 8,1,
-            'C', 'Carbon', '', 9,1,
-    				'N', 'Nitrogen', '', 1,2,
-    				'O', 'Oxygen', '', 2,2,
-    				'F', 'Fluorine', '', 3,2,
-    				'Ne', 'Neon', '',  4,2,
-    				'textures/dunhuang/drawing_210_invert.jpg', 'Sodium', '',  5,2,
-    				'Mg', 'Magnesium', '', 6,2,
-            'C', 'Carbon', '', 7,2,
-            'C', 'Carbon', '', 8,2,
-            'C', 'Carbon', '', 9,2,
-    				'textures/dunhuang/drawing_210_invert.jpg', 'Aluminium', '', 1,3,
-    				'Si', 'Silicon', '', 2,3,
-    				'P', 'Phosphorus', '', 3,3,
-    				'S', 'Sulfur', '', 4,3,
-    				'Cl', 'Chlorine', '', 5,3,
-    				'textures/dunhuang/drawing_210_invert.jpg', 'Argon', '', 6,3,
-            'C', 'Carbon', '', 7,3,
-            'C', 'Carbon', '', 8,3,
-            'textures/dunhuang/drawing_210_invert.jpg', 'Carbon', '', 9,3,
-            'H', 'Hydrogen', '', 1, 4,
-    				'He', 'Helium', '', 2, 4,
-    				'Li', 'Lithium', '', 3,4,
-    				'Be', 'Beryllium', '', 4,4,
-    				'B', 'Boron', '', 5,4,
-    				'textures/dunhuang/drawing_210_invert.jpg', 'Carbon', '', 6,4,
-            'C', 'Carbon', '', 7,4,
-            'C', 'Carbon', '', 8,4,
-            'C', 'Carbon', '', 9,4,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 1, 1,
+    				'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 2, 1,
+    				'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 3,1,
+    				'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 4,1,
+    				'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 5,1,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 6,1,
+            'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 7,1,
+            'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 8,1,
+          'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 9,1,
+    				'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 1,2,
+    			'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 2,2,
+    			'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 3,2,
+    		'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶',  4,2,
+    				'textures/dunhuang/drawing3.jpg', '莫高窟272窟北壁', '反弹琵琶',  5,2,
+    			'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 6,2,
+          'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 7,2,
+          'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 8,2,
+          'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 9,2,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 1,3,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 2,3,
+    			'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 3,3,
+    			'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 4,3,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 5,3,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 6,3,
+            'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 7,3,
+          'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 8,3,
+            'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 9,3,
+            'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 1, 4,
+    		'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 2, 4,
+    			'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 3,4,
+    	'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 4,4,
+    				'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 5,4,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 6,4,
+  'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 7,4,
+      'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 8,4,
+        'textures/dunhuang/drawing3.jpg','莫高窟159窟东壁北侧', '金光明经变', 9,4,
     			];
 
     			let camera, scene, renderer;
@@ -553,7 +556,6 @@
             const spaceTexture = new THREE.TextureLoader().load('textures/dunhuang/datagrid1.jpg');
             scene.background = spaceTexture;
 
-    				// data table
 
     				for ( let i = 0; i < table.length; i += 5 ) {
     					const element = document.createElement( 'div' );
@@ -577,7 +579,7 @@
 
               const img = document.createElement( 'img' );
               img.className = 'symbol';
-              img.src = 'textures/dunhuang/drawing_210_invert.jpg'; //table[ i ];
+              img.src = table[ i ]; //'textures/dunhuang/drawing_210_invert.jpg';
               element.appendChild( img );
 
     					const details = document.createElement( 'div' );
@@ -661,19 +663,13 @@
 
     					const object = new THREE.Object3D();
 
-    					object.position.x = ( ( i % 5 ) * 400 ) - 800;
-    					object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
-    					object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 2000;
+    					object.position.x = ( ( i % 5 ) * 400 ) - 300;
+    					object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 200 ) + 200;
+    					object.position.z = ( Math.floor( i / 25 ) ) * 500 + 100;
 
     					targets.grid.push( object );
 
     				}
-
-    				//
-
-
-
-    				//
 
     				controls = new TrackballControls( camera, renderer.domElement );
     				controls.minDistance = 500;
@@ -818,10 +814,10 @@
 
             <div id="container"></div>
         		<div id="menu">
-        			<button id="table">TABLE</button>
-        			<button id="sphere">SPHERE</button>
-        			<button id="helix">HELIX</button>
-        			<button id="grid">GRID</button>
+        			<button class="menu" id="table">TABLE</button>
+        			<button class="menu" id="sphere">SPHERE</button>
+        			<button class="menu" id="helix">HELIX</button>
+        			<button class="menu" id="grid">GRID</button>
         		</div>
 					</div>
 				</div>

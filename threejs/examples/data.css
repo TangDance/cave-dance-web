@@ -49,12 +49,11 @@ body {
   background-color: black;
   color: white;
   font-family: 'Roboto', sans-serif;
-  /* font-family: "IBM Plex Sans", sans-serif; */
 }
 
 .css-1juldvp {
   width: 100%;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #9a9a9a;
   background-color: black;
   position: fixed;
   top: 0;
@@ -66,7 +65,6 @@ body {
   display: flex;
   text-transform: uppercase;
   font-family: 'Theinhardt Pan', sans-serif !important;
-  /* font-family: FoundryGridnik, sans-serif; */
   font-weight: 500;
   -webkit-letter-spacing: 0.1em;
   -moz-letter-spacing: 0.1em;
@@ -7553,8 +7551,8 @@ a {
 }
 
 .element .details {
-  /* position: absolute; */
-  bottom: 15px;
+  position: absolute;
+      bottom: 2px;
   left: 0px;
   right: 0px;
   font-size: 8px;
@@ -7562,7 +7560,6 @@ a {
 }
 
 button {
-  display: none;
   color: rgba(127, 255, 255, 0.75);
   background: transparent;
   outline: 1px solid rgba(127, 255, 255, 0.75);
@@ -15222,16 +15219,15 @@ a {
 }
 
 .element .details {
-  /* position: absolute; */
-  bottom: 15px;
+  position: absolute;
+    bottom: 2px;
   left: 0px;
   right: 0px;
-  font-size: 8px;
+  font-size: 6px;
   color: rgb(126 133 133 / 75%);
 }
 
 button {
-  display: none;
   color: rgba(127, 255, 255, 0.75);
   background: transparent;
   outline: 1px solid rgba(127, 255, 255, 0.75);
@@ -15262,7 +15258,6 @@ button:active {
   max-width: 20vw;
   background: #16070759;
   backdrop-filter: blur(2PX);
-  border-radius: 1rem;
   border: 1px solid RGBA(255, 255, 255, 0.18);
   box-shadow: 0px 2PX 20PX 0px RGBA(0, 0, 0, 0.3);
   padding: 1rem;
@@ -15319,7 +15314,6 @@ button:active {
   max-width: 20vw;
   background: #16070759;
   backdrop-filter: blur(2PX);
-  border-radius: 1rem;
   border: 1px solid RGBA(255, 255, 255, 0.18);
   box-shadow: 0px 2PX 20PX 0px RGBA(0, 0, 0, 0.3);
   padding: 1rem;
