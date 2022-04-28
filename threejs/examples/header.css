@@ -16,7 +16,8 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  /* z-index: 10; */
+  /* TODO uncomment this to show the header */
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -28,7 +29,6 @@ a {
   -moz-letter-spacing: 0.1em;
   -ms-letter-spacing: 0.1em;
   letter-spacing: 0.1em;
-  font-size: 17px;
   -webkit-align-items: stretch;
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;

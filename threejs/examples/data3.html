@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charSet="utf-8" />
+  	<title>Dunhuang Cave Dance </title>
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="theme-color" content="#000000" />
+  <link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/61014076aa014a767ce9208c_favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <link href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/610140795b9a3f0382a58e51_web-clip.png" rel="apple-touch-icon" />
+  <link href="data.css" rel="stylesheet" type="text/css" />
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=603fe89ec4bbcece7ee6a53a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "../build/three.module.js"
+      }
+    }
+  </script>
+
+
+  <script type="module">
+
+    			import * as THREE from 'three';
+    			import { TWEEN } from './jsm/libs/tween.module.min.js';
+    			import { TrackballControls } from './jsm/controls/TrackballControls.js';
+    			import { CSS3DRenderer, CSS3DObject } from './jsm/renderers/CSS3DRenderer.js';
+
+					import { InteractionManager } from '../node_modules/three.interactive/build/three.interactive.js';
+
+					// data table
+
+					// approach 1 of reading data
+    			const table = [
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 1, 1,
+    				'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 2, 1,
+    				'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 3,1,
+    				'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 4,1,
+    				'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 5,1,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 6,1,
+            'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 7,1,
+            'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 8,1,
+          'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 9,1,
+    				'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 1,2,
+    			'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 2,2,
+    			'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 3,2,
+    		'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶',  4,2,
+    				'textures/dunhuang/drawing3.jpg', '莫高窟272窟北壁', '反弹琵琶',  5,2,
+    			'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 6,2,
+          'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 7,2,
+          'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 8,2,
+          'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 9,2,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 1,3,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 2,3,
+    			'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 3,3,
+    			'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 4,3,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 5,3,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 6,3,
+            'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 7,3,
+          'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 8,3,
+            'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 9,3,
+            'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 1, 4,
+    		'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 2, 4,
+    			'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 3,4,
+    	'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 4,4,
+    				'textures/dunhuang/drawing3.jpg', '莫高窟159窟东壁北侧', '金光明经变', 5,4,
+    				'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 6,4,
+  'textures/dunhuang/drawing_210_invert.jpg', '莫高窟272窟北壁', '反弹琵琶', 7,4,
+      'textures/dunhuang/drawing2.jpg', '莫高窟272窟北壁', '反弹琵琶', 8,4,
+        'textures/dunhuang/drawing3.jpg','莫高窟159窟东壁北侧', '金光明经变', 9,4,
+    			];
+
+
+					// approach 2 of reading data
+					const drawingBookPageFolder = "textures/dunhuang/210619_杨东苗_金卫东/";
+					const drawingBookPagePrefix = "2014杨东苗金卫东_敦煌舞蹈精品线描_Page_";
+					const drawingBookPageSuffix = ".jpg";
+
+					// approach 3 of reading data
+					const malePoseNameFile = "data/36pose_male_names.txt"; //	https://docs.google.com/spreadsheets/d/1-k9mylvNhAKeAPv1Xx-GWlmoMzm27jy64A28tiY-idY/edit#gid=0
+					const malePoseDrawingsFile = "data/36pose_male_drawings.txt";
+					let malePoseNames = [];
+					let malePoseDrawings = [];
+					fetch(malePoseNameFile)
+					.then((response) => {
+				  		return response.text();
+					})
+					.then((text) => {
+						 	malePoseNames = text.split("\n").filter(l => l.length > 0);
+
+							fetch(malePoseDrawingsFile)
+							.then((response) => {
+						  		return response.text();
+							})
+							.then((text) => {
+								 	malePoseDrawings = text.split("\n").filter(l => l.length > 0);
+
+									init();
+									animate();
+							});
+
+					});
+					let currentMalePoseNameIndex = 0;
+
+					// approach 3 - bvh files
+					const malePoseBVHFolder = "models/bvh/36pose_male/"; //	https://docs.google.com/spreadsheets/d/1-k9mylvNhAKeAPv1Xx-GWlmoMzm27jy64A28tiY-idY/edit#gid=0
+					const malePoseBVHFilePrefix = "36pose_male_";
+					const malePoseBVHFileSuffix = ".bvh";
+
+
+    			let camera, scene, renderer;
+    			let controls;
+					let interactionManager;
+
+    			const objects = [];
+    			const targets = { table: [], sphere: [], helix: [], grid: [] };
+
+    			// init();
+    			// animate();
+
+    			function init() {
+
+    				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 100000 );
+    				camera.position.z = 1200;
+
+            renderer = new CSS3DRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+    				scene = new THREE.Scene();
+
+
+						window.onClickCSSObject = function (n) {
+
+								const domElement = document.getElementById( n );
+								const poseName = domElement.getElementsByClassName("symbol2")[0].innerHTML;
+								const clickedMalePoseNameIndex = malePoseNames.indexOf(poseName);
+								const poseDrawing = malePoseDrawings[clickedMalePoseNameIndex];
+
+								if (poseDrawing) {
+									if (!isNaN(Number(poseDrawing.split("-")[0]))) {
+										const imageSrc = domElement.getElementsByClassName("drawing")[0].src;
+										document.getElementById("clickedPane").getElementsByClassName("drawing")[0].src = imageSrc;
+									} else {
+										document.getElementById("clickedPane").getElementsByClassName("drawing")[0].src = "";
+									}
+								}
+
+								document.getElementById("clickedPane").getElementsByClassName("title")[0].innerHTML = poseName;
+
+								// TODO update the other detailed Data
+
+								$("#clickedPane").show();
+						};
+
+    				for ( let i = 0; i < table.length; i += 5 ) {
+    					const element = document.createElement( 'div' );
+
+    					element.className = 'element';
+              const n = ( i / 5 ) + 1;
+              element.id = '' + n;
+							element.setAttribute('onpointerdown', 'window.onClickCSSObject(' + n + ')'); // click HANDLE
+    					element.style.backgroundColor = 'rgba(0,0,0,' + ( Math.random() * 0.5 + 0.25 ) + ')'; // original: rgba(0, 127, 127
+
+    					const number = document.createElement( 'div' );
+    					number.className = 'number';
+    					number.textContent = n;
+    					element.appendChild( number );
+
+
+							// TEXT
+							const symbol = document.createElement( 'div' );
+							symbol.className = 'symbol2'; // 'symbol'
+							symbol.innerHTML = malePoseNames[currentMalePoseNameIndex];
+							element.appendChild( symbol );
+
+
+							// IMAGE
+							const poseDrawing = malePoseDrawings[currentMalePoseNameIndex];
+							if (poseDrawing) {
+								if (!isNaN(Number(poseDrawing.split("-")[0]))) {
+									const imageSrc = drawingBookPageFolder + drawingBookPagePrefix + poseDrawing + drawingBookPageSuffix;
+									const img = document.createElement( 'img' );
+									img.className = 'drawing';
+									img.src = imageSrc;
+									element.appendChild( img );
+								}
+							}
+
+							currentMalePoseNameIndex += 1;
+
+
+    					const objectCSS = new CSS3DObject( element );
+              let x = Math.random() * 4000 - 2000;
+              let y = Math.random() * 4000 - 2000;
+              let z = Math.random() * 4000 - 2000;
+
+              x = 0; // initial x at animation start
+    					objectCSS.position.x = x;
+    					objectCSS.position.y = y;
+    					objectCSS.position.z = z;
+
+							scene.add( objectCSS );
+    					objects.push( objectCSS );
+
+    					const object = new THREE.Object3D();
+              // actual position
+    					object.position.x = ( table[ i + 3 ] * 140 ) - 660;
+    					object.position.y = - ( table[ i + 4 ] * 180 ) + 400;
+
+    					targets.table.push( object );
+    				}
+
+    				// sphere
+
+    				const vector = new THREE.Vector3();
+
+    				for ( let i = 0, l = objects.length; i < l; i ++ ) {
+
+    					const phi = Math.acos( - 1 + ( 2 * i ) / l );
+    					const theta = Math.sqrt( l * Math.PI ) * phi;
+
+    					const object = new THREE.Object3D();
+
+    					object.position.setFromSphericalCoords( 800, phi, theta );
+
+    					vector.copy( object.position ).multiplyScalar( 2 );
+
+    					object.lookAt( vector );
+
+    					targets.sphere.push( object );
+
+    				}
+
+    				// helix
+
+    				for ( let i = 0, l = objects.length; i < l; i ++ ) {
+
+    					const theta = i * 0.175 + Math.PI;
+    					const y = - ( i * 8 ) + 450;
+
+    					const object = new THREE.Object3D();
+
+    					object.position.setFromCylindricalCoords( 900, theta, y );
+
+    					vector.x = object.position.x * 2;
+    					vector.y = object.position.y;
+    					vector.z = object.position.z * 2;
+
+    					object.lookAt( vector );
+
+    					targets.helix.push( object );
+
+    				}
+
+    				// grid
+
+    				for ( let i = 0; i < objects.length; i ++ ) {
+
+    					const object = new THREE.Object3D();
+
+    					object.position.x = ( ( i % 5 ) * 400 ) - 300;
+    					object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 200 ) + 200;
+    					object.position.z = ( Math.floor( i / 25 ) ) * 500 + 100;
+
+    					targets.grid.push( object );
+
+    				}
+
+    				controls = new TrackballControls( camera, renderer.domElement );
+    				controls.minDistance = 500;
+    				controls.maxDistance = 6000;
+    				controls.addEventListener( 'change', render );
+
+    				const buttonTable = document.getElementById( 'table' );
+    				buttonTable.addEventListener( 'click', function () {
+
+    					transform( targets.table, 2000 );
+
+    				} );
+
+    				const buttonSphere = document.getElementById( 'sphere' );
+    				buttonSphere.addEventListener( 'click', function () {
+
+    					transform( targets.sphere, 2000 );
+
+    				} );
+
+    				const buttonHelix = document.getElementById( 'helix' );
+    				buttonHelix.addEventListener( 'click', function () {
+
+    					transform( targets.helix, 2000 );
+
+    				} );
+
+    				const buttonGrid = document.getElementById( 'grid' );
+    				buttonGrid.addEventListener( 'click', function () {
+
+    					transform( targets.grid, 2000 );
+
+    				} );
+
+
+
+
+    				transform( targets.table, 2000 );
+
+
+    				window.addEventListener( 'resize', onWindowResize );
+
+
+
+    			}
+
+    			function transform( targets, duration ) {
+
+    				TWEEN.removeAll();
+
+    				for ( let i = 0; i < objects.length; i ++ ) {
+
+    					const object = objects[ i ];
+    					const target = targets[ i ];
+
+    					new TWEEN.Tween( object.position )
+    						.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+    						.easing( TWEEN.Easing.Exponential.InOut )
+    						.start();
+
+    					new TWEEN.Tween( object.rotation )
+    						.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+    						.easing( TWEEN.Easing.Exponential.InOut )
+    						.start();
+
+    				}
+
+    				new TWEEN.Tween( this )
+    					.to( {}, duration * 2 )
+    					.onUpdate( render )
+    					.start();
+
+    			}
+
+    			function onWindowResize() {
+
+    				camera.aspect = window.innerWidth / window.innerHeight;
+    				camera.updateProjectionMatrix();
+
+    				renderer.setSize( window.innerWidth, window.innerHeight );
+
+    				render();
+
+    			}
+
+    			function animate() {
+
+    				requestAnimationFrame( animate );
+
+    				TWEEN.update();
+
+    				controls.update();
+    			}
+
+    			function render() {
+    				renderer.render( scene, camera );
+    			}
+
+  </script>
+
+</head>
+
+<body>
+	<div id="___gatsby">
+		<div style="outline:none" tabindex="-1" role="group" id="gatsby-focus-wrapper">
+			<div>
+				<div>
+
+          <div class="n-block right" style="z-index:9999; opacity:1; position: absolute;  right:0 ; ">
+            <a href="https://camlab.fas.harvard.edu/" target="_blank" aria-label="button" class=" w-inline-block">
+              <div class="h-h4 bold nav w-inline-block">
+                <img style="opacity:0.8; width: 9rem;" src="https://freight.cargo.site/w/217/q/94/i/fb2b46cd634f8600d388c1fddfc23c48e2c1e3593988f576bbec4237426c8fcb/CAMLab.png" class="n-brand">
+              </div>
+            </a>
+          </div>
+
+					<div class="entered" style="transition:opacity 300ms ease-in-out;opacity:1">
+						<div class="css-1juldvp eh4913t0"  style="font-weight: 100;">
+							<div class="css-qsma6a eh4913t1">
+
+              </div>
+              <div class="css-jkr0hl exqoan60"><a href="home.html">Cave Dance in Dunhuang</a></div>
+              <div class="css-jkr0hl exqoan60" style="font-weight: 700;">Data</div>
+              <div class="css-jkr0hl exqoan60"><a href="methods.html">Tech Process</a></div>
+							<div class="css-1dknnje exqoan61"><span style="transition:opacity 100ms ease-in-out;grid-column:1/1;grid-row:1/1;opacity:1;display:block"></span></div>
+
+						</div>
+
+            <div class="content stat-overlay">
+        			<div class="body">
+                <h2 class="title">Celestial dance in dunhuang cave</h2>
+                	<div class="description">key poses in Celestial dance | 36 samples </div>
+        			</div>
+
+							<div id="clickedPane" style="display:none">
+								<div class="title"></div>
+								<img class="drawing" src=""/>
+
+								<div class="table">
+									<div class="col">
+										<!-- <div class="statline"><span>名字:</span><span class="value monospace semi">观无量寿经变</span></div> -->
+										<div class="statline"><span>年代:</span><span class="value monospace semi">盛唐</span></div>
+										<div class="statline"><span>石窟信息:</span><span class="value monospace semi"> 莫高窟126窟南壁 </span></div>
+										<div class="statline"><span>舞姿描述:</span><span class="value monospace semi"> 舞者点脚出跨，手舞足蹈，长巾似瀑，裙裾飞逸，舞姿劲建。</span></div>
+										<div class="statline"><span>舞蹈时期:</span><span class="value monospace semi">敦煌中期舞蹈</span></div>
+									</div>
+
+									<div class="col">
+										<!-- <div class="monospace"></div> -->
+										<div class="statline"><span>Motion Capture Parameters:</span></div>
+										<!-- <div class="statline"><span>File name:</span><span class="value monospace semi"> 36pose_male.bvh</span></div> -->
+										<div class="statline"><span>File size:</span><span class="value monospace semi"> 1.2 MB</span></div>
+										<div class="statline"><span>File duration:</span><span class="value monospace semi">  43 s</span></div>
+										<div class="statline"><span>Frame Count:</span><span class="value monospace semi"> 124</span></div>
+										<div class="statline"><span>Collaborator:</span><span class="value monospace semi">Beijing Dance Academy</span></div>
+									</div>
+							</div>
+            </div>
+					</div>
+
+            <div id="container"></div>
+        		<div id="menu">
+        			<button class="menu" id="table">TABLE</button>
+        			<button class="menu" id="sphere">SPHERE</button>
+        			<button class="menu" id="helix">HELIX</button>
+        			<button class="menu" id="grid">GRID</button>
+        		</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
