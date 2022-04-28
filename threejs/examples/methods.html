@@ -412,16 +412,45 @@
 			animated_wire_clicked = true;
 			$('html,body').animate({
 		   scrollTop: $("#section_3").offset().top - 80
+			});
 		});
+
+
+		$(window).scroll(function() {
+			const targetPos = $("#section_1").offset().top;
+			//console.log($(window).scrollTop(), $(window).height(), targetPos);
+			if ($(window).scrollTop() + $(window).height() >= targetPos) {
+					 //console.log("user has reached the section_1");
+					 animated_drawing_clicked = true;
+			 }
+		});
+
+
+		$(window).scroll(function() {
+			const targetPos = $("#section_2").offset().top;
+			//console.log($(window).scrollTop(), $(window).height(), targetPos);
+			if ($(window).scrollTop() + $(window).height() >= targetPos) {
+					 //console.log("user has reached the section_2");
+					 animated_mocap_clicked = true;
+			 }
+		});
+
+
+		$(window).scroll(function() {
+			const targetPos = $("#section_3").offset().top;
+			//console.log($(window).scrollTop(), $(window).height(), targetPos);
+			if ($(window).scrollTop() + $(window).height() >= targetPos) {
+					 //console.log("user has reached the section_3");
+					 animated_wire_clicked = true;
+			 }
 		});
 
 		$(window).scroll(function() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-					 console.log("user has reached the bottom");
+					 //console.log("user has reached the bottom");
 					 if (!animated_drawing_clicked) animated_drawing_clicked = true;
 					 if (!animated_mocap_clicked) animated_mocap_clicked = true;
 					 if (!animated_wire_clicked) animated_wire_clicked = true;
-
 			     camera.position.x = -20;
 			     camera.position.y = 10;
 					 camera.position.z = 30;
@@ -440,7 +469,6 @@
 		<div class="css-jkr0hl exqoan60"><a href="methods_ml2.html">Machine Learning</a></div>
 		<div class="css-1dknnje exqoan61"><span style="transition:opacity 100ms ease-in-out;grid-column:1/1;grid-row:1/1;opacity:1;display:block"></span></div>
 		<div class="css-12ub4gk exqoan62"><span style="transition:opacity 100ms ease-in-out;grid-column:1/1;grid-row:1/1;opacity:1;display:block"></span></div>
-
 	</div>
 
 
