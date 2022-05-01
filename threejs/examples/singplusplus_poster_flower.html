@@ -184,20 +184,20 @@
 					scene.add( mask);
 				} );
 
-				// const loader3 = new GLTFLoader().setPath( 'models/gltf/daffodil/' );
-				// loader3.load( 'scene.gltf', function ( gltf ) {
-				// 	const grass = SkeletonUtils.clone( gltf.scene );
-				//
-				// 	let scale = 1.5;
-				// 	grass.position.set( 0, -10, 5 );
-				// 	//	scale = 0.2;
-				// 	grass.rotateY(180);
-				// 	grass.rotateZ(0);
-				// grass.scale.set(scale, scale, scale);
-				// 		//grass.position.set( 0, -55, 20 );
-				//
-				// 				scene.add( grass);
-				// 			} );
+				const loader3 = new GLTFLoader().setPath( 'models/gltf/daffodil/' );
+				loader3.load( 'scene.gltf', function ( gltf ) {
+					const grass = SkeletonUtils.clone( gltf.scene );
+
+					let scale = 1.5;
+					grass.position.set( 0, -10, 5 );
+					//	scale = 0.2;
+					grass.rotateY(180);
+					grass.rotateZ(0);
+				grass.scale.set(scale, scale, scale);
+						//grass.position.set( 0, -55, 20 );
+
+								scene.add( grass);
+							} );
 
 				const controls = new OrbitControls( camera, renderer.domElement );
 				//	controls.target.copy( meshKnot.position );
