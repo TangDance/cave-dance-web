@@ -1,0 +1,452 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 3772,
+      "max": [
+        171.13748168945313,
+        8.012229919433594,
+        70.7606430053711
+      ],
+      "min": [
+        -170.60641479492188,
+        -2.8198401927948,
+        -47.50310516357422
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 45264,
+      "componentType": 5126,
+      "count": 3772,
+      "max": [
+        0.999998152256012,
+        0.9999949336051941,
+        1.0
+      ],
+      "min": [
+        -0.999998152256012,
+        -0.9999880194664001,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 3772,
+      "max": [
+        0.9596355557441711,
+        0.9820653200149536
+      ],
+      "min": [
+        -1.215937852859497,
+        -0.9767696857452393
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 30176,
+      "componentType": 5126,
+      "count": 3772,
+      "max": [
+        0.9596355557441711,
+        0.9820653200149536
+      ],
+      "min": [
+        -1.215937852859497,
+        -0.9767696857452393
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 60352,
+      "componentType": 5126,
+      "count": 3772,
+      "max": [
+        0.9596355557441711,
+        0.9820653200149536
+      ],
+      "min": [
+        -1.215937852859497,
+        -0.9767696857452393
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 16800,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 90528,
+      "componentType": 5126,
+      "count": 2987,
+      "max": [
+        131.94747924804688,
+        68.21372985839844,
+        82.47357940673828
+      ],
+      "min": [
+        -131.94747924804688,
+        -51.48543930053711,
+        -65.76930236816406
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 126372,
+      "componentType": 5126,
+      "count": 2987,
+      "max": [
+        0.995073676109314,
+        0.9987050294876099,
+        0.9998891949653625
+      ],
+      "min": [
+        -0.9950736165046692,
+        -0.9987050294876099,
+        -0.999997615814209
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 90528,
+      "componentType": 5126,
+      "count": 2987,
+      "max": [
+        0.9596355557441711,
+        0.9820653200149536
+      ],
+      "min": [
+        0.03144705295562744,
+        0.054945796728134155
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 114424,
+      "componentType": 5126,
+      "count": 2987,
+      "max": [
+        0.9596355557441711,
+        0.9820653200149536
+      ],
+      "min": [
+        0.03144705295562744,
+        0.054945796728134155
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 138320,
+      "componentType": 5126,
+      "count": 2987,
+      "max": [
+        0.9596355557441711,
+        0.9820653200149536
+      ],
+      "min": [
+        0.03144705295562744,
+        0.054945796728134155
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 67200,
+      "componentType": 5125,
+      "count": 12828,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Easy Game Studio (https://sketchfab.com/Jeremy_Zh)",
+      "license": "SKETCHFAB Standard (https://sketchfab.com/licenses)",
+      "source": "https://sketchfab.com/3d-models/disposable-medical-mask-8d739362e8d04aadb848e934346cb473",
+      "title": "Disposable Medical Mask"
+    },
+    "generator": "Sketchfab-12.67.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 118512,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 162216,
+      "byteOffset": 118512,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 162216,
+      "byteOffset": 280728,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 442944,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/kouzhao_baseColor.png"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "kouzhao",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.8422267433775161
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Plane001_kouzhao_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "TEXCOORD_2": 4
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "������004_kouzhao_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 7,
+            "POSITION": 6,
+            "TEXCOORD_0": 8,
+            "TEXCOORD_1": 9,
+            "TEXCOORD_2": 10
+          },
+          "indices": 11,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "01353447ad1a466489f0b4909adfbfd5.fbx"
+    },
+    {
+      "children": [
+        3,
+        6
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.265533447265625,
+        22.119232177734375,
+        -2.596194267272949,
+        1.0
+      ],
+      "name": "Plane001"
+    },
+    {
+      "children": [
+        5
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -0.265533447265625,
+        -2.5961947441101074,
+        -11.628767967224121,
+        1.0
+      ],
+      "name": "Object_4"
+    },
+    {
+      "mesh": 0,
+      "name": "Plane001_kouzhao_0"
+    },
+    {
+      "children": [
+        7
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        -323.1473693847656,
+        21.97003173828125,
+        8.926015853881836,
+        1.0
+      ],
+      "name": "������004"
+    },
+    {
+      "children": [
+        8
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -8.364145278930664,
+        -8.35213851928711,
+        1.0
+      ],
+      "name": "Object_7"
+    },
+    {
+      "mesh": 1,
+      "name": "������004_kouzhao_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ]
+}
