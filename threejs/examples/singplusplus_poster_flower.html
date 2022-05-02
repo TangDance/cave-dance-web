@@ -114,7 +114,8 @@
 				document.body.appendChild( renderer.domElement );
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-				camera.position.set( 0, 5, - 15 );
+				//camera.position.set( 10, 5, 50 );
+				camera.position.set( -10, 50, 50 );
 
 				scene = new THREE.Scene();
 
@@ -178,7 +179,7 @@
 					const scale = 0.4;
 					const angle = 180;
 					mask.scale.set(scale, scale, scale);
-					//	mask.rotateX(180);
+					//mask.rotateX(5);
 					//	mask.rotateZ(10);
 					mask.position.set( 100, 10, -30 );
 					scene.add( mask);
