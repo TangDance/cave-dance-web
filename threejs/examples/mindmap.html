@@ -29,14 +29,24 @@
 
 		<div class="lil-gui allow-touch-styles">
 			<div class="title" role="button" aria-expanded="true" tabindex="0">Graph Controls</div>
+
+
+      <div class="nav-info-container">
+      <div class="nav-info">Left-click: rotate</div>
+      <div class="nav-info"> Mouse-wheel / middle-click: zoom</div>
+      <div class="nav-info">Right-click: pan</div>
+      </div>
+
+
 			<div class="children">
 				<div class="controller number hasSlider">
-					<div class="widget">
+          <div class="widget">
 					   <a class="btn" id="reset-graph-btn">Reset Graph</a>
              <a class="btn" id="link-visibility-btn">Link Visiblity</a>
 					</div>
 				</div>
 			</div>
+
 		</div>
 
   <div id="info" style="font-style: normal;  top: inherit; bottom: 10vw; right: 1vw; text-align: right;">
@@ -104,6 +114,40 @@
     import { BVHLoader } from '//cdn.skypack.dev/three@0.136/examples/jsm/loaders/BVHLoader.js';
     import { OrbitControls } from '//cdn.skypack.dev/three@0.136/examples/jsm/controls/OrbitControls.js';
 
+
+    const Settings = function() {
+      this.normalLinkDistance = 0;
+      this.largeLinkDistance = 100;
+      this.linkVisiblity = true;
+      this.linkCurvature = 0.3;
+      this.linkRotation = 0;
+
+      this.hoveredNodeColor = 'rgb(173, 214, 213, 0.5)'; // 'rgb(255,0,0,1)'; // red
+      this.linkedNodeColor = 'rgba(255,160,0,0.8)'; // yellow
+      this.nodeColor = 'rgba(255,255,255, 0.4)'; // white
+      this.rootNodeSize = 20;
+      this.largeNodeSize = 10;
+      this.nodeSize = 1;
+      this.childLinkNodeSize = 0.1;
+
+      this.addBackGroundToScene = false;
+      this.addBVHtoScene = false;
+      this.sceneBackgroundImage = 'textures/dunhuang/1_original_dimmed.png';
+    };
+    const settings = new Settings();
+
+    const nodeSize = (nodeId) => {
+      let size;
+      if (LARGE_NODE_SIZE_NODE_IDS.indexOf(nodeId) > -1) {
+        size = settings.largeNodeSize;
+      } else {
+        size = nodeId === 0 ? settings.rootNodeSize : ( nodeId > N ? settings.childLinkNodeSize : settings.nodeSize);
+      }
+
+      //console.log(typeof(nodeId), nodeId, LABELS_MAP[nodeId], size);
+      return size;
+    };
+
     const BACKGROUND_COLOR_FORCE_GRAPH = "#000000";
     const LABELS_MAP = { // node id => display name
       0: "Cave Dance", // root node
@@ -117,7 +161,8 @@
       8: "Reconstructing Celestial Dance",
       9: "Visualizing Celestial Body"
     }
-    const N = 5;
+    const LARGE_NODE_SIZE_NODE_IDS = [1, 5];
+    const N = 5; // # of the top level categories
     const LINKS_MAP = { // source node id => target node ids NOTE: this map must include all links appeared in CHILDREN_LINKS
       0: [1, 2, 3, 4, 5],
       5: [1, 4],
@@ -131,21 +176,7 @@
       2: [6, 7],
     }
 
-    const Settings = function() {
-      this.normalLinkDistance = 0;
-      this.largeLinkDistance = 100;
-      this.linkVisiblity = true;
-      this.linkCurvature = 0.3;
-      this.linkRotation = 0;
-
-      this.addBackGroundToScene = false;
-      this.addBVHtoScene = false;
-      this.sceneBackgroundImage = 'textures/dunhuang/1_original_dimmed.png';
-    };
-    const settings = new Settings();
-
-
-    // Need for BVH model animation
+    // Needed for BVH model animation
     let mixer, skeletonHelper, controls;
     const clock = new THREE.Clock();
 
@@ -159,11 +190,13 @@
       links: []
     };
 
+
+
     Object.keys(LABELS_MAP).forEach(id => {
       const i = Number(id);
       gData.nodes.push({
         id: i,
-        size: i === 0 ? 20 : ( i > N ? 0.1 : 1),
+        size: nodeSize(i),
         collapsed: i > 0 && CHILDREN_LINKS_MAP[i],
         childLinks: [] });
     });
@@ -208,8 +241,8 @@
       b.links.push(link);
     });
 
-
     // console.log(gData);
+
 
     const nodesById = Object.fromEntries(gData.nodes.map(node => [node.id, node]));
 
@@ -226,11 +259,10 @@
           .forEach(traverseTree);
       })(); // IIFE
 
-
+      // show all the top-level categories by default
       gData.links.filter(link => link.source > 0 && link.target > 0 && link.source <= N && link.target <= N).forEach(link => visibleLinks.push(link));
-      //
-      // console.log("visibleLinks", visibleLinks);
 
+      // console.log("visibleLinks", visibleLinks);
       return { nodes: visibleNodes, links: visibleLinks };
     };
 
@@ -267,8 +299,8 @@
         .backgroundColor(BACKGROUND_COLOR_FORCE_GRAPH)
         .nodeVal(node => node.size)
         .nodeOpacity(0.5)
-         .nodeColor(node => highlightNodes.has(node) ? node === hoverNode ? 'rgb(255,0,0,1)' : 'rgba(255,160,0,0.8)' : 'rgba(255,255,255, 1)')
-      //  .nodeColor(node => highlightNodes.has(node) ? node === hoverNode ? 'rgb(173, 214, 213, 1)' : 'rgba(255,255,255, 1)' : 'rgba(255,255,255, 0.3)')
+        .nodeColor(node => highlightNodes.has(node) ? node === hoverNode ? settings.hoveredNodeColor : settings.linkedNodeColor : settings.nodeColor)
+         //  .nodeColor(node => highlightNodes.has(node) ? node === hoverNode ? 'rgb(173, 214, 213, 1)' : 'rgba(255,255,255, 1)' : 'rgba(255,255,255, 0.3)')
         .linkWidth(link => highlightLinks.has(link) ? 2 : 0.05)
         .linkDirectionalArrowLength(2)
         .linkDirectionalArrowRelPos(1)
@@ -276,6 +308,9 @@
         .linkCurveRotation(settings.linkRotation)
         .linkDirectionalParticles(link => highlightLinks.has(link) ? 4 : 1)
         .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 3 : 1)
+        .showNavInfo(false)
+        .height('100%')
+        .width('100%')
         .onNodeClick(node => {
           if (node.childLinks.length) {
             node.collapsed = !node.collapsed; // toggle collapse state
@@ -284,18 +319,16 @@
 
             if (!node.collapsed) { // Automatically focus on the expanded node
 
-
-                // TODO finish this - this needs to be manipulated via DOM selection
+                // TODO - this needs to be manipulated via DOM selection
                 //   const linkForce = node.d3Force('link');
                 //   console.log(node);
                 //   console.log(linkForce);
                 //
-                //     //.distance(link => settings.normalLinkDistance);
                 // linkForce.distance(link => settings.largeLinkDistance);
 
 
                 // Aim at node from outside it
-                const distance = 100;
+                const distance = 150;
                 const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
                 const newPos = node.x || node.y || node.z
                   ? { x: node.x * distRatio + 100, y: node.y * distRatio, z: node.z * distRatio }
@@ -325,10 +358,11 @@
 
           highlightNodes.clear();
           highlightLinks.clear();
+
           if (node) {
             highlightNodes.add(node);
             if (node.neighbors) {
-              node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+              node.neighbors.filter(node => node.id !== rootId).forEach(neighbor => highlightNodes.add(neighbor));
             }
             if (node.links) {
               node.links.forEach(link => highlightLinks.add(link));
@@ -348,10 +382,14 @@
             highlightNodes.add(link.source);
             highlightNodes.add(link.target);
           }
-
           updateHighlight();
-        })
-        .showNavInfo(false);
+        });
+
+    const bloomPass = new UnrealBloomPass();
+    bloomPass.strength = settings.addBackGroundToScene? 0: 3;
+    bloomPass.radius = 0.4;
+    bloomPass.threshold = 0.1;
+    Graph.postProcessingComposer().addPass(bloomPass);
 
 
     function updateHighlight() {
@@ -362,11 +400,6 @@
         .linkDirectionalParticles(Graph.linkDirectionalParticles());
     }
 
-    const bloomPass = new UnrealBloomPass();
-    bloomPass.strength = settings.addBackGroundToScene? 0: 3;
-    bloomPass.radius = 0.4;
-    bloomPass.threshold = 0.1;
-    Graph.postProcessingComposer().addPass(bloomPass);
 
     if (settings.addBVHtoScene) {
         Graph.cameraPosition({x:100, y:100, z: 220 });
@@ -374,7 +407,6 @@
         Graph.cameraPosition({z: 80 });
     }
 
-    // Add external objects to the scene
     const scene = Graph.scene();
 
     if (settings.addBackGroundToScene) {
@@ -430,7 +462,7 @@
       }, 100);
     }
 
-    // TODO sound not working
+    // TODO sound not working yet
       // // create an AudioListener and add it to the camera
       // const listener = new THREE.AudioListener();
       // Graph.camera().add( listener );
@@ -465,6 +497,7 @@
     //   	console.log("here", Graph.camera().position);
     //
     // }, 1000);
+
 
     $("#reset-graph-btn").click(function() {
       Graph.numDimensions(3); // Re-heat simulation

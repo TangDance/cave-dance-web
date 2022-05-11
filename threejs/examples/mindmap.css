@@ -34,8 +34,9 @@ body.mindmap {
   flex-direction: column;
   width: var(--width, 245px);
 }
-
 .mindmap .lil-gui {
+      max-width: 16vw;
+      backdrop-filter: blur(2PX);
   box-sizing: border-box;
   position: absolute;
   max-height: 100%;
@@ -72,7 +73,7 @@ body.mindmap {
   --widget-border-radius: 2px;
   --checkbox-size: calc(var(--widget-height)*0.75);
   --scrollbar-width: 5px;
-  background-color: var(--background-color);
+
   color: var(--text-color);
   font-family: var(--font-family);
   font-size: var(--font-size);
@@ -93,11 +94,18 @@ body.mindmap {
 
     display: block;
     margin: 2px 0;
-
+color: #bbb9b9;
   /* background-color: var(--focus-color); */
   border: solid 1px var(--focus-color);
   padding: 1px 6px;
   cursor: pointer;
+}
+
+.mindmap .lil-gui .nav-info-container {
+margin: 0.5vw 0 1vw 0;
+}
+.mindmap .lil-gui .nav-info {
+color: #bbb9b9;
 }
 
 .mindmap .node-label {
@@ -118,7 +126,7 @@ body.mindmap {
   font-size: 0.8rem;
 }
 
-#info {
+.mindmap #info {
   font-style: italic;
   text-align: left;
   position: absolute;
@@ -135,7 +143,7 @@ body.mindmap {
   opacity: 1;
 }
 
-#info div {
+.mindmap #info div {
   padding: 10px;
   font-size: 1.8rem;
   line-height: 1rem;
