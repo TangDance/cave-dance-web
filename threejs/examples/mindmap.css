@@ -38,11 +38,10 @@ body.mindmap {
       max-width: 16vw;
       backdrop-filter: blur(2PX);
   box-sizing: border-box;
-  position: absolute;
   max-height: 100%;
   position: fixed;
-  right: 2vw;
-  top: 8vw;
+  left: 2vw;
+  bottom: 8vw;
   z-index: 1001;
   line-height: 1.5rem;
     padding: 0.5vw 1vw 1vw;
