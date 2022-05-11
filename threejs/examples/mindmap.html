@@ -137,12 +137,13 @@
       this.linkVisiblity = true;
       this.linkCurvature = 0.3;
       this.linkRotation = 0;
+
+      this.addBackGroundToScene = false;
+      this.addBVHtoScene = false;
+      this.sceneBackgroundImage = 'textures/dunhuang/1_original_dimmed.png';
     };
     const settings = new Settings();
 
-
-    const addBackGroundToScene = false;
-    const addBVHtoScene = addBackGroundToScene;
 
     // Need for BVH model animation
     let mixer, skeletonHelper, controls;
@@ -362,12 +363,12 @@
     }
 
     const bloomPass = new UnrealBloomPass();
-    bloomPass.strength = addBVHtoScene? 0: 3;
+    bloomPass.strength = settings.addBackGroundToScene? 0: 3;
     bloomPass.radius = 0.4;
     bloomPass.threshold = 0.1;
     Graph.postProcessingComposer().addPass(bloomPass);
 
-    if (addBVHtoScene) {
+    if (settings.addBVHtoScene) {
         Graph.cameraPosition({x:100, y:100, z: 220 });
     } else {
         Graph.cameraPosition({z: 80 });
@@ -376,12 +377,12 @@
     // Add external objects to the scene
     const scene = Graph.scene();
 
-    if (addBackGroundToScene) {
-      const spaceTexture = new THREE.TextureLoader().load('textures/dunhuang/dunhuang-4.jpg');
+    if (settings.addBackGroundToScene) {
+      const spaceTexture = new THREE.TextureLoader().load(settings.sceneBackgroundImage);
       scene.background = spaceTexture;
     }
 
-    if (addBVHtoScene) {
+    if (settings.addBVHtoScene) {
       // BVH Model
   		const loader = new BVHLoader();
   		loader.load( "models/bvh/0-6000.bvh", function ( result ) {
