@@ -1,0 +1,171 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body.mindmap {
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: Metropolis, sans-serif;
+  text-align: center;
+}
+
+.mindmap .scene-container {
+  width: 100%;
+  height: 100%;
+}
+
+.mindmap .scene-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.mindmap .org-icon {
+  z-index: 9999;
+  opacity: 1;
+  position: absolute;
+  right: 0;
+}
+
+.mindmap .lil-gui.root {
+  display: flex;
+  flex-direction: column;
+  width: var(--width, 245px);
+}
+
+.mindmap .lil-gui {
+  box-sizing: border-box;
+  position: absolute;
+  max-height: 100%;
+  position: fixed;
+  right: 2vw;
+  top: 8vw;
+  z-index: 1001;
+  line-height: 1.5rem;
+    padding: 0.5vw 1vw 1vw;
+  --background-color: #1f1f1f;
+  --text-color: #ebebeb;
+  --title-background-color: #111;
+  --title-text-color: #ebebeb;
+  --widget-color: #424242;
+  --hover-color: #4f4f4f;
+  --focus-color: #595959;
+  --number-color: #2cc9ff;
+  --string-color: #a2db3c;
+  --font-size: 11px;
+  --input-font-size: 11px;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-family-mono: Menlo, Monaco, Consolas, "Droid Sans Mono", monospace;
+  --padding: 4px;
+  --spacing: 4px;
+  --widget-height: 20px;
+  --name-width: 45%;
+  --slider-knob-width: 2px;
+  --slider-input-width: 27%;
+  --color-input-width: 27%;
+  --slider-input-min-width: 45px;
+  --color-input-min-width: 45px;
+  --folder-indent: 7px;
+  --widget-padding: 0 0 0 3px;
+  --widget-border-radius: 2px;
+  --checkbox-size: calc(var(--widget-height)*0.75);
+  --scrollbar-width: 5px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mindmap .lil-gui .children {
+  margin-top: 4px;
+}
+
+.mindmap .lil-gui .btn {
+
+    display: block;
+    margin: 2px 0;
+
+  /* background-color: var(--focus-color); */
+  border: solid 1px var(--focus-color);
+  padding: 1px 6px;
+  cursor: pointer;
+}
+
+.mindmap .node-label {
+  user-select: none;
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 0 0 10px rgb(189 216 216 / 95%);
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-family: "Theinhardt Pan", sans-serif
+}
+
+.mindmap .node-label.large {
+  font-size: 2rem;
+}
+
+.mindmap .node-label.small {
+  font-size: 0.8rem;
+}
+
+#info {
+  font-style: italic;
+  text-align: left;
+  position: absolute;
+  top: 3vw;
+  width: 100%;
+  line-height: 0.1rem;
+  box-sizing: border-box;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;
+}
+
+#info div {
+  padding: 10px;
+  font-size: 1.8rem;
+  line-height: 1rem;
+}
+
+.mindmap .shadow {
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 0 10px rgb(189 216 216 / 95%);
+}
+
+.mindmap .col {
+  display: inline-block;
+}
+
+.mindmap .footer {
+  z-index: 999;
+  padding: 0 2vw 0.5vw;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 0vw;
+}
+
+.mindmap .colophon {
+  font-size: 0.6rem !important;
+}
+
+.mindmap .lil-gui.autoPlace {
+  top: 100px;
+}
+
+.mindmap .h-h4.disclaimer.bold.endless {
+  font-size: .7rem !important;
+}
