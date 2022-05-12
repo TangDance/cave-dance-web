@@ -27,27 +27,22 @@
     </a>
   </div>
 
-		<div class="lil-gui allow-touch-styles">
-			<div class="title" role="button" aria-expanded="true" tabindex="0">Graph Controls</div>
-
-
-      <div class="nav-info-container">
-      <div class="nav-info">Left-click: rotate</div>
-      <div class="nav-info"> Mouse-wheel / middle-click: zoom</div>
-      <div class="nav-info">Drag nodes to adjust position</div>
-      </div>
-
-
-			<div class="children">
-				<div class="controller number hasSlider">
-          <div class="widget">
-					   <a class="btn" id="reset-graph-btn">Fit Graph</a>
-             <a class="btn" style="display:none" id="link-visibility-btn">Link Visiblity</a>
-					</div>
+	<div class="lil-gui allow-touch-styles">
+		<div class="title" role="button" aria-expanded="true" tabindex="0">Graph Controls</div>
+    <div class="nav-info-container">
+    <div class="nav-info">Left-click: rotate</div>
+    <div class="nav-info"> Mouse-wheel / middle-click: zoom</div>
+    <div class="nav-info">Drag nodes to adjust position</div>
+    </div>
+		<div class="children">
+			<div class="controller number hasSlider">
+        <div class="widget">
+				   <a class="btn" id="reset-graph-btn">Fit Graph</a>
+           <a class="btn" style="display:none" id="link-visibility-btn">Link Visiblity</a>
 				</div>
 			</div>
-
 		</div>
+	</div>
 
   <div id="info" style="font-style: normal;  top: inherit; bottom: 10vw; right: 1vw; text-align: right;">
     <!-- <div class="table">
@@ -79,7 +74,7 @@
     </div>
   </div>
 
-  <div class="footer">
+  <!-- <div class="footer">
     <div class="f-row bottom">
       <div class="f-col left">
         <div class="h-h4 disclaimer bold endless copy">©2022 Harvard CAMLab</div>
@@ -99,7 +94,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div id="3d-graph" style="width:100%; height:100%"></div>
 
@@ -117,6 +112,9 @@
 
 
     const Settings = function() {
+      const yellow = 'rgba(255,160,0,0.8)';
+      const white = 'rgba(255,255,255, 1)';
+
       this.addGridHelper = false;
       this.addBottomPlane = false;
 
@@ -137,8 +135,6 @@
       this.linkCurvature = 0.3;
       this.linkRotation = 0;
       this.hoveredNodeColor = 'rgb(173, 214, 213, 0.5)'; // 'rgb(255,0,0,1)'; // red
-      const yellow = 'rgba(255,160,0,0.8)';
-      const white = 'rgba(255,255,255, 1)';
       this.linkedNodeColor = white;
       this.nodeColor = 'rgba(255,255,255, 0.8)'; // white
       this.rootNodeSize = 20;
@@ -147,6 +143,7 @@
       this.childLinkNodeSize = 0.1;
       this.nodeResolution = 10; // default is 8
     };
+
     const settings = new Settings();
 
     const nodeSize = (nodeId) => {
