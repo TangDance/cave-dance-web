@@ -22,7 +22,7 @@
 		  width: 100%;
 		  text-align: right;
 			text-shadow: 0 0 10px rgb(189 216 216 / 95%);
-		  color: rgba(255, 255, 255, 0.75);
+		  color: rgba(255, 255, 255, 0.5);
 			font-family: Metropolis, sans-serif;
 			font-style: italic;
 		}
@@ -45,12 +45,12 @@
 
 		#menu button {
 		  background: transparent;
-		  outline: 1px solid rgba(255, 255, 255, 0.75);
+		  outline: 1px solid rgba(255, 255, 255, 0.5);
 		  border: 0px;
 		  padding: 5px 10px;
 		  cursor: pointer;
 			font-size: 0.6rem;
-			color: #bbb9b9;
+			color: #9a9a9a; /*#bbb9b9;*/
     	border: solid 1px var(--focus-color);
     	padding: 1px 6px;
 			line-height: 1.2;
@@ -61,7 +61,7 @@
 		}
 
 		#menu .buttonline {
-			margin-bottom: 0.2rem;
+			margin-top: 0.2rem;
 		}
 
 		video {
@@ -80,36 +80,19 @@
 		</div>
 
 		<div class="buttonline">
-			<button class="menu" id="button_reset">RESET</button>
-		</div>
-		<div class="buttonline">
 			<button class="menu active" id="button_fire">FIRE</button>
 			<button class="menu" id="button_water">WATER</button>
 			<button class="menu" id="button_spin_particles">PARTICLES</button>
 			<button class="menu" id="button_gold_lines">LINES</button>
 			<button class="menu" id="button_spin_strips">STRIPS</button>
+			<button class="menu" id="button_mocap">MOCAP</button>
 		</div>
+
+
+				<div class="buttonline">
+					<button class="menu" id="button_reset">RESET</button>
+				</div>
 	</div>
-
-	<!-- <video id="video_fire" crossOrigin="anonymous" playsinline autoplay muted loop style="display:none" >
-		<source src="textures/dunhuang/SKELETON/ChineseDance_Particle_Fire.mp4" type="video/mp4">
-	</video>
-
-	<video id="video_water" crossOrigin="anonymous" playsinline autoplay muted loop style="display:none" >
-		<source src="textures/dunhuang/SKELETON/ChineseDance_Particle_Water.mp4" type="video/mp4">
-	</video>
-
-	<video id="video_spin_particles" crossOrigin="anonymous" playsinline autoplay muted loop style="display:none" >
-		<source src="textures/dunhuang/SKELETON/Spin_Particles.mp4" type="video/mp4">
-	</video>
-
-	<video id="video_gold_lines" crossOrigin="anonymous" playsinline autoplay muted loop style="display:none" >
-		<source src="textures/dunhuang/SKELETON/DanceTurn_Lines_Gold_Fast.mp4" type="video/mp4">
-	</video>
-
-	<video id="video_spin_strips" crossOrigin="anonymous" playsinline autoplay muted loop style="display:none" >
-		<source src="textures/dunhuang/SKELETON/Spin_Strips.mp4" type="video/mp4">
-	</video> -->
 
   <script type="importmap">
 		{
@@ -130,7 +113,12 @@
 			'spin_particles': ["textures/dunhuang/SKELETON/Spin_Particles.mp4"],
 			'gold_lines': ["textures/dunhuang/SKELETON/DanceTurn_Lines_Gold_Fast.mp4"],
 			'spin_strips': ["textures/dunhuang/SKELETON/Spin_Strips.mp4"],
+			'mocap': []
 		};
+
+		for (let i=1; i<3;i++) {
+			VIDEO_SOURCES.mocap.push("textures/dunhuang/OF/36pose-male-0" + i + "-front.mov");
+		}
 
     const Settings = function() {
 			this.currentVideo = 'fire';
@@ -370,6 +358,10 @@
 		} );
 
 		$('#button_spin_strips').click(  function () {
+			onButtonClick(event);
+		} );
+
+		$('#button_mocap').click(  function () {
 			onButtonClick(event);
 		} );
 
