@@ -22,7 +22,7 @@
 		  width: 100%;
 		  text-align: right;
 			text-shadow: 0 0 10px rgb(189 216 216 / 95%);
-		  color: rgba(255, 255, 255, 0.5);
+		  color: rgba(255, 255, 255, 0.75);
 			font-family: Metropolis, sans-serif;
 			font-style: italic;
 		}
@@ -45,7 +45,7 @@
 
 		#menu button {
 		  background: transparent;
-		  outline: 1px solid rgba(255, 255, 255, 0.5);
+		  outline: 1px solid rgba(255, 255, 255, 0.75);
 		  border: 0px;
 		  padding: 5px 10px;
 		  cursor: pointer;
@@ -83,7 +83,7 @@
 			<button class="menu active" id="button_fire">FIRE</button>
 			<button class="menu" id="button_water">WATER</button>
 			<button class="menu" id="button_spin_particles">PARTICLES</button>
-			<button class="menu" id="button_gold_lines">LINES</button>
+			<!-- <button class="menu" id="button_gold_lines">LINES</button> -->
 			<button class="menu" id="button_spin_strips">STRIPS</button>
 			<button class="menu" id="button_mocap">MOCAP</button>
 		</div>
@@ -353,9 +353,9 @@
 			onButtonClick(event);
 		} );
 
-		$('#button_gold_lines').click(  function () {
-			onButtonClick(event);
-		} );
+		// $('#button_gold_lines').click(  function () {
+		// 	onButtonClick(event);
+		// } );
 
 		$('#button_spin_strips').click(  function () {
 			onButtonClick(event);
