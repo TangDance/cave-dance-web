@@ -5,6 +5,16 @@ html, body {
   background: #000000;
 }
 
+a {
+  background-color: transparent;
+  color: #bbb9b9;
+  text-decoration: none
+}
+
+a:active, a:hover {
+  outline: 0
+}
+
 body.mindmap {
   overflow: hidden;
   color: rgba(255, 255, 255, 0.6);
@@ -176,4 +186,28 @@ color: #bbb9b9;
 
 .mindmap .h-h4.disclaimer.bold.endless {
   font-size: .7rem !important;
+}
+
+button.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+  box-shadow: 0 0 10px rgb(189 216 216 / 95%);
+}
+
+button {
+margin-bottom: 0.5rem !important;
+  background: transparent;
+  outline: 1px solid rgba(255, 255, 255, 0.75);
+  border: 0px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.6rem;
+  color: #bbb9b9;
+  border: solid 1px var(--focus-color);
+  padding: 1px 6px;
+  line-height: 1.2;
+}
+
+ button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
