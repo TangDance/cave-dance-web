@@ -19,7 +19,18 @@
 	<button class="menu" id="button_print" style="display:none">camera info</button>
 
 	<div id="loading" class="loading">
-		LOADING...
+		<div class="wait">
+			<div class="wait-inner">
+				<div class="wait_img-wrap">
+					<div data-w-id="e8311aee-d434-6a91-e883-eae45438144d" class="wait_img"></div>
+					<div data-w-id="a5f9b580-a290-06a9-c3a9-042380199875" class="wait-overlay"></div>
+				</div>
+				<div class="wait-content">
+					<div class="hero-h1__wrap"><img src="https://chunweb.files.wordpress.com/2022/04/cave220.png" loading="lazy" alt="" class="hero-h1" /></div>
+					<div class="hero-sum__wrap"><img src="https://chunweb.files.wordpress.com/2022/04/cave220.png" loading="lazy" alt="" class="hero-sum" /></div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<aside id="instructions">
@@ -73,6 +84,9 @@
         <div class="title">
           <h1>敦煌莫高窟第220窟</h1>
 					<h2>Mogao Cave 220</h2>
+					<div id="loading-title" class="loading">
+						Loading...
+					</div>
           <button class="explore">Start Exploring</button>
         </div>
       </div>
@@ -228,7 +242,9 @@
 						renderer.render(scene, camera);
 						TweenMax.to("#loading", 1, {opacity:0, display:"none"});
 						TweenMax.to(".container", 2, {opacity:1});
-						TweenMax.to(".explore", 2, {opacity:1});
+						//TweenMax.to(".title", 4, {opacity:1});
+						TweenMax.to(".explore", 5, {opacity:1});
+						TweenMax.to("#loading-title", 0.5, {opacity:0, display:"none"});
 					},
 					function ( xhr ) {	// called while loading is progressing
 					//	console.log( ( xhr.loaded / xhr.total * 100 ) + '% of the cave model is loaded' );

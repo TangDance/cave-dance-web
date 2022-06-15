@@ -24,6 +24,10 @@ body {
   font-size: 4rem;
 }
 
+.title {
+  /* opacity: 0; */
+}
+
 #menu {
   position: absolute;
   top: 33%;
@@ -87,6 +91,10 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+#loading-title {
+  font-size: 1.1rem;
+}
+
 #menu button.active {
   background-color: rgba(255, 255, 255, 0.1);
   font-weight: bold;
@@ -100,7 +108,7 @@ body {
   cursor: pointer;
   font-size: 0.8rem;
   border: solid 1px var(--focus-color);
-  padding: 0.2rem 0.5rem 0.1rem;
+  /* padding: 0.2rem 0.5rem 0.1rem; */
   line-height: 1.2;
 }
 
