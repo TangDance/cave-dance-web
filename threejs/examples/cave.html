@@ -712,9 +712,11 @@
 
 
 		function clearTour() {
-			Array.from($(".scene1_start")).forEach((item, i) => {
-				item.animate({ opacity: 0 }, 30);
-			});
+			$("#scene1_start").animate({ opacity: 0 }, 30);
+			$("#scene2_start").animate({ opacity: 0 }, 30);
+			// Array.from($(".scene_start")).forEach((item, i) => {
+			// 	item.animate({ opacity: 0 }, 30);
+			// });
 		}
 
 
