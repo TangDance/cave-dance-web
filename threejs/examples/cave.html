@@ -54,7 +54,7 @@
 
 		<div class="buttonlines">
 			<div class="buttonline">
-				<div class="animation-circle-container " id="scene1_start">
+				<div class="animation-circle-container scene_start" id="scene1_start">
 			      <div class="circle"></div>
 			      <div class="circle2"></div>
 			      <div class="logo-div-send">
@@ -64,7 +64,7 @@
 			</div>
 
 			<div class="buttonline">
-				<div class="animation-circle-container " id="scene2_start">
+				<div class="animation-circle-container scene_start" id="scene2_start">
 			      <div class="circle"></div>
 			      <div class="circle2"></div>
 			      <div class="logo-div-send">
@@ -74,7 +74,7 @@
 			</div>
 
 			<div class="buttonline">
-				<div class="animation-circle-container " style="opacity:0" >
+				<div class="animation-circle-container scene_start" style="opacity:0" >
 			      <div class="circle"></div>
 			      <div class="circle2"></div>
 			      <div class="logo-div-send">
@@ -610,7 +610,9 @@
 						})
 						.to(camera.position, { x: -50,
 								onComplete: () => {
-									camera.rotation.y -= 20*settings.walkerTurnSpeed;
+									const startY = camera.rotation.y;
+									gsap.to(camera.rotation, {duration: 4, y: startY - 20*settings.walkerTurnSpeed });
+
 									$("#scene1_start").animate({
 									    opacity: 1
 									  }, 1000, function() {
@@ -633,7 +635,9 @@
 						})
 						.to(camera.position, { x: 50,
 								onComplete: () => {
-									camera.rotation.y += 20*settings.walkerTurnSpeed;
+									const startY = camera.rotation.y;
+									gsap.to(camera.rotation, {duration: 4, y: startY + 20*settings.walkerTurnSpeed });
+
 									$("#scene2_start").animate({
 											opacity: 1
 										}, 1000, function() {
@@ -698,8 +702,9 @@
 
 
 		function clearTour() {
-			$("#scene1_start").animate({ opacity: 0 }, 30);
-			$("#scene2_start").animate({ opacity: 0 }, 30);
+			Array.from($(".scene1_start")).forEach((item, i) => {
+				item.animate({ opacity: 0 }, 30);
+			});
 		}
 
 
