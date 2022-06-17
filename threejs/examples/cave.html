@@ -32,7 +32,7 @@
 					<div class="container" style="margin-top: 2rem">
 			      <div class="title-container">
 			        <div class="title">
-			          <h1>敦煌莫高窟第220窟</h1>
+			          <h1>莫高窟第220窟</h1>
 								<h2>Mogao Cave 220</h2>
 			        </div>
 			      </div>
@@ -59,26 +59,34 @@
 	</aside>
 
 	<div class="tour">
-		<div class="mainline">敦煌莫高窟第220窟</div>
+		<div class="mainline">莫高窟第220窟</div>
 		<div class="subline">Mogao Cave 220</div>
 
 		<div class="buttonlines">
 			<div class="buttonline">
-				<div class="animation-circle-container scene_start" id="scene1_start">
+				<!-- <div class="animation-circle-container scene_start" id="scene2_start">
 			      <div class="circle"></div>
 			      <div class="circle2"></div>
-			      <div class="logo-div-send">
-			      </div>
+				</div> -->
+				<div class="scene_start" id="scene1_start" style="display: inline-block; vertical-align: middle;">
+						<button class="menu continue">继续
+							<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
+						</button>
 				</div>
-				<button class="menu" id="button_scene1">主室北壁</button>
+				<div style="display: inline-block; vertical-align: middle;">
+					<button class="menu" id="button_scene1">主室北壁</button>
+				</div>
 			</div>
 
 			<div class="buttonline">
-				<div class="animation-circle-container scene_start" id="scene2_start">
+				<!-- <div class="animation-circle-container scene_start" id="scene2_start">
 			      <div class="circle"></div>
 			      <div class="circle2"></div>
-			      <div class="logo-div-send">
-			      </div>
+				</div> -->
+				<div class="scene_start" id="scene2_start" style="display: inline-block; vertical-align: middle;">
+						<button class="menu continue">继续
+							<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
+						</button>
 				</div>
 				<button class="menu" id="button_scene2">主室南壁</button>
 			</div>
@@ -99,7 +107,7 @@
 		<div class="container">
       <div class="title-container">
         <div class="title">
-          <h1>敦煌莫高窟第220窟</h1>
+          <h1>莫高窟第220窟</h1>
 					<h2>Mogao Cave 220</h2>
 					<div id="loading-title" class="loading">
 						Loading...
@@ -178,7 +186,7 @@
 
 		const CAMERA_POSITIONS = {
 			start: {x: 0, y: 0, z: 0},
-			cave_center: {x: 0, y: 0, z: -250}
+			cave_center: {x: 0, y: 0, z: -290}
 		}
 
 		const {
@@ -470,7 +478,7 @@
 		    else action = 'run'
 
 		    this.#setAction(action)
-		   // this.#mixer.update(elapsedTime)
+		    // this.#mixer.update(elapsedTime)
 
 				if (settings.trackCamera) {
 					camera.getWorldDirection(cameraDirection); // this copies the camera's unit vector direction to cameraDirection
@@ -609,6 +617,7 @@
 			});
 
 			scene1.click(() => {
+				clearTour();
 				if (!gsap.isTweening(camera.position)) {
 					let cave = CAMERA_POSITIONS['cave_center'];
 					gsap.timeline()
@@ -618,43 +627,39 @@
 								camera.rotation.y = 0;
 							}
 						})
-						.to(camera.position, { x: -50,
+						.to(camera.position, { x: -70,
 								onComplete: () => {
 									const startY = camera.rotation.y;
-									gsap.to(camera.rotation, {duration: 4, y: startY - 20*settings.walkerTurnSpeed });
-
+									gsap.to(camera.rotation, {duration: 4, y: startY - 24*settings.walkerTurnSpeed });
+									$("#button_scene1").addClass("active");
 									$("#scene1_start").animate({
-									    opacity: 1
-									  }, 1000, function() {
-									    // Animation complete.
-									  });
+								    opacity: 1
+								  }, 1000, function() {
+
+								  });
 								}
 						})
 				}
 			});
 
 			scene2.click(() => {
+				clearTour();
 				if (!gsap.isTweening(camera.position)) {
 					let cave = CAMERA_POSITIONS['cave_center'];
 					gsap.timeline()
-					  .to(camera.position, { x: cave.x, y: cave.y, z: cave.z,
+					  .to(camera.position, { x: cave.x+50, y: cave.y, z: cave.z-40,
 							onComplete: () => {
 								camera.rotation.x = 0;
 								camera.rotation.y = 0;
+								const startY = camera.rotation.y;
+								gsap.to(camera.rotation, {duration: 4, y: startY + 24*settings.walkerTurnSpeed });
+								$("#button_scene2").addClass("active");
+								$("#scene2_start").animate({
+										opacity: 1
+									}, 1000, function() {
+									});
 							}
-						})
-						.to(camera.position, { x: 50,
-								onComplete: () => {
-									const startY = camera.rotation.y;
-									gsap.to(camera.rotation, {duration: 4, y: startY + 20*settings.walkerTurnSpeed });
-
-									$("#scene2_start").animate({
-											opacity: 1
-										}, 1000, function() {
-											// Animation complete.
-										});
-								}
-						})
+						});
 				}
 			});
 
@@ -681,6 +686,7 @@
 			});
 
 			reset.click(() => {
+				clearTour();
 				let cave = CAMERA_POSITIONS['start'];
 				gsap.timeline()
 					.to(camera.position, { x: cave.x, y: cave.y, z: cave.z,
@@ -712,11 +718,11 @@
 
 
 		function clearTour() {
+			$("#button_scene1").removeClass("active");
+			$("#button_scene2").removeClass("active");
+
 			$("#scene1_start").animate({ opacity: 0 }, 30);
 			$("#scene2_start").animate({ opacity: 0 }, 30);
-			// Array.from($(".scene_start")).forEach((item, i) => {
-			// 	item.animate({ opacity: 0 }, 30);
-			// });
 		}
 
 
