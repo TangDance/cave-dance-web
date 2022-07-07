@@ -17,9 +17,12 @@ a:active, a:hover {
 
 body.mindmap {
   overflow: hidden;
-  color: rgba(255, 255, 255, 0.6);
-  font-family: Metropolis, sans-serif;
   text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  /* font-family: Metropolis, sans-serif; */
+  font-family: fort, sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .mindmap .scene-container {
@@ -44,17 +47,18 @@ body.mindmap {
   flex-direction: column;
   width: var(--width, 245px);
 }
+
 .mindmap .lil-gui {
-      max-width: 16vw;
-      backdrop-filter: blur(2PX);
+  max-width: 16vw;
+  backdrop-filter: blur(2PX);
   box-sizing: border-box;
   max-height: 100%;
   position: fixed;
   left: 2vw;
-  bottom: 8vw;
+  bottom: 4vw;
   z-index: 1001;
   line-height: 1.5rem;
-    padding: 0.5vw 1vw 1vw;
+  padding: 0.5vw 1vw 1vw;
   --background-color: #1f1f1f;
   --text-color: #ebebeb;
   --title-background-color: #111;
@@ -66,7 +70,8 @@ body.mindmap {
   --string-color: #a2db3c;
   --font-size: 11px;
   --input-font-size: 11px;
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-family: fort, sans-serif;
+  /*-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;*/
   --font-family-mono: Menlo, Monaco, Consolas, "Droid Sans Mono", monospace;
   --padding: 4px;
   --spacing: 4px;
@@ -82,7 +87,6 @@ body.mindmap {
   --widget-border-radius: 2px;
   --checkbox-size: calc(var(--widget-height)*0.75);
   --scrollbar-width: 5px;
-
   color: var(--text-color);
   font-family: var(--font-family);
   font-size: var(--font-size);
@@ -100,10 +104,9 @@ body.mindmap {
 }
 
 .mindmap .lil-gui .btn {
-
-    display: block;
-    margin: 2px 0;
-color: #bbb9b9;
+  display: block;
+  margin: 2px 0;
+  color: #bbb9b9;
   /* background-color: var(--focus-color); */
   border: solid 1px var(--focus-color);
   padding: 1px 6px;
@@ -111,24 +114,29 @@ color: #bbb9b9;
 }
 
 .mindmap .lil-gui .nav-info-container {
-margin: 0.5vw 0 1vw 0;
+  margin: 0.5vw 0 1vw 0;
 }
+
 .mindmap .lil-gui .nav-info {
-color: #bbb9b9;
+  color: #bbb9b9;
 }
 
 .mindmap .node-label {
   user-select: none;
   color: rgba(0, 0, 0, 0.6);
-  text-shadow: 0 0 10px rgb(189 216 216 / 95%);
-  font-weight: bold;
+  /* text-shadow: 0 0 10px rgb(227 228 228 / 95%); */
+  /*0 0 10px rgb(189 216 216 / 95%);*/
+  /* font-weight: bold;
   font-size: 1.2rem;
   font-style: italic;
-  font-family: "Theinhardt Pan", sans-serif
+  font-family: "Theinhardt Pan", sans-serif */
+  font-family: fort, sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
 .mindmap .node-label.large {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .mindmap .node-label.small {
@@ -136,7 +144,6 @@ color: #bbb9b9;
 }
 
 .mindmap #info {
-  font-style: italic;
   text-align: left;
   position: absolute;
   top: 3vw;
@@ -148,7 +155,7 @@ color: #bbb9b9;
   -ms-user-select: none;
   user-select: none;
   pointer-events: none;
-  z-index: 1;
+  z-index: 999;
   opacity: 1;
 }
 
@@ -195,7 +202,7 @@ button.active {
 }
 
 button {
-margin-bottom: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
   background: transparent;
   outline: 1px solid rgba(255, 255, 255, 0.75);
   border: 0px;
@@ -208,6 +215,12 @@ margin-bottom: 0.5rem !important;
   line-height: 1.2;
 }
 
- button:hover {
+button:hover {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+.node-label {
+  color: #404040 !important;
+  font-family: 'URWDIN-Thin', sans-serif;
+  font-weight: 500;
 }

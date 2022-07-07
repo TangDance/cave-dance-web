@@ -19,15 +19,12 @@ const Settings = function() {
 	// 'rgb(255,0,0,1)'; // red
 
 	this.addBloomPass = true;
-
 	this.addGridHelper = false;
 	this.addBottomPlane = false;
 	this.addGalaxyToScene = false;
-
 	this.addBackGroundToScene = false;
 	this.sceneBackgroundImage = 'textures/dunhuang/dunhuang-4.jpg'; //textures/dunhuang/1_original_dimmed.png'; //'textures/dunhuang/datagrid1.jpg';//
-
-	this.addBVHtoScene = false;
+	this.addBVHtoScene = true;
 	this.initialCameraPosition = this.addBVHtoScene ? {
 		z: 80
 	} : {
@@ -35,7 +32,6 @@ const Settings = function() {
 	};
 
 	this.addWallsToScene = false;
-
 	this.normalLinkDistance = 20;
 	this.smallLinkDistance = 5;
 	this.largeLinkDistance = 100;
@@ -45,9 +41,9 @@ const Settings = function() {
 	this.nodeColor = white;
 	this.hoveredNodeColor = white2;
 	this.linkedNodeColor = this.hoveredNodeColor;
-	this.rootNodeSize = 15;
-	this.largeNodeSize = 5;
-	this.nodeSize = 1;
+	this.rootNodeSize = 12;
+	this.largeNodeSize = 4;
+	this.nodeSize = 2;
 	this.childLinkNodeSize = 0.1;
 	this.nodeResolution = 15; // Force Graph default is 8
 };
@@ -107,6 +103,7 @@ let gData = {
 	links: []
 };
 
+
 Object.keys(LABELS_MAP).forEach(id => {
 	const i = Number(id);
 	gData.nodes.push({
@@ -155,7 +152,6 @@ gData.links.forEach(link => {
 	b.links.push(link);
 });
 
-// console.log(gData);
 
 const nodesById = Object.fromEntries(gData.nodes.map(node => [node.id, node]));
 
@@ -222,14 +218,14 @@ const Graph = ForceGraph3D({
 	.nodeColor(node => highlightNodes.has(node) ? node === hoverNode ?
 		settings.hoveredNodeColor : settings.linkedNodeColor : settings.nodeColor)
 	//  .nodeColor(node => highlightNodes.has(node) ? node === hoverNode ? 'rgb(173, 214, 213, 1)' : 'rgba(255,255,255, 1)' : 'rgba(255,255,255, 0.3)')
-	.linkWidth(link => highlightLinks.has(link) ? 0.2 : 0.1)
+	.linkWidth(link => highlightLinks.has(link) ? 0.5 : 0.1)
 	.linkDirectionalArrowLength(1)
 	.linkDirectionalArrowRelPos(1)
 	.linkCurvature(settings.linkCurvature)
 	.linkCurveRotation(settings.linkRotation)
-	.linkDirectionalParticles(link => highlightLinks.has(link) ? 2 : 1)
+	.linkDirectionalParticles(link => highlightLinks.has(link) ? 3 : 1)
 	.linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 0.4 : 0.2)
-	.linkDirectionalParticleSpeed(link => highlightLinks.has(link) ? 0.005 : 0.005)
+	.linkDirectionalParticleSpeed(link => highlightLinks.has(link) ? 0.02 : 0.005)
 	.linkDirectionalParticleResolution(10)
 	.showNavInfo(false)
 	.height('100%')
@@ -267,13 +263,11 @@ const Graph = ForceGraph3D({
 			Graph.cameraPosition({
 					x: 0,
 					y: 0,
-					z: 50
+					z: 60
 				}, // new position
 				clickedNode, // lookAt ({ x, y, z })
 				5000 // ms transition duration
 			);
-
-
 
 			// // Aim at node from outside it
 			// const distance = 50;
@@ -306,8 +300,11 @@ const Graph = ForceGraph3D({
 			if (node.neighbors) {
 				node.neighbors.filter(node => node.id !== rootId && node.id > N).forEach(neighbor => highlightNodes.add(neighbor));
 			}
-			if (node.links) {
-				node.links.forEach(link => highlightLinks.add(link));
+			// if (node.links) {
+			// 	node.links.forEach(link => highlightLinks.add(link));
+			// }
+			if (node.childLinks) {
+				node.childLinks.forEach(link => highlightLinks.add(link));
 			}
 		}
 
@@ -338,13 +335,11 @@ const Graph = ForceGraph3D({
 		// );
 	});
 
-
-
-const linkForce = Graph
-	.d3Force('link')
-
-
+const linkForce = Graph.d3Force('link')
 const scene = Graph.scene();
+controls = Graph.controls();
+controls.minDistance = 0;
+controls.maxDistance = 250;
 
 if (settings.addBackGroundToScene) {
 	const spaceTexture = new THREE.TextureLoader().load(settings.sceneBackgroundImage);
@@ -386,7 +381,7 @@ if (settings.addBVHtoScene) {
 		skeletonHelper.translateY(y);
 		skeletonHelper.translateZ(z);
 
-		const scale = 0.3;
+		const scale = 0.15;
 		boneContainer.scale.set(scale, scale, scale);
 		skeletonHelper.scale.set(scale, scale, scale);
 
@@ -404,10 +399,6 @@ if (settings.addBVHtoScene) {
 		if (mixer) mixer.update(delta);
 	}, 100);
 }
-
-controls = Graph.controls();
-controls.minDistance = 0;
-controls.maxDistance = 250;
 
 
 if (settings.addGridHelper) {
@@ -584,20 +575,18 @@ if (settings.addWallsToScene) {
 // });
 
 
-function updateHighlight() { // trigger update of highlighted objects in scene
+function updateHighlight() {
+	// trigger update of highlighted objects in scene
 	Graph
 		.nodeColor(Graph.nodeColor())
 		.linkWidth(Graph.linkWidth())
 		.linkDirectionalParticles(Graph.linkDirectionalParticles());
 }
 
-$("#reset-graph-btn").click(() => {
-	Graph.zoomToFit(5000, 1, node => true);
-	//      Graph.cameraPosition(settings.initialCameraPosition, {x:0,y:0,z:0}, 2000);
-	//Graph.numDimensions(3); // re-heat simulation
-});
-
-// $("#link-visibility-btn").click(() => {
-//     settings.linkVisiblity = !settings.linkVisiblity;
-//     Graph.linkVisibility(settings.linkVisiblity);
-// });
+if ($("#reset-graph-btn")) {
+	$("#reset-graph-btn").click(() => {
+		Graph.zoomToFit(5000, 1, node => true);
+		//      Graph.cameraPosition(settings.initialCameraPosition, {x:0,y:0,z:0}, 2000);
+		//Graph.numDimensions(3); // re-heat simulation
+	});
+}
