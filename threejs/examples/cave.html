@@ -69,7 +69,8 @@
 			      <div class="circle2"></div>
 				</div> -->
 				<div class="scene_start" id="scene1_start" style="display: inline-block; vertical-align: middle;">
-						<button class="menu continue">继续
+						<button class="menu continue">
+							<div class="text">继续</div>
 							<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
 						</button>
 				</div>
@@ -84,7 +85,8 @@
 			      <div class="circle2"></div>
 				</div> -->
 				<div class="scene_start" id="scene2_start" style="display: inline-block; vertical-align: middle;">
-						<button class="menu continue">继续
+						<button class="menu continue">
+							<span>继续</span>
 							<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
 						</button>
 				</div>
@@ -245,7 +247,6 @@
 				canvas = this.#renderer.domElement;
 		    document.body.appendChild(canvas);
 		    this.#renderer.setAnimationLoop(this.#render);
-
 
 				// orbitControls = new OrbitControls(camera, renderer.domElement);
 				// orbitControls.update();
@@ -545,27 +546,43 @@
 		    switch (key) {
 					case "arrowleft":
 						camera.rotation.y -= settings.walkerTurnSpeed;
+						console.log(camera.rotation);
 						break;
 					case "arrowright":
 						camera.rotation.y += settings.walkerTurnSpeed;
+						console.log(camera.rotation);
 						break;
 					case "arrowup":
-						camera.rotation.x += settings.walkerTurnSpeed;
+						camera.rotation.z += settings.walkerTurnSpeed;
+						console.log(camera.rotation);
 						break;
 					case "arrowdown":
-						camera.rotation.x -= settings.walkerTurnSpeed;
+						camera.rotation.z -= settings.walkerTurnSpeed;
+						console.log(camera.rotation);
 						break;
 		      case left:
 		        this.setX(-1);
+						console.log("left ", camera.rotation);
 		        break;
 		      case right:
+						console.log("right ", camera.rotation);
 		        this.setX(1);
 		        break;
 		      case up:
-		        this.setY(1);
+						console.log("up ", camera.rotation);
+						if (camera.rotation.y <= -3) {
+							this.setY(1);
+						} else {
+							this.setY(-1);
+						}
 		        break;
 		      case down:
-		        this.setY(-1);
+						console.log("down ", camera.rotation);
+						if (camera.rotation.y <= -3) {
+							this.setY(-1);
+						} else {
+							this.setY(1);
+						}
 		        break;
 		      default:
 		        break;
