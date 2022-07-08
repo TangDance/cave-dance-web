@@ -24,7 +24,7 @@ const Settings = function() {
 	this.addGalaxyToScene = false;
 	this.addBackGroundToScene = false;
 	this.sceneBackgroundImage = 'textures/dunhuang/dunhuang-4.jpg'; //textures/dunhuang/1_original_dimmed.png'; //'textures/dunhuang/datagrid1.jpg';//
-	this.addBVHtoScene = true;
+	this.addBVHtoScene = false;
 	this.initialCameraPosition = this.addBVHtoScene ? {
 		z: 80
 	} : {
@@ -102,7 +102,6 @@ let gData = {
 	nodes: [],
 	links: []
 };
-
 
 Object.keys(LABELS_MAP).forEach(id => {
 	const i = Number(id);
@@ -236,9 +235,8 @@ const Graph = ForceGraph3D({
 			weblink.click();
 			return;
 		}
-
-		console.log(" clickedNode, ", clickedNode);
-		console.log("highlightNodes, ", clickedNode.neighbors.map(neighbor => neighbor.id));
+		// console.log("clickedNode, ", clickedNode);
+		// console.log("highlightNodes, ", clickedNode.neighbors.map(neighbor => neighbor.id));
 		if (clickedNode.childLinks.length > 0) {
 			// lengthen the link connected to the root node
 
@@ -249,9 +247,9 @@ const Graph = ForceGraph3D({
 			});
 
 			linkForce.distance(link => {
-				console.log(link);
-				console.log("connected to root? ", link.source.id === 0 && link.target.id === clickedNode.id);
-				console.log("connected to clicked node? ", link.source.id === clickedNode.id);
+				//console.log(link);
+				// console.log("connected to root? ", link.source.id === 0 && link.target.id === clickedNode.id);
+				// console.log("connected to clicked node? ", link.source.id === clickedNode.id);
 				if (link.source.id === 0 && link.target.id === clickedNode.id) {
 					return settings.largeLinkDistance;
 				} else if (link.source.id === clickedNode.id) {

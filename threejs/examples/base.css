@@ -17,7 +17,7 @@
 @font-face {
   font-family: 'Theinhardt Pan';
   src: url('assets/fonts/TheinhardtPan-Regular.woff2') format('woff2');
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
@@ -25,7 +25,7 @@
 @font-face {
   font-family: 'Theinhardt Pan';
   src: url('assets/fonts/TheinhardtPan-Medium.woff2') format('woff2');
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -3910,10 +3910,10 @@ body {
   background-color: #fff;
   font-family: 'Theinhardt Pan', sans-serif;
   color: #bbb9b9;
-  font-size: 1.125vw;
-  line-height: 1.5vw;
-  font-weight: 500;
-  letter-spacing: -.02em
+  /* font-size: 1.125vw;
+  line-height: 1.5vw; */
+  font-weight: 300;
+  letter-spacing: -.02em;
 }
 
 h1 {
@@ -3925,7 +3925,7 @@ h1 {
   font-family: 'Theinhardt Pan', sans-serif;
   font-size: 14vw;
   line-height: 14vw;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: -.05em;
   text-transform: uppercase
 }
@@ -3937,7 +3937,7 @@ h2 {
   font-family: 'Theinhardt Pan', sans-serif;
   font-size: 7vw;
   line-height: 8vw;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: -.04em;
   text-transform: uppercase
 }
@@ -3948,7 +3948,7 @@ h3 {
   font-family: 'Theinhardt Pan', sans-serif;
   font-size: 2.5vw;
   line-height: 3vw;
-  font-weight: 400;
+  font-weight: 300;
   text-transform: uppercase
 }
 
@@ -6576,16 +6576,17 @@ h5 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  background-color: #bbb9b9;
+  /* background-color: #bbb9b9; */
   -webkit-transform-origin: 0% 50%;
   -ms-transform-origin: 0% 50%;
   transform-origin: 0% 50%
 }
 
 .hero-text {
-  padding-top: .5vw;
-  font-size: 4vw;
-  line-height: 3.4vw;
+  text-shadow: 0 0 10px rgb(227 228 228 / 95%);
+  font-size: 2.5vw;
+  font-weight: 300;
+  line-height: 1.1;
   text-align: right;
   letter-spacing: -.03em
 }
@@ -7367,23 +7368,6 @@ h5 {
   align-items: stretch
 }
 
-.add-cart-2 {
-  position: absolute;
-  left: auto;
-  top: auto;
-  right: 2.5vw;
-  bottom: 4vw;
-  z-index: 3;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end
-}
-
 .select-field-2 {
   position: relative;
   left: -.2vw;
@@ -7396,23 +7380,6 @@ h5 {
   color: #bbb9b9;
   font-size: 1.3vw;
   line-height: 1.1vw
-}
-
-.add-cart__button-2 {
-  width: 100%;
-  margin-top: 2vw;
-  padding: 1vw 4vw;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border: 1px solid #bbb9b9;
-  border-radius: .4vw;
-  background-color: transparent;
-  color: #bbb9b9;
-  font-size: 1.4vw;
-  line-height: 2vw;
-  font-weight: 500
 }
 
 .showrel-inner-wrapper {
@@ -7612,19 +7579,6 @@ h5 {
     line-height: 19vw
   }
 
-  .h-h1.look {
-    font-size: 3vh;
-    line-height: 3vh
-  }
-
-  .h-h1.product {
-    font-size: 7vw;
-    line-height: 6vw
-  }
-
-  .c-img.blend.contact {
-    width: 24vw
-  }
 
   .co-link {
     margin-top: 2vw
@@ -8240,8 +8194,8 @@ h5 {
 
   .h-h1.hero-home {
     padding-right: 2vw;
-    font-size: 19vw;
-    line-height: 26vw
+    font-size: 10vw;
+    line-height: 1.2;
   }
 
   .lookbook__head__title.lo-down {
@@ -9637,6 +9591,7 @@ canvas {
 .menu-li.thin {
   font-size: 2vw;
   padding-left: 2vw;
+  padding-top: 2px;
 }
 
 .menu-li.active {
@@ -9648,6 +9603,11 @@ canvas {
 
 .menu-li.bold {
   font-weight: 500;
+}
+
+.menu a:hover {
+  box-shadow: inset 6px 0 0 0 rgb(157, 165, 168, 0.2);
+  font-weight: 600;
 }
 
 .menu-li-border {

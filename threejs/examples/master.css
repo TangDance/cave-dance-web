@@ -3858,7 +3858,7 @@ h1 {
   margin-bottom: 0;
   padding-right: 1vw;
   padding-left: 0;
-  font-family: 'Proxy Mono', sans-serif;
+  font-family: 'URWDIN-Thin', sans-serif;
   font-size: 14vw;
   line-height: 14vw;
   font-weight: 400;
@@ -3870,7 +3870,7 @@ h2 {
   margin-top: 0;
   margin-bottom: 0;
   padding-right: 1vw;
-  font-family: 'Proxy Mono', sans-serif;
+  font-family: 'URWDIN-Thin', sans-serif;
   font-size: 7vw;
   line-height: 8vw;
   font-weight: 400;
@@ -3881,7 +3881,7 @@ h2 {
 h3 {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: 'Proxy Mono', sans-serif;
+  font-family: 'URWDIN-Thin', sans-serif;
   font-size: 2.5vw;
   line-height: 3vw;
   font-weight: 400;
@@ -4203,7 +4203,7 @@ h5 {
   margin-left: -1vw;
   padding-top: 1vw;
   padding-bottom: 1vw;
-  font-family: 'Proxy Mono', sans-serif;
+  font-family: 'URWDIN-Thin', sans-serif;
   font-size: 6vw;
   line-height: 4vw;
   font-weight: 400;
@@ -4696,7 +4696,7 @@ h5 {
 }
 
 .h-h3.shop__list__item__title {
-  font-family: 'Proxy Mono', sans-serif;
+  font-family: 'URWDIN-Thin', sans-serif;
   font-size: 5vh;
   line-height: 5vh;
   font-weight: 400;
@@ -4762,7 +4762,7 @@ h5 {
 }
 
 .c-title {
-  font-family: 'Proxy Mono', sans-serif;
+  font-family: 'URWDIN-Thin', sans-serif;
   font-size: 1.5vw;
   line-height: 1.7vw;
   font-weight: 400;
@@ -6961,7 +6961,7 @@ h5 {
 }
 
 .ch-title {
-  font-family: 'Proxy Mono', sans-serif;
+  font-family: 'URWDIN-Thin', sans-serif;
   font-size: 2rem;
   line-height: 3rem;
   font-weight: 400;
@@ -9165,6 +9165,39 @@ h5 {
   font-family: 'Nbarchitektstdneue';
   src: url('https://assets.website-files.com/603fe89ec4bbcece7ee6a53a/60be42fa843fa8114e5161f9_NBArchitektStdNeue-Light.woff2') format('woff2');
   font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'URWDIN-Thin';
+  src: url('assets/fonts/URWDIN-Thin.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'URWDIN-Thin';
+  src: url('assets/fonts/URWDIN-XLight.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'URWDIN-Thin';
+  src: url('assets/fonts/URWDIN-Regular.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'URWDIN-Thin';
+  src: url('assets/fonts/URWDIN-Medium.woff2') format('woff2');
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
