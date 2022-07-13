@@ -3933,7 +3933,6 @@ h1 {
 h2 {
   margin-top: 0;
   margin-bottom: 0;
-  padding-right: 1vw;
   font-family: 'Theinhardt Pan', sans-serif;
   font-size: 7vw;
   line-height: 8vw;
@@ -4595,7 +4594,7 @@ h5 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding: 4rem;
+  padding: 5vw 0 0 8vw;
   /* -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -9580,17 +9579,18 @@ canvas {
   font-weight: 400;
   font-size: 3vw;
   line-height: 100%;
+  pointer: none;
 }
 
 .menu-li.title {
   font-size: 2vw;
   margin-bottom: 2vw;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .menu-li.thin {
   font-size: 2vw;
-  padding-left: 2vw;
+  margin-left: 2vw;
   padding-top: 2px;
 }
 
@@ -9605,20 +9605,147 @@ canvas {
   font-weight: 500;
 }
 
-.menu a:hover {
-  box-shadow: inset 6px 0 0 0 rgb(157, 165, 168, 0.2);
-  font-weight: 600;
+.menu a h2 {
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+    cursor: default;
+}
+.menu a h2.linkable {
+      cursor: pointer;
+}
+.menu a h2.linkable:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  opacity: 0.6;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.menu a h2.linkable:hover:after {
+  width: 100%;
+  left: 0;
 }
 
 .menu-li-border {
   margin: 2vw 0 1.5vw;
   width: 2vw;
-  height: 1px;
+  height: 2px;
   background-color: #777;
 }
 
 .menu-li-active-img {
   width: 4vw;
-  vertical-align: top;
-  display: inline;
+vertical-align: middle;
+display: inline;
+margin-left: 1vw;
+}
+
+.mouse-1O_CunO {
+    height: 33px;
+    width: 20px;
+    position: relative;
+    display: block;
+    border: 2px solid #c6c1bc;
+    border-radius: 10px;
+    margin-top: 8px
+}
+.mouse-1O_CunO:after,.mouse-1O_CunO:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 6px;
+    width: 2px;
+    left: 50%;
+    bottom: 100%;
+    background: #c6c1bc;
+    margin-left: -1px;
+    margin-bottom: 2px
+}
+.mouse-1O_CunO:after {
+    height: 4px;
+    margin-bottom: 0;
+    bottom: auto;
+    top: 7px;
+    border-radius: 1px
+}
+.mouse-1O_CunO {
+    transform-origin: 50% 100%;
+    /* animation: instructionMouseAnimation 6s ease-in-out infinite */
+}
+@keyframes instructionKeyAnimation {
+    0% {
+        transform: scale(1)
+    }
+
+    7% {
+        transform: scale(.9)
+    }
+
+    15% {
+        transform: scale(1)
+    }
+
+    22% {
+        transform: scale(.9)
+    }
+
+    30% {
+        transform: scale(1)
+    }
+
+    37% {
+        transform: scale(.9)
+    }
+
+    45% {
+        transform: scale(1)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+@keyframes instructionMouseAnimation {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0)
+    }
+
+    7% {
+        transform: scale(.9) rotate(30deg) translateX(5px)
+    }
+
+    15% {
+        transform: scale(.9) rotate(-30deg) translateX(-5px)
+    }
+
+    22% {
+        transform: scale(.9) rotate(30deg) translateX(5px)
+    }
+
+    30% {
+        transform: scale(.9) rotate(-30deg) translateX(-5px)
+    }
+
+    37% {
+        transform: scale(.9) rotate(30deg) translateX(5px)
+    }
+
+    45% {
+        transform: translateX(0) translateY(0) rotate(0)
+    }
+
+    46% {
+        transform: translateX(0) translateY(0) rotate(0)
+    }
+
+    to {
+        transform: translateX(0) translateY(0) rotate(0)
+    }
 }
