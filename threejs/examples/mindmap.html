@@ -193,7 +193,7 @@
 		</script>
 		<script type="module" src="mindmap.js"></script>
 
-		<div id="info">
+		<div id="info" style="opacity:0">
 			<div class="shadow" style="letter-spacing: -.04em; font-size: 3vw">
 				<div>Dunhuang</div>
 				<div>Cave Paintings</div>
@@ -202,36 +202,18 @@
 			</div>
 		</div>
 
-		<!--
-		<div style="position: absolute; bottom:0; width:1000%; z-index: 10;">
-			<div class="footer">
-				<div class="f-row">
-					<div class="f-col left">
-						<div class="h-h4 disclaimer bold">
-						</div>
-					</div>
-					<div class="f-col center">
-					</div>
-					<div class="f-col right">
-						<div class="h-h4 disclaimer bold"><a href="https://camlab.fas.harvard.edu/About" aria-label="Contact" rel="noopener" draggable="false" class="link underline">Contact Us</a></div>
-					</div>
+		<div id="mindmap-helper">
+			<div>
+				<img id="reset-graph" src="assets/img/nodes.png" style="width:2vw; margin-right: 0.5vw; opacity: 0.8;" loading="eager"/>
+				<p style="margin-top: 1vw; ">Re-center graph</p>
+			</div>
+			<div style=" margin-top: 3vw; ">
+				<div><!-- <div style=" margin: auto; width: 20%;"> -->
+					<span class="mouse-1O_CunO"></span>
 				</div>
+				<p style=" margin-top: 1vw; ">Click and drag to look around <br> Right click to pan</p>
 			</div>
-
-		</div> -->
-
-	<div style="transform:scale(0.8); position:absolute; left: 2vw; top: 20%; z-index: 6;">
-		<div style="cursor: pointer;" id="reset-graph">
-			<img src="assets/img/nodes.png" style="width:2vw; margin-right: 0.5vw; opacity: 0.8;" loading="eager"/>
-			<p style="margin-top: 1vw; ">Re-center graph</p>
 		</div>
-		<div style=" margin-top: 3vw; ">
-			<div><!-- <div style=" margin: auto; width: 20%;"> -->
-				<span class="mouse-1O_CunO"></span>
-			</div>
-			<p style=" margin-top: 1vw; ">Click and drag to look around <br> Right click to pan</p>
-		</div>
-	</div>
 
 		<div data-w-id="f9fa3984-c135-a210-c0e8-a4d556d96064" class="hero-row" style="display:none">
 			<div class="hero-row-wrapper-rotation">
@@ -295,7 +277,9 @@
 				autoAlpha: 0,
 				delay: 0.4,
 				duration: 0.4,
-				onComplete: _ => (window.APP.animateIn())
+				onComplete: _ => (
+					window.APP.animateIn()
+				)
 			});
 		});
 

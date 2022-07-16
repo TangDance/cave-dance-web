@@ -8,7 +8,30 @@ body.mindmap {
   font-style: normal;
 }
 
-.mindmap .graph-info-msg { /* 3d force graph built in help msg */
+#reset-graph {
+  cursor: pointer;
+}
+
+#reset-graph:hover {
+  transform: scale(1.3);
+  /* opacity:1; */
+}
+
+#mindmap-helper {
+  opacity: 0;
+  transform: scale(0.8);
+  position: absolute;
+  bottom: 5vw;
+  padding: 2vw;
+  z-index: 6;
+  backdrop-filter: blur(2PX);
+  -webkit-backdrop-filter: blur(10PX);
+  /* border: 1px solid RGBA(255, 255, 255, 0.18); */
+  box-shadow: 0px 2PX 20PX 0px RGBA(0, 0, 0, 0.3);
+}
+
+.mindmap .graph-info-msg {
+  /* 3d force graph built in help msg */
   display: none !important;
 }
 
@@ -128,6 +151,7 @@ body.mindmap {
 .mindmap .node-label:hover {
   transform: scale(2);
 }
+
 .mindmap .node-label.large {
   font-size: 1.5rem;
 }
@@ -138,7 +162,7 @@ body.mindmap {
 
 .mindmap #info {
   font-style: normal;
-  z-index:999;
+  z-index: 999;
   bottom: 5vw;
   right: 1vw;
   text-align: right;

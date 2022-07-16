@@ -173,10 +173,6 @@ const getPrunedTree = () => { // get the graph data with visible nodes (based on
 	// show all the top-level categories by default
 	gData.links.filter(link => link.source > 0 && link.target > 0 && link.source <= N && link.target <= N).forEach(link => visibleLinks.push(link));
 
-
-	console.log("original gData stat: ", gData.nodes.length, gData.links.length);
-	// console.log("bgData stat: ", bgData.nodes.length, bgData.links.length);
-
 	// Random additional graph data (referenece: https://github.com/vasturiano/3d-force-graph/blob/master/example/curved-links/index.html)
 	let additionalNodes = [...Array(14).keys()].map(i => ({ id: "n"+i }));
 	let additionalLinks = [
@@ -308,8 +304,7 @@ fetch("mindmap_bgdata.json")
 			.nodeVal(node => node.size)
 			.nodeResolution(settings.nodeResolution)
 			.nodeOpacity(0.5)
-			.nodeColor(node => highlightNodes.has(node) ? node === hoverNode ?
-				settings.hoveredNodeColor : settings.linkedNodeColor : settings.nodeColor)
+			.nodeColor(node => highlightNodes.has(node) ? (node === hoverNode ? settings.hoveredNodeColor : settings.linkedNodeColor) : settings.nodeColor)
 			//  .nodeColor(node => highlightNodes.has(node) ? node === hoverNode ? 'rgb(173, 214, 213, 1)' : 'rgba(255,255,255, 1)' : 'rgba(255,255,255, 0.3)')
 			.linkWidth(link => highlightLinks.has(link) ? 0.5 : 0.1)
 			.linkDirectionalArrowLength(1)
@@ -340,10 +335,7 @@ fetch("mindmap_bgdata.json")
 					// 	return visible;
 					// });
 
-					console.log("");
-
 					// lengthen the link connected to the root node
-					//resetGraph();
 					Graph.d3Force('link').distance(link => {
 						if (link.source.id === 0 && link.target.id === clickedNode.id) {
 							console.log("root link detected: ", link);
@@ -355,17 +347,6 @@ fetch("mindmap_bgdata.json")
 						return 10; //settings.normalLinkDistance;
 					});
 					Graph.numDimensions(3); // Re-heat simulation
-
-					// Graph.cameraPosition({
-					// 		x: 0,
-					// 		y: 0,
-					// 		z: 0
-					// 	}, // new position
-					// 	clickedNode, // lookAt ({ x, y, z })
-					// 	5000 // ms transition duration
-					// );
-
-					// Focus on the clicked node. Aim at node from outside it
 					focusNode(clickedNode);
 				}
 			})
@@ -421,10 +402,12 @@ fetch("mindmap_bgdata.json")
 
 		const scene = Graph.scene();
 		resetLinkForceDistance();
-
 		//const axesHelper = new THREE.AxesHelper( 1000 );
 		//scene.add( axesHelper );
 
+
+		TweenMax.to("#mindmap-helper", 5, {opacity:1});
+		TweenMax.to("#info", 5, {opacity:1});
 
 		// gsap.to(camera.position, {
 		// 	duration: 4,
@@ -444,8 +427,6 @@ fetch("mindmap_bgdata.json")
 		// //{x:-450,y:-100,z:20}
 		//{x:0,y:0,z:0} ,
 		//2000 );
-
-		//camera.rotateX(100 * Math.sin(Math.PI) );
 
 		// gsap.timeline()
 		// .to(camera.position, { duration: 2,
@@ -768,9 +749,16 @@ function resetGraph(focusOnNode = null) {
 	if (focusOnNode) {
 		focusNode(focusOnNode);
 	} else {
-		Graph.cameraPosition(settings.initialCameraPosition, {x:0,y:0,z:0}, 2000);
+		Graph.cameraPosition(
+			settings.initialCameraPosition,
+		// {
+		// 	x: settings.initialCameraPosition.x,
+		// 	y: settings.initialCameraPosition.y,
+		// 	z: settings.initialCameraPosition.z
+		// },
+		{x:0,y:0,z:0}, 2000);
 	}
-	Graph.numDimensions(3); // re-heat simulation
+	//Graph.numDimensions(3); // re-heat simulation
 }
 
 function resetLinkForceDistance() {
@@ -786,13 +774,12 @@ function resetLinkForceDistance() {
 }
 
 function focusNode(node) {
-	const distance = 50;
+	// Aim at node from outside it
+	const distance = 50; // 50 is also good
 	const distRatio = 2 + distance/Math.hypot(node.x, node.y, node.z);
 	const newPos = node.x || node.y || node.z ?
 			{ x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
 		: { x: -50, y: 0, z: distance - 100 }; // special case if node is in (0,0,0)
-	console.log("focusNode old position: ", node.x, node.y, node.z);
-	console.log("new camera position: ", newPos);
 
 	Graph.cameraPosition(
 		newPos, // new camera position
@@ -802,16 +789,20 @@ function focusNode(node) {
 }
 
 window.onresize = function() {
-	const canvas = Graph.renderer().domElement;
-	const canvasAspect = canvas.clientWidth / canvas.clientHeight;
-	Graph.camera().aspect = canvasAspect;
-	Graph.camera().updateProjectionMatrix();
+	// const camera = Graph.camera();
+	// const renderer = Graph.renderer();
+	// camera.aspect = window.innerWidth / window.innerHeight;
+	// camera.updateProjectionMatrix();
+	// renderer.setSize(window.innerWidth, window.innerHeight);
 
+	const canvas = Graph.renderer().domElement;
 	// const width = window.innerWidth;
 	// const height = window.innerHeight;
-	// Graph.camera().aspect = width / height;
-	// Graph.camera().updateProjectionMatrix();
-	//Graph.renderer().setSize( canvas.clientWidth, canvas.clientHeight );
+	const width = canvas.clientWidth;
+	const height = canvas.clientHeight;
+	Graph.camera().aspect = width / height;
+	Graph.camera().updateProjectionMatrix();
+	// //Graph.renderer().setSize( canvas.clientWidth, canvas.clientHeight );
 }
 
 const resetBtn = $("#reset-graph");
