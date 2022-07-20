@@ -22,19 +22,18 @@ body {
 }
 
 .listitems {
-      font-size: 0.8rem;
-  text-align: center;
-  position: fixed;
-  bottom: 50%;
-  text-decoration: none;
-  right: 1vw;
-  cursor: pointer;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  /* No support for these yet */
-  -o-user-select: none;
-  user-select: none;
+    text-align: center;
+    position: fixed;
+    top: 20%;
+    text-decoration: none;
+    right: 2vw;
+    font-weight: 700;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 .listitems .lookbook__navigation__media {
@@ -53,8 +52,7 @@ body {
 
 .threeDscroll h2 {
   font-size: 5vw;
-line-height: 1.2;
-font-weight: 500;
+  line-height: 1.2;
 }
 
 .threeDscroll #mainText {
@@ -72,18 +70,7 @@ font-weight: 500;
 .threeDscroll #mainText .text {
   opacity: 1;
 }
-/*
-.threeDscroll h1, h2, h3, blockquote {
-  font-weight: 700;
-  font-style: normal;
-}
 
-.threeDscroll h3 {
-  font-family: 'Theinhardt Pan' !important;
-  padding: 1vw 0 0 1.5vw;
-line-height: 2vw;
-font-size: 2vw;
-} */
 
 .threeDscroll canvas {
   position: fixed;
@@ -116,16 +103,17 @@ font-size: 2vw;
   border-radius: 1rem;
   border: 1px solid RGBA(255, 255, 255, 0.18);
   box-shadow: 0px 2PX 20PX 0px RGBA(0, 0, 0, 0.3);
-      padding: 2rem;
+  padding: 2rem;
 }
 
 .threeDscroll header p {
-  padding: 2vw 0 0;
-  font-weight: 500;
+  padding: 2vw 0 0 1.5vw;
 }
 
 .threeDscroll section p {
-  padding: 2vw 0 0 1.5vw;
+  padding: 2vw 0 0;
+  font-weight: 500;
+
 }
 
 .threeDscroll blockquote {
