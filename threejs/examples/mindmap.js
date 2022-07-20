@@ -66,12 +66,11 @@ const LABELS_MAP = { // node id => display name
 	3: "Education",
 	4: "Events",
 	5: "Theater",
-	6: "Buddhist Art",
+	6: "Machine Learning",
 	7: "Dance Studies",
 	8: "Reconstructing Celestial Dance",
 	9: "Visualizing Celestial Body",
 	10: "Cave 220",
-	11: "Machine Learning"
 }
 const LARGE_NODE_SIZE_NODE_IDS = [];
 const N = 5; // number of the top level categories
@@ -80,13 +79,13 @@ const LINKS_MAP = { // source node id => target node ids
 	0: [1, 2, 3, 4, 5],
 	5: [1, 4],
 	1: [2, 5, 8, 9],
-	2: [5, 1, 3, 4, 6, 7, 10, 11],
+	2: [5, 1, 3, 4, 6, 7, 10],
 	3: [4]
 }
 const CHILDREN_LINKS_MAP = { // source node id => target node ids
 	0: [1, 2, 3, 4, 5],
 	1: [8, 9],
-	2: [6, 7, 10, 11],
+	2: [6, 7, 10],
 }
 
 // Needed for BVH model animation
