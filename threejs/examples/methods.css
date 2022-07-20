@@ -27,7 +27,7 @@ body {
   position: fixed;
   bottom: 50%;
   text-decoration: none;
-  left: 1vw;
+  right: 1vw;
   cursor: pointer;
   -moz-user-select: none;
   -webkit-user-select: none;
