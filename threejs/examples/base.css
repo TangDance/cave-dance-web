@@ -3975,16 +3975,12 @@ h5 {
 }
 
 .body {
-  background-color: #030303
-}
-
-.body.shop {
-  background-color: #000
+  background-color: #030303;
 }
 
 .footer {
   width: 100%;
-  padding: 2vw 2.5vw
+  padding: 2vw 2.5vw 0;
 }
 
 .f-row {
@@ -9597,12 +9593,25 @@ canvas {
 .menu-li.active {
   display: inline;
   font-weight: 600;
-  font-size: 2vw;
-  padding-left: 2vw;
 }
 
 .menu-li.bold {
   font-weight: 500;
+}
+
+.menu {
+  z-index: 10;
+}
+
+.menu .title-row  {
+  margin-left: -4.2vw;
+  margin-bottom: 2vw;
+}
+
+.menu .title-row img {
+  width:3vw;
+  margin-right: 0.5vw;
+  opacity: 0.8;
 }
 
 .menu a h2 {
