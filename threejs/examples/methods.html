@@ -222,30 +222,30 @@
 
     // 3D Object - Jam's model
 
-    const loader = new GLTFLoader().setPath( 'models/glTF/Dunhuang/' );
-    loader.load( 'wire.glb', function ( gltf ) {
-      wire = SkeletonUtils.clone( gltf.scene );
-
-			const model = wire.children[0];
-			model.material.opacity = 0.1;
-			model.material.transparent = true;
-			model.traverse(n => { if ( n.isMesh ) {
-		    n.castShadow = true;
-		    n.receiveShadow = true;
-		    if(n.material.map) n.material.map.anisotropy = 1;
-		  }});
-
-	    wire.scale.set(wire_scale, wire_scale, wire_scale);
-		  const angle = 90;
-      wire.rotateY(angle);
-
-      scene.add( wire);
-      wire.position.x = wire_x;
-      wire.position.y = wire_y;
-      wire.position.z = wire_z_target;
-
-      animate();
-    } );
+    // const loader = new GLTFLoader().setPath( 'models/glTF/Dunhuang/' );
+    // loader.load( 'wire.glb', function ( gltf ) {
+    //   wire = SkeletonUtils.clone( gltf.scene );
+		//
+		// 	const model = wire.children[0];
+		// 	model.material.opacity = 0.1;
+		// 	model.material.transparent = true;
+		// 	model.traverse(n => { if ( n.isMesh ) {
+		//     n.castShadow = true;
+		//     n.receiveShadow = true;
+		//     if(n.material.map) n.material.map.anisotropy = 1;
+		//   }});
+		//
+	  //   wire.scale.set(wire_scale, wire_scale, wire_scale);
+		//   const angle = 90;
+    //   wire.rotateY(angle);
+		//
+    //   scene.add( wire);
+    //   wire.position.x = wire_x;
+    //   wire.position.y = wire_y;
+    //   wire.position.z = wire_z_target;
+		//
+    //   animate();
+    // } );
 
 
     // // Moon
@@ -301,7 +301,7 @@
 				}
 			}
 
-			if (animated_mocap_clicked && !animated_mocap) {
+			if (skeletonHelper && animated_mocap_clicked && !animated_mocap) {
 				const o = Number(skeletonHelper.material.opacity);
 				if (o <= 1) {
 	        skeletonHelper.material.opacity = String(o + 0.002) ;
@@ -310,7 +310,7 @@
 				}
 			}
 
-			if (animated_wire_clicked && !animated_wire) {
+			if (wire && animated_wire_clicked && !animated_wire) {
 				const model = wire.children[0];
 				if (model.material.opacity <= 1) {
 					model.material.opacity = model.material.opacity + 0.002;
