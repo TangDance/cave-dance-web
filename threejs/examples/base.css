@@ -4270,8 +4270,8 @@ h5 {
 }
 
 .h-h1.hero-home {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#494949), to(hsla(0, 0%, 61.2%, 0)));
-  background-image: linear-gradient(180deg, #494949, hsla(0, 0%, 61.2%, 0));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#797979), to(hsla(0, 0%, 61.2%, 0)));
+  background-image: linear-gradient(180deg, #797979, hsla(0, 0%, 61.2%, 0));
   font-size: 12vw;
   line-height: 11vw;
   -webkit-background-clip: text;
@@ -4617,8 +4617,8 @@ h5 {
 }
 
 .h-h2.gradient {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#494949), to(hsla(0, 0%, 61.2%, 0)));
-  background-image: linear-gradient(180deg, #494949, hsla(0, 0%, 61.2%, 0))
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#797979), to(hsla(0, 0%, 61.2%, 0)));
+  background-image: linear-gradient(180deg, #797979, hsla(0, 0%, 61.2%, 0))
 }
 
 .h-h2.gradient.large {
