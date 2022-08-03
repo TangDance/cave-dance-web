@@ -18,6 +18,13 @@
 </head>
 
 <body>
+  <!-- <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+  <script>
+    // VConsole will be exported to `window.VConsole` by default.
+    var vConsole = new window.VConsole();
+    console.log(vConsole);
+  </script> -->
+
   <div class="gradient-embed w-embed">
     <style>
       .gradient {
@@ -28,6 +35,51 @@
            mix-blend-mode: difference;
          }
       </style>
+  </div>
+
+  <style>
+
+  html {background-color: black}
+
+  #landingVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #welcome {
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    left: 45%;
+  }
+  #welcome button {
+    background: transparent;
+    outline: 1px solid rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    color: #9a9a9a;
+    border: solid 1px var(--focus-color);
+    padding: 0.4rem 0.5rem 0.2rem;
+    margin: 0.2vw;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  #welcome button:hover {
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  </style>
+
+  <div class="loader">
+    <video autoplay muted autoplay="autoplay" defaultmuted playsinline id="landingVideo">
+      <source src="https://camlab-cave-dance.oss-cn-hongkong.aliyuncs.com/assets/video/d2_3_.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <div id="welcome">
+      <button>ENTER</button>
+    </div>
   </div>
 
   <div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b994" class="navbar">
@@ -43,16 +95,27 @@
       <div class="menu">
         <div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99b" class="m-inner">
           <a class="title-row" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99c" href="index.html" class="m-link w-inline-block">
-            <span data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99d">
-              <img src="assets/img/nodes.png" loading="eager" />
+            <span  data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99d" >
+              <img src="assets/img/nodes.png" loading="eager"/>
               <h2 class="h-h2 menu-li title linkable">Cave Dance</h2>
               <!--
 
-                <img src="assets/img/active_item.png" class="menu-li-active-img" loading="eager"/>
+              <img src="assets/img/active_item.png" class="menu-li-active-img" loading="eager"/>
 
-                -->
+              -->
             </span>
           </a>
+
+          <link rel="prefetch" href="about.html" />
+          <a aria-label="About" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="about.html" class="m-link w-inline-block">
+            <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">About</h2>
+          </a>
+
+          <a aria-label="Connect" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="https://camlab.fas.harvard.edu/" target="_blank" class="m-link w-inline-block">
+            <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">Connect</h2>
+          </a>
+
+          <div class="menu-li-border"></div>
 
           <link rel="prefetch" href="home.html" />
           <a aria-label="Theater" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="home.html" class="m-link w-inline-block">
@@ -61,7 +124,7 @@
 
           <div class="menu-li-border"></div>
 
-          <a aria-label="Academic" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" class="m-link w-inline-block">
+          <a aria-label="Academic" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f"  class="m-link w-inline-block">
             <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li bold">Academic</h2>
           </a>
 
@@ -70,8 +133,12 @@
             <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">Cave 220</h2>
           </a>
 
+          <a aria-label="Music Studies" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="music.html" class="m-link w-inline-block">
+            <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">Music Studies </h2>
+          </a>
+
           <a aria-label="Machine Learning" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="tech.html" class="m-link w-inline-block">
-            <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">Machine Learning </h2>
+            <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">Technical Roadmap </h2>
           </a>
 
           <div class="menu-li-border"></div>
@@ -103,13 +170,15 @@
           </a>
 
         </div>
-        <div class="menu-content">
+
+        <!-- <div class="menu-content">
           <div class="menu-mask"><img src="https://chunweb.files.wordpress.com/2022/03/amo1.png" loading="eager" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a7" alt="" class="menu-img" /><img src="https://chunweb.files.wordpress.com/2022/03/amo3.png"
               loading="eager" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a8" alt="" class="menu-img" />
             <img src="https://chunweb.files.wordpress.com/2022/03/amo2.png" loading="eager" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a9" alt="" class="menu-img" /></div>
-        </div>
+        </div> -->
 
         <div class="m-bg"></div>
+
         <div data-animation="cursor" rel="noopener" data-w-id="94bf8e40-acca-479f-14ca-8485acd952d1" class="cta-wrap close">
           <div class="cta-bg"></div>
           <div class="cta-img menu-close"><img src="assets/img/close.svg" loading="lazy" alt="" class="img ico" /></div>
@@ -119,13 +188,16 @@
         </div>
       </div>
     </div>
-    <div class="n-block right">
-      <a href="https://camlab.fas.harvard.edu/" rel="noopener" aria-label="button" class="w-commerce-commercecartopenlink cart-button w-inline-block">
+
+    <div class="n-block center">
+      <a href="https://camlab.fas.harvard.edu/" rel="noopener" aria-label="button">
         <div class="h-h4 bold nav w-inline-block">
           <img style="opacity:0.8" src="assets/img/CAMLab.png" loading="lazy" class="n-brand">
         </div>
       </a>
     </div>
+
+    <div class="n-block "></div>
   </div>
 
   <!-- <div class="rotate-wrap">
@@ -135,7 +207,9 @@
   <main data-template="home" class="content demo mindmap">
     <div data-w-id="53ee3c76-c537-5088-f0d4-fc00e8f8c98a" class="wait-bar">
       <div class="outer hero-t" style="line-height: 170%">
-        <div class="text disclaimer load" style="font-size: 12px">CAMLab is a multidisciplinary <br /> research lab at Harvard University.</div>
+        <!-- <div class="text disclaimer load" style="font-size: 12px">
+          Loading
+        </div> -->
       </div>
       <div class="progress-bar">
         <div class="progress-side"></div>
@@ -146,25 +220,33 @@
       </div>
     </div>
 
-    <!-- <div class="lil-gui allow-touch-styles">
-  			<div class="title" role="button" aria-expanded="true" tabindex="0">
-  	      Graph Controls
-  	    </div>
-  	    <div class="nav-info-container">
-  	      <div class="nav-info">Left-click: rotate</div>
-  	      <div class="nav-info"> Mouse-wheel / middle-click: zoom</div>
-  	    </div>
-  		</div> -->
-
 
     <div id="3d-graph" style="width:100%; height:100%"></div>
 
+
+    <!-- const LABELS_MAP = { // node id => display name
+    	0: "Cave Dance", // root node
+    	1: "Experiments",
+    	2: "Academic",
+    	3: "Education",
+    	4: "Events",
+    	5: "Theater",
+    	6: "Technical Roadmap",
+    	7: "Music Studies",
+    	8: "Reconstructing Celestial Dance",
+    	9: "Visualizing Celestial Body",
+    	10: "Cave 220"
+    } -->
+
     <div id="hidden-buttons" style="display:none">
-      <a href="home.html" id="5"></a>
+      <a href="about.html" id="0"></a>
+      <a href="education.html" id="3"></a>
+      <a href="events.html" id="4"></a>
+      <a href="theater.html" id="5"></a>
       <a href="tech.html" id="6"></a>
-      <a href="data.html" id="7"></a>
-      <a href="methods.html" id="8"></a>
-      <a href="matrix.html" id="9"></a>
+      <a href="music.html" id="7"></a>
+      <a href="about.html" id="8"></a>
+      <a href="visualization.html" id="9"></a>
       <a href="cave.html" id="10"></a>
     </div>
 
@@ -178,18 +260,34 @@
     </div>
 
     <div id="mindmap-helper">
-      <div>
-        <img id="reset-graph" src="assets/img/nodes.png" style="width:2vw; margin-right: 0.5vw; opacity: 0.8;" loading="eager" />
-        <p style="margin-top: 1vw; ">Re-center graph</p>
+      <div id="reset-graph-wrapper">
+        <img id="reset-graph" src="assets/img/nodes.png" style="width: 1.5rem; margin-right: 0.5vw; opacity: 0.8;" loading="eager" />
+        <p style="margin-top: 1rem;">Re-center graph</p>
       </div>
-      <div style=" margin-top: 3vw; ">
+      <div style="margin-top: 1.5rem;" id="mouse-help-wrapper">
         <div>
-          <!-- <div style=" margin: auto; width: 20%;"> -->
           <span class="mouse-1O_CunO"></span>
         </div>
         <p style=" margin-top: 1vw; ">Click and drag to look around <br> Right click to pan</p>
       </div>
     </div>
+
+    <div class="footer">
+      <div class="f-row">
+        <div class="f-col left">
+          <div class="f-link"><a aria-label="privacy" rel="noopener" draggable="false" href="about.html" class="h-h2 disclaimer bold">About</a></div>
+        </div>
+        <div class="f-col center">
+          <div class="h-h2 disclaimer bold"></div>
+        </div>
+        <div class="f-col right">
+          <div class="h-h2 disclaimer bold">
+            <a href="https://camlab.fas.harvard.edu/About" aria-label="Contact" rel="noopener" draggable="false">Connect</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <div data-w-id="f9fa3984-c135-a210-c0e8-a4d556d96064" class="hero-row" style="display:none">
       <div class="hero-row-wrapper-rotation">
@@ -236,51 +334,52 @@
       </style>
   </div>
   <script src="./composition_master.js" type="text/javascript"></script>
-  <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+  <!-- <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
   <script type="importmap">
     {
 			"imports": {
 				"three": "../build/three.module.js"
 			}
 		}
-	</script>
+	</script> -->
   <script type="module">
-    import * as THREE from 'three';
-    import {
-    	UnrealBloomPass
-    } from 'https://cdn.skypack.dev/pin/three@v0.136.0-4Px7Kx1INqCFBN0tXUQc/mode=imports,min/unoptimized/examples/jsm/postprocessing/UnrealBloomPass.js';
+    import * as THREE from '../build/three.module.js';
+    import { BVHLoader } from './jsm/loaders/BVHLoader.js';
+    import { UnrealBloomPass } from 'https://cdn.skypack.dev/pin/three@v0.136.0-4Px7Kx1INqCFBN0tXUQc/mode=imports,min/unoptimized/examples/jsm/postprocessing/UnrealBloomPass.js';
     import { CSS2DRenderer, CSS2DObject} from 'https://unpkg.com/three@0.126.1/examples/jsm/renderers/CSS2DRenderer.js';
+
+    TweenMax.to("#welcome", 5, {opacity:1});
 
     const Settings = function() {
     	const yellow = 'rgba(255,160,0,0.8)';
-    	const white = 'rgba(255,255,255, 0.7)';
+    	const white = 'rgba(255,255,255, 0.6)';
     	const white2 = 'rgba(255,255,255, 0.9)';
     	const purple = 'rgb(204, 192, 207, 0.3)';
 
     	this.addBloomPass = true;
     	this.addGridHelper = false;
     	this.addBottomPlane = false;
-    	this.addGalaxyToScene = false;
-    	this.addBackGroundToScene = false;
-    	this.sceneBackgroundImage = '';
-    	this.addBVHtoScene = false;
+      this.useStaticImageBackground = false;
+    	this.sceneBackgroundImage = 'assets/img/desktop-bg-mindmap2.jpg';
+      this.useVideoBackground = false;
+    	this.addBVHtoScene = true;
     	this.initialCameraPosition = {
     		x: 0,
     		y: 0,
     		z: 100
     	};
     	this.addWallsToScene = false;
+      this.largeLinkDistance = 60;
     	this.normalLinkDistance = 20;
     	this.smallLinkDistance = 5;
-    	this.largeLinkDistance = 100;
     	this.linkVisiblity = true;
     	this.linkCurvature = 0.3;
     	this.linkRotation = 0;
     	this.nodeColor = white;
     	this.hoveredNodeColor = white2;
     	this.linkedNodeColor = this.hoveredNodeColor;
-    	this.rootNodeSize = 12;
-    	this.largeNodeSize = 4;
+    	this.rootNodeSize = 7;
+    	this.largeNodeSize = 9;
     	this.nodeSize = 2;
     	this.childLinkNodeSize = 0.1;
     	this.nodeResolution = 15; // Force Graph default is 8
@@ -297,7 +396,11 @@
     	return size;
     };
 
-    const BACKGROUND_COLOR_FORCE_GRAPH = "#000000";
+    //createVideoSrcDOMs();
+
+    const black = "#000000";
+    const deepblue = "#010110";
+    const BACKGROUND_COLOR_FORCE_GRAPH = "black"; //deepblue;
     const LABELS_MAP = { // node id => display name
     	0: "Cave Dance", // root node
     	1: "Experiments",
@@ -305,13 +408,13 @@
     	3: "Education",
     	4: "Events",
     	5: "Theater",
-    	6: "Machine Learning",
-    	7: "Dance Studies",
+    	6: "Technical Roadmap",
+    	7: "Music Studies",
     	8: "Reconstructing Celestial Dance",
     	9: "Visualizing Celestial Body",
     	10: "Cave 220",
     }
-    const LARGE_NODE_SIZE_NODE_IDS = [];
+    const LARGE_NODE_SIZE_NODE_IDS = [5];
     const N = 5; // number of the top level categories
     const LINKS_MAP = { // source node id => target node ids
     	// NOTE: this map must include all the links appeared in CHILDREN_LINKS_MAP
@@ -328,7 +431,7 @@
     }
 
     // Needed for BVH model animation
-    let mixer, skeletonHelper, controls;
+    let mixer, skeletonHelper, controls, renderer;
     const clock = new THREE.Clock();
 
     // Graph data
@@ -489,19 +592,18 @@
     						// 	console.log(visible, node.id);
     						// 	return visible;
     						// });
+                resetGraph();
 
-    						// lengthen the link connected to the root node
     						Graph.d3Force('link').distance(link => {
     							if (link.source.id === 0 && link.target.id === clickedNode.id) {
-    								console.log("root link detected: ", link);
-    								return 400; //settings.largeLinkDistance;
+    								return settings.largeLinkDistance * 4; // lengthen its link connected to the root node
     							} else if (link.source.id === clickedNode.id && link.target.id > N) {
-    								console.log("child link detected: ", link);
-    								return 5; // settings.smallLinkDistance;
-    							}
-    							return 10; //settings.normalLinkDistance;
+    								return settings.smallLinkDistance * 1; // keep its link length to its children
+    							} else {
+                    return settings.largeLinkDistance * 2; // shortern other links
+                  }
     						});
-    						Graph.numDimensions(3); // Re-heat simulation
+    						//Graph.numDimensions(3); // Re-heat simulation
     						focusNode(clickedNode);
     					}
     				})
@@ -522,9 +624,6 @@
     						if (node.neighbors) {
     							node.neighbors.filter(node => node.id !== rootId && node.id > N).forEach(neighbor => highlightNodes.add(neighbor));
     						}
-    						// if (node.links) {
-    						// 	node.links.forEach(link => highlightLinks.add(link));
-    						// }
     						if (node.childLinks) {
     							node.childLinks.forEach(link => highlightLinks.add(link));
     						}
@@ -558,12 +657,14 @@
     			const scene = Graph.scene();
     			resetLinkForceDistance();
 
-    			TweenMax.to("#mindmap-helper", 5, {opacity:1});
+    			TweenMax.to("#mindmap-helper", 5, {opacity:0.8});
     			TweenMax.to("#info", 5, {opacity:1});
 
     			controls = Graph.controls();
     			controls.minDistance = 0;
     			controls.maxDistance = 1000;
+
+          renderer = Graph.renderer();
 
     			const mainLight = new THREE.PointLight(0xcccccc, 1.8, 100);
     			mainLight.position.y = 60;
@@ -590,17 +691,27 @@
 
     			if (settings.addBloomPass) {
     				const bloomPass = new UnrealBloomPass();
-    				bloomPass.strength = 0.9;
+    				bloomPass.strength = settings.useStaticImageBackground ? 0.4 : 0.9;
     				bloomPass.radius = 0.2;
     				bloomPass.threshold = 0.05;
     				Graph.postProcessingComposer().addPass(bloomPass);
     			}
 
+          let backgroundTexture;
+          if (settings.useStaticImageBackground) {
+            backgroundTexture = new THREE.TextureLoader().load(settings.sceneBackgroundImage);
+          } else if (settings.useVideoBackground) {
+          //  backgroundTexture = createVideoMesh('video_bg');
+          }
+          if (backgroundTexture) {
+            scene.background = backgroundTexture;
+          }
+
+
     			if (settings.addBVHtoScene) {
     				// BVH Model
     				const loader = new BVHLoader();
     				loader.load("models/bvh/0-6000.bvh", function(result) {
-
     					skeletonHelper = new THREE.SkeletonHelper(result.skeleton.bones[0]);
     					skeletonHelper.skeleton = result.skeleton; // allow animation mixer to bind to THREE.SkeletonHelper directly
     					skeletonHelper.material = new THREE.MeshBasicMaterial({
@@ -613,7 +724,7 @@
     					const boneContainer = new THREE.Group();
     					boneContainer.add(result.skeleton.bones[0]);
 
-    					let x = 0;
+    					let x = -20;
     					let y = -20;
     					let z = 0;
     					boneContainer.translateX(x);
@@ -623,7 +734,7 @@
     					skeletonHelper.translateY(y);
     					skeletonHelper.translateZ(z);
 
-    					const scale = 0.15;
+    					const scale = 0.2;
     					boneContainer.scale.set(scale, scale, scale);
     					skeletonHelper.scale.set(scale, scale, scale);
 
@@ -652,47 +763,88 @@
     		.linkDirectionalParticles(Graph.linkDirectionalParticles());
     }
 
-    function resetGraph(focusOnNode = null) {
+    function resetGraph() {
     	resetLinkForceDistance();
-    	if (focusOnNode) {
-    		focusNode(focusOnNode);
-    	} else {
-    		Graph.cameraPosition(
-    			settings.initialCameraPosition,
-    		{x:0,y:0,z:0}, 2000);
-    	}
-    	//Graph.numDimensions(3); // re-heat simulation
+    	Graph.cameraPosition(settings.initialCameraPosition, {x:0,y:0,z:0}, 2000);
+    	Graph.numDimensions(3); // re-heat simulation
+    }
+
+    function focusNode(node) {
+
+      // Aim at node from outside it
+      const distance = 50;
+      const distRatio = 2 + distance/Math.hypot(node.x, node.y, node.z);
+      const newPos = node.x || node.y || node.z ?
+        { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
+      : { x: -50, y: 0, z: distance - 100 }; // special case if node is in (0,0,0)
+
+      Graph.cameraPosition(
+        newPos, // new camera position
+        node, // lookAt ({ x, y, z })
+        5000  // ms transition duration
+      );
     }
 
     function resetLinkForceDistance() {
     	if (Graph.d3Force('link')) {
     		Graph.d3Force('link').distance(link => {
-    			if (link.source.id === 0) {
-    				return 50;
-    			} else if (link.source.id <= N) {
-    				return 5;
+    			if (link.source.id === 0) { // links to root
+    				return settings.largeLinkDistance;
+    			} else if (link.source.id <= N) { // links from 1st level parent nodes are short
+    				return settings.smallLinkDistance;
     			}
     		});
     	}
     }
 
-    function focusNode(node) {
-    	// Aim at node from outside it
-    	const distance = 50; // 50 is also good
-    	const distRatio = 2 + distance/Math.hypot(node.x, node.y, node.z);
-    	const newPos = node.x || node.y || node.z ?
-    			{ x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
-    		: { x: -50, y: 0, z: distance - 100 }; // special case if node is in (0,0,0)
-
-    	Graph.cameraPosition(
-    		newPos, // new camera position
-    		node, // lookAt ({ x, y, z })
-    		5000  // ms transition duration
-    	);
-    }
-
     window.onresize = function() {
     	location.reload();
+    }
+
+    const resetBtn = $("#reset-graph");
+    if (resetBtn) {
+    	resetBtn.click(() => {
+    		resetGraph();
+    	});
+    }
+
+    const welcome = $("#welcome");
+    if (welcome) {
+      welcome.click(() => {
+        TweenMax.to(".loader", 2, {opacity:0, display:"none"});
+      });
+    }
+
+    // function createVideoSrcDOMs() {
+		// 	["assets/video/AmoSequence01.mp4"].forEach((videoSrc, i) => {
+		// 		const video = document.createElement('video');
+		// 		video.id = 'video_bg';
+		// 		video.src = videoSrc;
+		// 		video.autoplay = true;
+		// 		video.muted = true;
+		// 		video.loop = true;
+		// 		video.playsinline = true;
+		// 		video.crossOrigin = 'anonymous';
+		// 		document.body.appendChild(video);
+		// 	});
+		// }
+
+    function createVideoMesh(videoId) {
+      const video = document.getElementById( videoId );
+      video.play(); // this is the key to play video
+      const texture = new THREE.VideoTexture( video );
+      texture.minFilter = THREE.LinearFilter;
+      texture.magFilter = THREE.LinearFilter;
+      texture.repeat.set(0.5, 1); // this scales the video
+      const geometry = new THREE.BoxGeometry(settings.videoWidth, settings.videoHeight, settings.videoDepth);
+      const material = new THREE.MeshBasicMaterial({
+        map: texture,
+        side: THREE.FrontSide,
+        toneMapped: false,
+        transparent: true,
+        opacity: 1
+      });
+      return new THREE.Mesh(geometry, material);
     }
   </script>
 

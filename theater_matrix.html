@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Cave Dance | Theater | CAMLab </title>
+  <meta content="Cave Dance | CAMLab" property="og:title" />
+  <meta content="Cave Dance Project | Harvard CAMLab" property="og:description" />
+  <meta property="og:type" content="website" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link href="base.css" rel="stylesheet" type="text/css" />
+  <link href="assets/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <link href="assets/img/favicon.png" rel="apple-touch-icon" />
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=603fe89ec4bbcece7ee6a53a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" type="text/javascript" crossorigin="anonymous"></script>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background:black;
+  margin: 0;
+  font-family: Arial;
+  font-size: 17px;
+}
+
+@media screen and (max-width:479px) { /* mobile phones */
+  #mobile-label {
+    display: none;
+  }
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+
+.c-pp {
+  position: absolute;
+right: 1rem;
+bottom: 1rem;
+    transform: scale(0.5);
+  width: 100px;
+  height: 100px;
+  display: block;
+  border: 3.3333333333px solid #fff;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0 auto;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.c-pp__icon {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  transition: all 0.2s ease;
+  width: 25px;
+  height: 44px;
+  transform: translateX(38.4615384615px);
+  top: 25px;
+  left: -5px;
+  border-top: 0 solid transparent;
+  border-right: 8.3333333333px solid #fff;
+  border-bottom: 0 solid transparent;
+  border-left: 8.3333333333px solid #fff;
+}
+.c-pp.is-play .c-pp__icon {
+  transform: translateX(43.4782608696px);
+  border-top: 25px solid transparent;
+  border-right: 0px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 25px solid #fff;
+}
+</style>
+</head>
+<body>
+
+
+
+<video autoplay muted loop id="myVideo">
+  <source src="https://camlab-cave-dance.oss-cn-hongkong.aliyuncs.com/assets/video/cavedance_data_matrix.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
+<div class="content">
+  <!-- <h1 style="font-size: 7rem;">Cave Dance</h1>
+  <p style="margin-left: 10px;">This is an intro text</p> -->
+
+  <div class="c-pp" id="control" onclick="playPause()">
+    <div class="c-pp__icon"></div>
+  </div>
+</div>
+
+<div id="mobile-label"></div>
+
+<script>
+var video = document.getElementById("myVideo");
+
+  $( document ).ready(function() {
+      var is_mobile = false;
+
+      if( $('#mobile-label').css('display')=='none') {
+          is_mobile = true;
+      }
+      if (is_mobile == true) {
+        console.log("is mobile");
+        $('.c-pp').addClass('is-play');
+      } else {
+        console.log("is not mobile");
+        video.play();
+      }
+   });
+
+  function playPause() {
+    console.log("playPause");
+    $('.c-pp').toggleClass('is-play');
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  }
+</script>
+
+
+
+</body>
+</html>

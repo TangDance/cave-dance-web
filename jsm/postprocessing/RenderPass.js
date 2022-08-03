@@ -1,6 +1,6 @@
 import {
 	Color
-} from 'three';
+} from "../../build/three.module.js";
 import { Pass } from './Pass.js';
 
 class RenderPass extends Pass {
@@ -11,7 +11,6 @@ class RenderPass extends Pass {
 
 		this.scene = scene;
 		this.camera = camera;
-
 		this.overrideMaterial = overrideMaterial;
 
 		this.clearColor = clearColor;
