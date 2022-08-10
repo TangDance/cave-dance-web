@@ -165,8 +165,8 @@
     }
 
     .lookbook__navigation__wrapper {
-        /* top: calc(50% - 7.5vh); */
-        top:100%;
+        top: calc(50% - 7.5vh);
+        /* top:100%; */
     }
 
     .lookbook__navigation__wrapper,
@@ -449,6 +449,8 @@
   <script src="./composition_master.js" type="text/javascript"></script>
 
   <script>
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     //100vh Fix on Mobile
     let vh = window.innerHeight * 0.01;
