@@ -90,8 +90,8 @@ height: 100%;
 position: fixed;
 top: 68%;
 left: 10%;
-font-size:0.7rem;
-line-height: 1.2;
+font-size:0.75rem;
+line-height: 1.5;
 	}
 	</style>
 
@@ -108,20 +108,20 @@ line-height: 1.2;
 							<div class="table">
 								<div class="col">
 									<!-- <div class="statline"><span>名字:</span><span class="value monospace semi">观无量寿经变</span></div> -->
-									<div class="statline"><span>年代:</span><span class="value monospace semi">盛唐</span></div>
-									<div class="statline"><span>石窟信息:</span><span class="value monospace semi"> 莫高窟112窟南壁 </span></div>
-									<div class="statline"><span>舞姿描述:</span><span class="value monospace semi"> 丰腴饱满，雍容华贵的舞者，点脚吸腿翘趾，出胯旋身“反弹琵琶”，亦奏亦舞。</span></div>
-									<div class="statline"><span>舞蹈时期:</span><span class="value monospace semi">观无量寿经变</span></div>
+									<div class="statline"><span>年代: </span><span class="value monospace semi">盛唐</span></div>
+									<div class="statline"><span>石窟信息: </span><span class="value monospace semi"> 莫高窟112窟南壁 </span></div>
+									<div class="statline"><span>舞姿描述: </span><span class="value monospace semi"> 丰腴饱满，雍容华贵的舞者，点脚吸腿翘趾，出胯旋身“反弹琵琶”，亦奏亦舞。</span></div>
+									<!-- <div class="statline"><span>舞蹈时期: </span><span class="value monospace semi">观无量寿经变</span></div> -->
 								</div>
 
 								<div class="col" style="margin-top:2vw">
 									<!-- <div class="monospace"></div> -->
 									<div class="statline"><span>Motion Capture Parameters:</span></div>
 									<!-- <div class="statline"><span>File name:</span><span class="value monospace semi"> 36pose_male.bvh</span></div> -->
-									<div class="statline"><span>File size:</span><span class="value monospace semi"> 201 KB</span></div>
-									<div class="statline"><span>File duration:</span><span class="value monospace semi"> 10 s</span></div>
-									<div class="statline"><span>Frame Count:</span><span class="value monospace semi"> 124</span></div>
-									<div class="statline"><span>Collaborator:</span><span class="value monospace semi">Beijing Dance Academy</span></div>
+									<div class="statline"><span>File size: </span><span class="value monospace semi"> 201 KB</span></div>
+									<div class="statline"><span>File duration: </span><span class="value monospace semi"> 10 s</span></div>
+									<div class="statline"><span>Frame Count: </span><span class="value monospace semi"> 124</span></div>
+									<div class="statline"><span>Collaborator: </span><span class="value monospace semi">Beijing Dance Academy</span></div>
 								</div>
 						</div>
 					</div>
@@ -164,7 +164,7 @@ line-height: 1.2;
 
 			    <link rel="prefetch" href="theater.html" />
 			    <a aria-label="Theater" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="theater.html" class="m-link w-inline-block">
-			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li bold">Theater</h2>
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable bold">Theater</h2>
 			    </a>
 
 			    <div class="menu-li-border"></div>
@@ -196,7 +196,7 @@ line-height: 1.2;
 
 			    <link rel="prefetch" href="reconstruction.html" />
 			    <a aria-label="Reconstructing Celestial Dance" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="reconstruction.html" class="m-link w-inline-block">
-			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable bold">Reconstructing Celestial Dance</h2>
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">Reconstructing Celestial Dance</h2>
 						  <img src="assets/img/active_item.png" class="menu-li-active-img" loading="eager"/>
 			    </a>
 
@@ -321,7 +321,7 @@ line-height: 1.2;
 		let mural_x = 2, mural_y = 0, mural_z = -5 , mural_scale = 3;
 		let drawing_x = 0, drawing_y = 0, drawing_z   = 0, drawing_z_target = 5 , drawing_scale = 2.5;
 		let mocap_x = 0, mocap_y = -4, mocap_z = 10;
-		const model_scale = 0.004;
+		const model_scale = 0.0035;
 		let wire_x = 0, wire_y = -4, wire_z = -4, wire_z_target = 18, wire_scale = 40;
 
 		// File paths
@@ -457,7 +457,7 @@ line-height: 1.2;
 			// animations on demand
 			if (animated_drawing_clicked && !animated_drawing) {
 				if (drawing.position.z <= drawing_z_target) {
-	        drawing.position.z += 0.05;
+	        drawing.position.z += 0.02;
 	    	} else {
 					animated_drawing = true;
 				}
@@ -466,7 +466,7 @@ line-height: 1.2;
 			if (skeletonHelper && animated_mocap_clicked && !animated_mocap) {
 				const o = Number(skeletonHelper.material.opacity);
 				if (o <= 1) {
-	        skeletonHelper.material.opacity = String(o + 0.002) ;
+	        skeletonHelper.material.opacity = String(o + 0.0003) ;
 	    	} else {
 					animated_mocap = true;
 				}
@@ -475,7 +475,7 @@ line-height: 1.2;
 			if (wire && animated_wire_clicked && !animated_wire) {
 				const model = wire.children[0];
 				if (model.material.opacity <= 1) {
-					model.material.opacity = model.material.opacity + 0.002;
+					model.material.opacity = model.material.opacity + 0.01;
 					model.traverse(n => { if ( n.isMesh ) {
 						n.castShadow = true;
 						n.receiveShadow = true;
