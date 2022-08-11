@@ -1,740 +1,607 @@
-<head>
-	<title>Cave Dance | CAMLab </title>
-	<meta content="Dunhuang Cave Dance" name="description" />
-	<meta content="Dunhuang Cave Dance" property="og:title" />
-	<meta content="Dunhuang Cave Dance" property="og:description" />
-	<meta property="og:type" content="website" />
-	<meta content="width=device-width, initial-scale=1" name="viewport" />
-	<meta charset="utf-8">
-	<link href="assets/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
-	<link href="assets/img/favicon.png" rel="apple-touch-icon" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" type="text/javascript"></script>
-	<script src="https://cdn.jsdelivr.net/npm/fflate@0.7.2/umd/index.min.js" type="text/javascript"></script>
-	<script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=603fe89ec4bbcece7ee6a53a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-	<link href="cave.css" rel="stylesheet" type="text/css" />
-</head>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Cave Dance | Cave 220 | CAMLab </title>
+		<meta content="Dunhuang Cave Dance" name="description" />
+		<meta content="Dunhuang Cave Dance" property="og:title" />
+		<meta content="Dunhuang Cave Dance" property="og:description" />
+		<meta property="og:type" content="website" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<link href="assets/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+		<link href="assets/img/favicon.png" rel="apple-touch-icon" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+		/>
+		<link type="text/css" rel="stylesheet" href="main.css" />
 
-<body>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
+			type="text/javascript"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/fflate@0.7.2/umd/index.min.js"
+			type="text/javascript"
+		></script>
+		<link
+			href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/61014076aa014a767ce9208c_favicon.png"
+			rel="shortcut icon"
+			type="image/x-icon"
+		/>
+		<link
+			href="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/610140795b9a3f0382a58e51_web-clip.png"
+			rel="apple-touch-icon"
+		/>
+		<script
+			src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=603fe89ec4bbcece7ee6a53a"
+			type="text/javascript"
+			integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+			crossorigin="anonymous"
+		></script>
+		<link href="cave.css" rel="stylesheet" type="text/css" />
+		<style>
+			#blocker {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+			}
 
-	<button class="menu" id="button_print" style="display:none">camera info</button>
+			#instructions {
+				width: 100%;
+				height: 100%;
 
-	<div id="loading" class="loading">
-		<div class="wait">
-			<div class="wait-inner">
-				<div class="wait_img-wrap">
-					<div data-w-id="e8311aee-d434-6a91-e883-eae45438144d" class="wait_img"></div>
-					<div data-w-id="a5f9b580-a290-06a9-c3a9-042380199875" class="wait-overlay"></div>
-				</div>
-				<div class="wait-content">
-					<div class="hero-h1__wrap"><img src="https://chunweb.files.wordpress.com/2022/04/cave220.png" loading="lazy" alt="" class="hero-h1" /></div>
-				</div>
-				<div id="menu" style="opacity: 0.6">
-					<div class="container" style="margin-top: 2rem">
-			      <div class="title-container">
-			        <div class="title">
-			          <h1>莫高窟第220窟</h1>
-								<h2>Mogao Cave 220</h2>
-			        </div>
-			      </div>
-			    </div>
-				</div>
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
 
-			</div>
+				text-align: center;
+				font-size: 14px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="mobile">
+			<video class="video-cave" width="100%" height="100%" controls>
+				<source src="movie.mp4" type="video/mp4">
+			</video>
 		</div>
-	</div>
 
-	<aside id="instructions">
-	  <ul id="directional">
-	    <li>W</li>
-	    <li>A</li>
-	    <li>D</li>
-	    <li>S</li>
-	  </ul>
-	  <ul id="rotational">
-	    <li><span>&#8227;</span></li>
-	    <li>&#8227;</li>
-	    <li>&#8227;</li>
-	    <li><span>&#8227;</span></li>
-	  </ul>
-	</aside>
-
-	<div class="tour">
-		<div class="mainline">莫高窟第220窟</div>
-		<div class="subline">Mogao Cave 220</div>
-
-		<div class="buttonlines">
-			<div class="buttonline">
-				<!-- <div class="animation-circle-container scene_start" id="scene2_start">
-			      <div class="circle"></div>
-			      <div class="circle2"></div>
-				</div> -->
-				<div class="scene_start" id="scene1_start" style="display: inline-block; vertical-align: middle;">
-						<button class="menu continue">
-							<div class="text">继续</div>
-							<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
-						</button>
-				</div>
-				<div style="display: inline-block; vertical-align: middle;">
-					<button class="menu" id="button_scene1">主室北壁</button>
-				</div>
-			</div>
-
-			<div class="buttonline">
-				<!-- <div class="animation-circle-container scene_start" id="scene2_start">
-			      <div class="circle"></div>
-			      <div class="circle2"></div>
-				</div> -->
-				<div class="scene_start" id="scene2_start" style="display: inline-block; vertical-align: middle;">
-						<button class="menu continue">
-							<span>继续</span>
-							<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg>
-						</button>
-				</div>
-				<button class="menu" id="button_scene2">主室南壁</button>
-			</div>
-
-			<div class="buttonline">
-				<div class="animation-circle-container scene_start" style="opacity:0" >
-			      <div class="circle"></div>
-			      <div class="circle2"></div>
-			      <div class="logo-div-send">
-			      </div>
-				</div>
-				<button class="menu" id="button_reset">重新开始</button>
-			</div>
-		</div>
-	</div>
-
-	<div id="menu">
-		<div class="container">
-      <div class="title-container">
-        <div class="title">
-          <h1>莫高窟第220窟</h1>
-					<h2>Mogao Cave 220</h2>
-					<div id="loading-title" class="loading">
-						Loading...
+		<div class="desktop">
+			<div id="loading" class="loading">
+				<div class="wait">
+					<div class="wait-inner">
+						<div class="wait_img-wrap">
+							<div
+								data-w-id="e8311aee-d434-6a91-e883-eae45438144d"
+								class="wait_img"
+							></div>
+							<div
+								data-w-id="a5f9b580-a290-06a9-c3a9-042380199875"
+								class="wait-overlay"
+							></div>
+						</div>
+						<div class="wait-content">
+							<div class="hero-h1__wrap">
+								<img
+									src="https://chunweb.files.wordpress.com/2022/04/cave220.png"
+									loading="lazy"
+									alt=""
+									class="hero-h1"
+								/>
+							</div>
+						</div>
+						<div id="menu" style="opacity: 0.8">
+							<div class="container" style="margin-top: 2rem">
+								<div class="title-container">
+									<div class="title">
+										<h1>莫高窟第220窟</h1>
+										<h2>Mogao Cave 220</h2>
+										<div id="loading-title" class="loading">
+											Loading...
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-          <button class="explore">Start Exploring</button>
-        </div>
-      </div>
-    </div>
-	</div>
+				</div>
+			</div>
 
-	<div id="scene1_overlay_container" class="scene">
-		<div id="scene1_close" class="close cta-img menu-close">
-			<img src="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60c339990e8c2e33a380b5c6_arrow.svg" loading="lazy" class=" img ico" />
+			<div id="blocker">
+				<div id="instructions">
+					<div id="menu" style="opacity: 0.6">
+						<div class="container">
+							<div class="title-container">
+								<div class="title">
+									<h1>莫高窟第220窟</h1>
+									<h2>Mogao Cave 220</h2>
+								</div>
+									<p>
+										Move: WASD<br />
+										Look: MOUSE
+									</p>
+									<button class="explore">Click to Explore</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tour">
+				<div class="mainline">莫高窟第220窟</div>
+				<div class="subline">Mogao Cave 220</div>
+
+				<!-- <div class="buttonlines">
+					<div class="buttonline">
+						<div
+							class="scene_start"
+							id="scene1_start"
+							style="display: inline-block; vertical-align: middle;"
+						>
+							<button class="menu continue">
+								继续
+								<svg
+									width="24"
+									height="24"
+									xmlns="http://www.w3.org/2000/svg"
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+								>
+									<path
+										d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"
+									/>
+								</svg>
+							</button>
+						</div>
+						<div style="display: inline-block; vertical-align: middle;">
+							<button class="menu" id="button_scene1">主室北壁</button>
+						</div>
+					</div>
+
+					<div class="buttonline">
+						<div
+							class="scene_start"
+							id="scene2_start"
+							style="display: inline-block; vertical-align: middle;"
+						>
+							<button class="menu continue">
+								继续
+								<svg
+									width="24"
+									height="24"
+									xmlns="http://www.w3.org/2000/svg"
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+								>
+									<path
+										d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"
+									/>
+								</svg>
+							</button>
+						</div>
+						<button class="menu" id="button_scene2">主室南壁</button>
+					</div>
+
+					<div class="buttonline">
+						<div class="animation-circle-container scene_start" style="opacity:0">
+							<div class="circle"></div>
+							<div class="circle2"></div>
+							<div class="logo-div-send"></div>
+						</div>
+						<button class="menu" id="button_reset">重新开始</button>
+					</div>
+				</div>
+			</div> -->
 		</div>
-		<video id="scene1_overlay_video" playsinline loop class="b-hero__bg-video" aria-label="Background Video">
-			<source src="https://chunweb.files.wordpress.com/2022/03/body.mp4" type="video/mp4">
-		</video>
-	</div>
-
-	<div id="scene2_overlay_container" class="scene">
-		<div id="scene2_close" class="close cta-img menu-close">
-			<img src="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60c339990e8c2e33a380b5c6_arrow.svg" loading="lazy" class=" img ico" />
-		</div>
-		<video id="scene2_overlay_video" playsinline loop class="b-hero__bg-video" aria-label="Background Video">
-			<source src="https://chunweb.files.wordpress.com/2022/03/body.mp4" type="video/mp4">
-		</video>
-	</div>
 
 
-	<script type="importmap">
-		{
-      "imports": {
-        "three": "../build/three.module.js"
-      }
-    }
-  </script>
 
-	<script type="module">
-		// CODE REFERENCE: https://codepen.io/HoraceShmorace/pen/XWegwxE, which
-		// demostrates a 1st person camera supporting both ROTATIONAL
-		// and DIRECTIONAL movement
 
-		import * as THREE from 'three';
-		import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
-		import { FBXLoader } from './jsm/loaders/FBXLoader.js';
-		import { OrbitControls } from '//cdn.skypack.dev/three@0.136/examples/jsm/controls/OrbitControls.js';
-		import { Reflector } from '//cdn.skypack.dev/three@0.136/examples/jsm/objects/Reflector.js';
+		<!-- Import maps polyfill -->
+		<!-- Remove this when import maps will be widely supported -->
+		<script
+			async
+			src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"
+		></script>
 
-		const Settings = function() {
-			this.d = 0.05; // scaler of cave model
-			this.groundWidth = 10000*this.d;
-			this.groundHeight = 10000*this.d;
-			this.showGridHelper = false;
-			this.showAxesHelper = false;
-			this.groundVisible = false;
-			this.addLight = true;
-			this.trackCamera = false;
-			this.fov = 60;
-			this.walkerModelSize = 0.0005;
-			this.walkerTurnSpeed = Math.PI * 0.02;
-    };
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "../build/three.module.js"
+				}
+			}
+		</script>
 
-		const settings = new Settings();
-		let  camera; //PerspectiveCamera
-		let orbitalCamera;  //orbitalCamera
-		let canvas, renderer, scene, orbitControls, flyControls;
-		const explore = $(".explore");
-		const reset = $("#button_reset");
-		const printCameraInfo = $("#button_print");
-		const scene1 = $("#button_scene1");
-		const scene2 = $("#button_scene2");
-		let cameraDirection = new THREE.Vector3();
-		let scene1_open = false;
+		<script type="module">
+			import * as THREE from "three";
+			import { GLTFLoader } from "./jsm/loaders/GLTFLoader.js";
+			import { PointerLockControls } from "./jsm/controls/PointerLockControls.js";
+			import { RoomEnvironment } from "./jsm/environments/RoomEnvironment.js";
+			import { GUI } from "./jsm/libs/lil-gui.module.min.js";
 
-		const PLAYER_INITIAL_POSITION = {x: -20,  y: -70, z: -70};
+			let camera, scene, renderer, controls;
 
-		const CAMERA_POSITIONS = {
-			start: {x: 0, y: 0, z: 0},
-			cave_center: {x: 0, y: 0, z: -290}
-		}
+			const caveScale = 0.01;
 
-		const {
-		  devicePixelRatio,
-		  innerHeight: viewportHeight,
-		  innerWidth: viewportWidth
-		} = window
+			const objects = [];
 
-		class Scene extends THREE.Scene {
-		  #controls
-		  #orbital
-		  #player
-		  #prevTimestamp
-		  #renderer
-		  #scene
+			let raycaster;
 
-		  static timeDilation = 0.4;
+			let moveForward = false;
+			let moveBackward = false;
+			let moveLeft = false;
+			let moveRight = false;
+			let canJump = false;
 
-		  constructor (props) {
-		    super(props)
+			let prevTime = performance.now();
+			const velocity = new THREE.Vector3();
+			const direction = new THREE.Vector3();
+			const vertex = new THREE.Vector3();
+			const color = new THREE.Color();
 
-				scene = this;
-		    this.#renderer = new THREE.WebGLRenderer({ antialias: true });
-				renderer = this.#renderer;
+			// HTML elements
+			const explore = $(".explore");
+			const scene1 = $("#button_scene1");
+			const scene2 = $("#button_scene2");
+			const reset = $("#button_reset");
 
-		    this.#controls = {
-		      position: new KeyboardInput({
-		        left: 'a',
-		        right: 'd',
-		        up: 's',
-		        down: 'w'
-		      }),
-					// TODO remove this
-		      rotation: new KeyboardInput({
-		        left: 'arrowleft',
-		        right: 'arrowright',
-		        up: 'arrowup',
-		        down: 'arrowdown'
-		      })
-		    }
+			// GUI params setup
+			const params = {
+				camX: 5.82,
+				camY: 10,
+				camZ: 3.36,
+				speedDelta: 8000,
+				xMax: 7.82,
+				xMin: 3.82,
+				zMax: 1.46,
+				zMin: -65
+			};
 
-		    this.#player = new Player({
-		      animationNames: ['idle', 'walk', 'run'],
-		      modelName: 'root',
-		      onLoad: () => (document.querySelector('#loading').style.display = 'none'),
-		      path: 'https://assets.codepen.io/829639/'
-		    })
-				// this effectively moves the walker
-				this.#player.position.set(PLAYER_INITIAL_POSITION.x, PLAYER_INITIAL_POSITION.y, PLAYER_INITIAL_POSITION.z);
-		    this.add(this.#player)
+			let speedDelta = params.speedDelta;
+			let xMax = params.xMax;
+			let xMin = params.xMin;
+			let zMax = params.zMax;
+			let zMin = params.zMin;
 
-		    this.#orbital = new OrbitalCamera(settings.fov, viewportWidth / viewportHeight, 1, 1000);
-				orbitalCamera = this.#orbital;
-		    this.#player.add(this.#orbital) // Add the orbital to the player, not to the scene
+			init();
+			animate();
 
-				canvas = this.#renderer.domElement;
-		    document.body.appendChild(canvas);
-		    this.#renderer.setAnimationLoop(this.#render);
 
-				// orbitControls = new OrbitControls(camera, renderer.domElement);
-				// orbitControls.update();
 
-				const loader = new GLTFLoader().setPath( 'models/dunhuang/Cave220_GLTF/' );
-				loader.load( 'model.gltf',
-					function ( gltf ) {
-						const cave = gltf.scene;
-						cave.traverse( (e)=>{
-							if( e.type === "Mesh") {
-								if ( e.material ) {
+			function setupGUI() {
+				const gui = new GUI();
+
+				gui.add(params, "camX", -10, 10).onChange(function() {
+					setCameraPosition();
+				});
+				gui.add(params, "camY", -10, 10).onChange(function() {
+					setCameraPosition();
+				});
+				gui.add(params, "camZ", -10, 10).onChange(function() {
+					setCameraPosition();
+				});
+
+				gui.add(params, "speedDelta", 2000, 10000).onChange(function() {
+					speedDelta = params.speedDelta;
+				});
+
+				gui.add(params, "xMax", 5, 20).onChange(function() {
+					xMax = params.xMax;
+				});
+				gui.add(params, "xMin", -20, 5).onChange(function() {
+					xMin = params.xMin;
+				});
+				gui.add(params, "zMax", 1, 5).onChange(function() {
+					zMax = params.zMax;
+				});
+				gui.add(params, "zMin", -200, 5).onChange(function() {
+					zMin = params.zMin;
+				});
+
+				gui.open();
+			}
+
+			function init() {
+				const container = document.createElement("div");
+				document.body.appendChild(container);
+
+				// set up camera
+				camera = new THREE.PerspectiveCamera(
+					75,
+					window.innerWidth / window.innerHeight,
+					1,
+					1000
+				);
+				setCameraPosition();
+
+				// GUI setup:
+				//setupGUI();
+
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color(0xffffff);
+				// model
+
+				// load model: cave
+				const loader = new GLTFLoader()
+					.setPath("models/dunhuang/Cave220_GLTF/")
+					.load("model.gltf", function(gltf) {
+						gltf.scene.traverse(e => {
+							if (e.type === "Mesh") {
+								if (e.material) {
 									e.material.side = THREE.FrontSide;
 								}
 							}
 						});
-						cave.position.set(-50, -100, -100);
-						cave.scale.set(settings.d, settings.d, settings.d);
-						scene.add(cave);
+						gltf.scene.scale.set(caveScale, caveScale, caveScale);
+						scene.add(gltf.scene);
 						renderer.render(scene, camera);
-						TweenMax.to("#loading", 1, {opacity:0, display:"none"});
-						TweenMax.to(".container", 2, {opacity:1});
+						TweenMax.to("#loading", 1, { opacity: 0, display: "none" });
+						TweenMax.to(".container", 2, { opacity: 1 });
 						//TweenMax.to(".title", 4, {opacity:1});
-						TweenMax.to(".explore", 5, {opacity:1});
-						TweenMax.to("#loading-title", 0.5, {opacity:0, display:"none"});
-					},
-					function ( xhr ) {	// called while loading is progressing
-					//	console.log( ( xhr.loaded / xhr.total * 100 ) + '% of the cave model is loaded' );
-					},
-					function ( error ) {
-						console.log( 'An error happened loading the cave model' );
-					}
-				);
-
-				if (settings.groundVisible) {
-					 this.#addGround()
-				}
-
-				if (settings.showAxesHelper) {
-					const axesHelper = new THREE.AxesHelper( 50000 );
-					scene.add( axesHelper );
-				}
-
-				if (settings.addLight) {
-					this.#addLights()
-				}
-
-		  }
-
-		  #addGround () {
-				const groundGeometry = new THREE.PlaneGeometry(settings.groundWidth, settings.groundHeight);
-				const planeMesh = new THREE.Mesh( groundGeometry,
-						new THREE.MeshBasicMaterial({
-								side: THREE.DoubleSide,
-								visible: true
-						})
-				);
-				planeMesh.rotateX(-Math.PI / 2);
-				planeMesh.name = 'ground';
-				this.add(planeMesh);
-		  }
-
-		  #addLights() {
-				const ambientLight = new THREE.AmbientLight( 0xffffff, 1);
-				this.add( ambientLight );
-
-				const directional = new THREE.DirectionalLight(0xffffff, 3)
-		    directional.position.set(50, 50, 50)
-		    directional.target.position.set(0, 0, 0)
-		    this.add(directional)
-
-				const pointLight = new THREE.PointLight( 0xffffff, 4);
-				pointLight.position.set(0, 0, 0);
-				camera.add( pointLight );
-		  }
-
-		  #update = elapsedTime => {
-				this.#renderer.setSize(window.innerWidth, window.innerHeight)
-
-			 // Rotate the camera
-			 // TODO this will cause everything black out
-			 // const easeIn = 91
-			  let { x: yRotation, y: xRotation } = this.#controls.rotation
-			 // xRotation = Math.pow(xRotation, easeIn)
-			 const cameraRotation = new THREE.Euler(xRotation, yRotation, 0)
-			 //this.#orbital.update(elapsedTime, cameraRotation)
-
-		    // Reposition the player
-		    const { x: xPos, y: zPos } = this.#controls.position
-		    const playerPosition = new THREE.Vector3(xPos, 0, zPos)
-		    playerPosition.multiplyScalar(Scene.timeDilation)
-		    // This applies any orbital rotation to the new player position so that the
-				// "forward" direction (the A key) will always move the player "up" on the screen
-				// (and the same for left, down, and right).
-		    playerPosition.applyEuler(this.#orbital.rotation)
-		    this.#player.update(elapsedTime, playerPosition)
-		  }
-
-		  #render = timestamp => {
-		    if (this.#prevTimestamp === undefined) this.#prevTimestamp = timestamp
-
-		    const elapsedTime = (timestamp - this.#prevTimestamp) / 1000;
-		    this.#renderer.render(this, this.#orbital.camera);
-		    this.#update(elapsedTime);
-		    this.#prevTimestamp = timestamp;
-		    this.#renderer.render(this, this.#orbital.camera);
-		  }
-		}
-
-		/**
-		 * Creates a THREE.PerspectiveCamera wrapped in a THREE.Object3D.
-		 	 As a child of the Object3D, the camera is positioned in the Object3D's local space.
-			 The Object3D can thus be rotated, allowing the camera to rotate as an orbital, around the Object3D's origin.
-		 * @class
-		 */
-		class OrbitalCamera extends THREE.Object3D {
-		  #originalCameraAngle
-		  #originalCameraHeight
-
-		  /**
-		   * Accepts standard parameters for a THREE.PerspectiveCamera
-		   */
-		  constructor (fov, aspect, near, far) {
-		    super()
-
-		    this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
-				camera = this.camera;
-		    this.add(this.camera)
-		    this.#originalCameraAngle = this.camera.rotation.x
-		    this.#originalCameraHeight = this.camera.position.y
-		  }
-
-		  update (elapsedTime, rotation) {
-		    if (rotation instanceof THREE.Euler) {
-		      const pitch = rotation.x * -.5
-		      const yaw = this.rotation.y + rotation.y * -elapsedTime
-
-		      this.rotation.set(this.rotation.x, yaw, this.rotation.z)
-
-		      const camAltitude = this.camera.position.clone()
-		      camAltitude.setY(this.#originalCameraHeight + (rotation.x * 10))
-		      this.camera.position.lerp(camAltitude, .1)
-
-		      const camPitch = this.camera.quaternion.clone()
-		      camPitch.setFromAxisAngle(
-		        new THREE.Vector3(1, 0, 0),
-		        this.#originalCameraAngle - rotation.x * .5
-		      )
-		      this.camera.quaternion.slerp(camPitch, .1)
-		    }
-
-		    this.camera.aspect = window.innerWidth / window.innerHeight
-		    this.camera.updateProjectionMatrix()
-		  }
-		}
-
-		class Player extends THREE.Group {
-		  #action
-		  #actionList = {}
-		  #areModelsLoaded = false
-		  #mixer
-		  #model
-
-		  constructor (props) {
-		    super()
-
-		    const { animationNames, modelName, onLoad, path } = props
-		    const loader =  new FBXLoader()
-		    loader.setPath(path)
-		    loader.load(
-		      `${modelName}.fbx`,
-		      model => {
-		        model.scale.setScalar(settings.walkerModelSize)
-					//	model.position.set(0, -200, 0)
-
-		        model.traverse(mesh => {
-		          mesh.castShadow = true
-		          if (mesh.material?.name === 'asdf1:Beta_HighLimbsGeoSG2') {
-		            mesh.material.color.setHex(0x888888) //0x333333
-		            mesh.metalicness = 1
-		            mesh.roughness = 0
-		          } else if (mesh.material?.name === 'Beta_Joints_MAT') {
-		            mesh.material.color.setRGB(
-							0,
-							0,
-							0)}
-		        })
-
-		        model.setRotationFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI)
-		        this.#model = model
-		        this.add(model)
-		        this.#mixer = new THREE.AnimationMixer(this.#model)
-
-		        const loadingManager = new THREE.LoadingManager()
-		        const loader = new FBXLoader(loadingManager)
-		        loader.setPath(path)
-		        loadingManager.onLoad = () => {
-		          this.#areModelsLoaded = true
-		          this.#setAction('idle')
-		          if (typeof onLoad === 'function') onLoad()
-		        }
-
-		        animationNames.forEach(name => {
-		          loader.load(`${name}.fbx`, model => {
-		            const clip = model.animations[0]
-		            const action = this.#mixer.clipAction(clip)
-		            action.name = name
-		            this.#actionList[name] = action
-		          })
-		        })
-		      },
-		      null,
-		      e => console.log(e)
-		    )
-		  }
-
-		  update = (elapsedTime, movement) => {
-		    if (!this.#action) return
-		    this.#animate(elapsedTime, movement)
-		    this.#move(elapsedTime, movement)
-		  }
-
-		  #animate = (elapsedTime, movement) => {
-		    const { x, z } = movement
-
-		    const speed = Math.min(Math.abs(x) + Math.abs(z), 1)
-
-		    let action = 'idle'
-		    if (speed === 0) action = 'idle'
-		    else if (speed < 1) action = 'walk'
-		    else action = 'run'
-
-		    this.#setAction(action)
-		    // this.#mixer.update(elapsedTime)
-
-				if (settings.trackCamera) {
-					camera.getWorldDirection(cameraDirection); // this copies the camera's unit vector direction to cameraDirection
-					cameraDirection.set(cameraDirection.x * 100, cameraDirection.y * 100, cameraDirection.z * 100); 	// scale the unit vector up to get a more intuitive value
-				}
-		  }
-
-		  #move = (elapsedTime, movement) => {
-		    if (!movement instanceof THREE.Vector3) return
-		    if (movement.x === 0 && movement.z === 0) return
-
-		    const nextPosition = this.position.clone()
-		    nextPosition.add(movement)
-
-		    const angle =
-		      Math.PI +
-		      Math.atan2(
-		        this.position.x - nextPosition.x,
-		        this.position.z - nextPosition.z
-		      )
-
-		    this.position.copy(nextPosition)
-
-		    if (this.#model)
-		      this.#model.setRotationFromAxisAngle(new THREE.Vector3(0, 1, 0), angle)
-		  }
-
-		  #setAction (name) {
-		    const prevAction = this.#action
-		    if (prevAction?.name === name) return
-
-		    this.#action = this.#actionList[name]
-
-		    if (prevAction) {
-		      this.#action.time = 0.1
-		      this.#action.enabled = true
-		      this.#action.setEffectiveTimeScale(Scene.timeDilation)
-		      this.#action.setEffectiveWeight(1.0)
-		      this.#action.crossFadeFrom(prevAction, 0.5, true)
-		    }
-
-		    this.#action.play();
-		  }
-		}
-
-		class KeyboardInput extends THREE.Vector3 {
-		  #activeKeys = new Set();
-		  #keyMapping = {};
-
-		  constructor (keyMapping) {
-		    super();
-		    if (keyMapping) this.#keyMapping = keyMapping;
-		    window.addEventListener('keydown', this.onKeyDown);
-		    window.addEventListener('keyup', this.onKeyUp);
-		  }
-
-		  onKeyDown = e => {
-		    const key = e.key.toLowerCase();
-		    const activeKeys = this.#activeKeys;
-		    const { left, right, up, down } = this.#keyMapping;
-
-		    activeKeys.add(key);
-
-		    switch (key) {
-					case "arrowleft":
-						camera.rotation.y -= settings.walkerTurnSpeed;
-						console.log(camera.rotation);
-						break;
-					case "arrowright":
-						camera.rotation.y += settings.walkerTurnSpeed;
-						console.log(camera.rotation);
-						break;
-					case "arrowup":
-						camera.rotation.z += settings.walkerTurnSpeed;
-						console.log(camera.rotation);
-						break;
-					case "arrowdown":
-						camera.rotation.z -= settings.walkerTurnSpeed;
-						console.log(camera.rotation);
-						break;
-		      case left:
-		        this.setX(-1);
-						console.log("left ", camera.rotation);
-		        break;
-		      case right:
-						console.log("right ", camera.rotation);
-		        this.setX(1);
-		        break;
-		      case up:
-						console.log("up ", camera.rotation);
-						if (camera.rotation.y <= -3) {
-							this.setY(1);
-						} else {
-							this.setY(-1);
-						}
-		        break;
-		      case down:
-						console.log("down ", camera.rotation);
-						if (camera.rotation.y <= -3) {
-							this.setY(-1);
-						} else {
-							this.setY(1);
-						}
-		        break;
-		      default:
-		        break;
-		    }
-		  }
-
-		  onKeyUp = e => {
-		    const key = e.key.toLowerCase();
-		    const activeKeys = this.#activeKeys
-		    const { left, right, up, down } = this.#keyMapping
-
-		    activeKeys.delete(key)
-		    switch (key) {
-		      case left:
-		        if (!activeKeys.has(right)) this.setX(0)
-		        break
-		      case right:
-		        if (!activeKeys.has(left)) this.setX(0)
-		        break
-		      case up:
-		        if (!activeKeys.has(down)) this.setY(0)
-		        break
-		      case down:
-		        if (!activeKeys.has(up)) this.setY(0)
-		        break
-		      default:
-		        break
-		    }
-		  }
-		}
-
-		new Scene();
-
-		function setEventListeners() {
-			explore.click(() => {
-				if (!gsap.isTweening(camera.position)) {
-					const initPos = CAMERA_POSITIONS['start'];
-					gsap.to(camera.position, {
-						duration: 5,
-						z: initPos.z-180,
-						ease: "power3.inOut",
-						onComplete: () => {
-							console.log("onComplete explore gsap");
-						}
+						TweenMax.to(".explore", 5, { opacity: 1 });
+						TweenMax.to("#loading-title", 0.5, { opacity: 0, display: "none" });
 					});
+
+				renderer = new THREE.WebGLRenderer({ antialias: true });
+				renderer.setPixelRatio(window.devicePixelRatio);
+				renderer.setSize(window.innerWidth, window.innerHeight);
+				renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				renderer.toneMappingExposure = 1;
+				renderer.outputEncoding = THREE.sRGBEncoding;
+				container.appendChild(renderer.domElement);
+
+				// --- environment ---
+				const environment = new RoomEnvironment();
+				const pmremGenerator = new THREE.PMREMGenerator(renderer);
+
+				scene.background = new THREE.Color(0x000000);
+				scene.environment = pmremGenerator.fromScene(environment).texture;
+
+				window.addEventListener("resize", onWindowResize);
+
+				// --- Lights ---
+
+				//  (HemisphereLight not helping much)
+				const light = new THREE.HemisphereLight(0xeeeeff, 0x777788, 0.75);
+				light.position.set(0.5, 1, 0.75);
+				scene.add(light);
+
+				// ROOM LIGHT: PointLight: 2rd param
+				const pointLight = new THREE.PointLight(0xffffff, .5);
+				pointLight.position.set(0, 0, 0);
+				camera.add(pointLight);
+
+
+				// --- PointerLockControls
+
+				controls = new PointerLockControls(camera, document.body);
+
+				const blocker = document.getElementById("blocker");
+				//blocker.style.display = "none";  // blocker set to invisible at beginner
+				const instructions = document.getElementById("instructions");
+
+				instructions.addEventListener("click", function() {
+					controls.lock();
+				});
+
+				controls.addEventListener("lock", function() {
+					instructions.style.display = "none";
+					blocker.style.display = "none";
+				});
+
+				controls.addEventListener("unlock", function() {
+					blocker.style.display = "block";
+					instructions.style.display = "";
+				});
+
+				// TODO: addEventListener, press certain key -> controls.unlock()
+
+				scene.add(controls.getObject());
+
+				const onKeyDown = function(event) {
+					switch (event.code) {
+						case "ArrowUp":
+						case "KeyW":
+							moveForward = true;
+							break;
+
+						case "ArrowLeft":
+						case "KeyA":
+							moveLeft = true;
+							break;
+
+						case "ArrowDown":
+						case "KeyS":
+							moveBackward = true;
+							break;
+
+						case "ArrowRight":
+						case "KeyD":
+							moveRight = true;
+							break;
+
+					}
+				};
+
+				const onKeyUp = function(event) {
+					switch (event.code) {
+						case "ArrowUp":
+						case "KeyW":
+							moveForward = false;
+							break;
+
+						case "ArrowLeft":
+						case "KeyA":
+							moveLeft = false;
+							break;
+
+						case "ArrowDown":
+						case "KeyS":
+							moveBackward = false;
+							break;
+
+						case "ArrowRight":
+						case "KeyD":
+							moveRight = false;
+							break;
+					}
+				};
+
+				document.addEventListener("keydown", onKeyDown);
+				document.addEventListener("keyup", onKeyUp);
+
+				raycaster = new THREE.Raycaster(
+					new THREE.Vector3(),
+					new THREE.Vector3(0, -1, 0),
+					0,
+					10
+				);
+			}
+
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize(window.innerWidth, window.innerHeight);
+			}
+
+
+			function animate() {
+				requestAnimationFrame(animate);
+
+				const time = performance.now();
+
+				if (controls.isLocked === true) {
+					raycaster.ray.origin.copy(controls.getObject().position);
+					raycaster.ray.origin.y -= 10;
+
+					const intersections = raycaster.intersectObjects(objects, false);
+
+					const onObject = intersections.length > 0;
+
+					const delta = (time - prevTime) / speedDelta;
+
+					velocity.x -= velocity.x * 10.0 * delta;
+					velocity.z -= velocity.z * 10.0 * delta;
+
+					velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
+
+					direction.z = Number(moveForward) - Number(moveBackward);
+					direction.x = Number(moveRight) - Number(moveLeft);
+					direction.normalize(); // this ensures consistent movements in all directions
+
+					if (moveForward || moveBackward)
+						velocity.z -= direction.z * 400.0 * delta;
+					if (moveLeft || moveRight) velocity.x -= direction.x * 400.0 * delta;
+
+					if (onObject === true) {
+						velocity.y = Math.max(0, velocity.y);
+						canJump = true;
+					}
+
+					controls.moveRight(-velocity.x * delta);
+					controls.moveForward(-velocity.z * delta);
+
+					controls.getObject().position.y += velocity.y * delta; // new behavior
+
+					if (controls.getObject().position.y < 10) {
+						velocity.y = 0;
+						controls.getObject().position.y = 10;
+
+						canJump = true;
+					}
+
+					// Apply area limitation on controls
+					if (controls.getObject().position.x > xMax) {
+						velocity.x = 0;
+						controls.getObject().position.x = xMax;
+					}
+					if (controls.getObject().position.x < xMin) {
+						velocity.x = 0;
+						controls.getObject().position.x = xMin;
+					}
+
+					if (controls.getObject().position.z > zMax) {
+						velocity.z = 0;
+						controls.getObject().position.z = zMax;
+					}
+					if (controls.getObject().position.z < zMin) {
+						velocity.z = 0;
+						controls.getObject().position.z = zMin;
+					}
 				}
-				TweenMax.to(".container", 0.1, {opacity:0, display:"none"});
-				TweenMax.to(".tour", 2, {opacity:1});
-			});
 
-			scene1.click(() => {
-				clearTour();
-				if (!gsap.isTweening(camera.position)) {
-					let cave = CAMERA_POSITIONS['cave_center'];
-					gsap.timeline()
-						.to(camera.position, { x: cave.x, y: cave.y, z: cave.z,
+				prevTime = time;
+
+				renderer.render(scene, camera);
+			}
+
+			function setCameraPosition() {
+				camera.position.set(params.camX, params.camY, params.camZ);
+			}
+
+			function setEventListeners() {
+
+				explore.click(() => {
+					if (!gsap.isTweening(camera.position)) {
+						gsap.to(camera.position, {
+							duration: 5,
+							z: -15,
+							ease: "power3.inOut",
 							onComplete: () => {
-								camera.rotation.x = 0;
-								camera.rotation.y = 0;
-							}
-						})
-						.to(camera.position, { x: -70,
-								onComplete: () => {
-									const startY = camera.rotation.y;
-									gsap.to(camera.rotation, {duration: 4, y: startY - 24*settings.walkerTurnSpeed });
-									$("#button_scene1").addClass("active");
-									$("#scene1_start").animate({
-								    opacity: 1
-								  }, 1000, function() {
-
-								  });
-								}
-						})
-				}
-			});
-
-			scene2.click(() => {
-				clearTour();
-				if (!gsap.isTweening(camera.position)) {
-					let cave = CAMERA_POSITIONS['cave_center'];
-					gsap.timeline()
-					  .to(camera.position, { x: cave.x+50, y: cave.y, z: cave.z-40,
-							onComplete: () => {
-								camera.rotation.x = 0;
-								camera.rotation.y = 0;
-								const startY = camera.rotation.y;
-								gsap.to(camera.rotation, {duration: 4, y: startY + 24*settings.walkerTurnSpeed });
-								$("#button_scene2").addClass("active");
-								$("#scene2_start").animate({
-										opacity: 1
-									}, 1000, function() {
-									});
+								console.log("onComplete explore gsap");
 							}
 						});
-				}
-			});
+					}
+					TweenMax.to(".explore", 0.1, { opacity: 0, display: "none" });
+					TweenMax.to(".tour", 2, { opacity: 1 });
+				});
 
-			$("#scene1_start").click(() => {
-				$("#scene1_overlay_container").show();
-				document.getElementById("scene1_overlay_video").play();
-			});
+				scene1.click(() => {
+					clearTour();
+					if (!gsap.isTweening(camera.position)) {
+						let cave = CAMERA_POSITIONS["cave_center"];
+						gsap
+							.timeline()
+							.to(camera.position, {
+								x: cave.x,
+								y: cave.y,
+								z: cave.z,
+								onComplete: () => {
+									camera.rotation.x = 0;
+									camera.rotation.y = 0;
+								}
+							})
+							.to(camera.position, {
+								x: -70,
+								onComplete: () => {
+									const startY = camera.rotation.y;
+									gsap.to(camera.rotation, {
+										duration: 4,
+										y: startY - 24 * settings.walkerTurnSpeed
+									});
+									$("#button_scene1").addClass("active");
+									$("#scene1_start").animate(
+										{
+											opacity: 1
+										},
+										1000,
+										function() {}
+									);
+								}
+							});
+					}
+				});
+			}
 
-			$("#scene1_close").click(() => {
-				document.getElementById("scene1_overlay_video").pause();
-				clearTour();
-				$("#scene1_overlay_container").hide();
-			});
-
-			$("#scene2_start").click(() => {
-				$("#scene2_overlay_container").show();
-				document.getElementById("scene2_overlay_video").play();
-			});
-
-			$("#scene2_close").click(() => {
-				document.getElementById("scene2_overlay_video").pause();
-				clearTour();
-				$("#scene2_overlay_container").hide();
-			});
-
-			reset.click(() => {
-				clearTour();
-				let cave = CAMERA_POSITIONS['start'];
-				gsap.timeline()
-					.to(camera.position, { x: cave.x, y: cave.y, z: cave.z,
-						onComplete: () => {
-							camera.rotation.x = 0;
-							camera.rotation.y = 0;
-						}
-					})
-			});
-
-			printCameraInfo.click(() => {
-				if (!settings.trackCamera) {
-					alert('settings trackCamera is false!');
-					return;
-				}
-				const pos = `Position: {x: ${camera.position.x.toFixed(1)}, y: ${camera.position.y.toFixed(1)}, z: ${camera.position.z.toFixed(1)}}`
-				const lookat = `LookAt: {x: ${(camera.position.x + cameraDirection.x).toFixed(1)}, y: ${(camera.position.y + cameraDirection.y).toFixed(1)}, z:  ${(camera.position.z + cameraDirection.z).toFixed(1)}}`
-				console.log(pos);
-				console.log(lookat);
-				console.log("orbitalCamera", orbitalCamera)
-			} );
-
-			window.addEventListener('resize', function() {
-			    camera.aspect = window.innerWidth / window.innerHeight;
-			    camera.updateProjectionMatrix();
-			    renderer.setSize(window.innerWidth, window.innerHeight);
-			});
-		}
-
-
-		function clearTour() {
+			function clearTour() {
 			$("#button_scene1").removeClass("active");
 			$("#button_scene2").removeClass("active");
 
@@ -743,7 +610,7 @@
 		}
 
 
-		setEventListeners();
-
-  </script>
-</body>
+			setEventListeners()
+		</script>
+	</body>
+</html>

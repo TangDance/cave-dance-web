@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Cave Dance | Reconstructing Celestial Dance | CAMLab </title>
+	<meta content="Dunhuang Cave Dance" name="description" />
+	<meta content="Dunhuang Cave Dance" property="og:title" />
+	<meta content="Dunhuang Cave Dance" property="og:description" />
+	<meta property="og:type" content="website" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<link href="assets/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+	<link href="assets/img/favicon.png" rel="apple-touch-icon" />
+	<script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=603fe89ec4bbcece7ee6a53a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" type="text/javascript" crossorigin="anonymous"></script>
+	<link href="base.css" rel="stylesheet" type="text/css" />
+
+	<style>
+		body {
+      margin: 0;
+			overflow: hidden;
+			background: black;
+    }
+		#menu {
+		  position: absolute;
+			top: 2rem;
+		  right: 2vw;
+		  text-align: right;
+			text-shadow: 0 0 10px rgb(189 216 216 / 95%);
+		  color: rgba(255, 255, 255, 0.75);
+		}
+
+		@media screen and (max-width:479px) { /* mobile phones */
+			#menu .titleline {
+
+			}
+			#menu .info .subline {
+				font-size: 1rem;
+			}
+		}
+
+		#menu .titleline {
+			line-height: 1.3;
+			font-size: 1rem;
+		}
+
+		#menu .info .subline {
+			font-size: 1rem;
+		}
+
+		#menu .info {
+			line-height: 1.3;
+			margin-bottom:1vw;
+			font-size: 1.5vw;
+		}
+
+
+		video {
+			display : none;
+		}
+
+		#menu {
+			position: fixed;
+			z-index: 999;
+		}
+		.n-block.left {
+			position: fixed;
+			z-index: 999;
+		}
+    </style>
+</head>
+
+<body>
+
+	<style>
+		#menu {
+		position: fixed;
+		z-index: 999;
+	}
+	.n-block.left {
+		position: fixed;
+		z-index: 999;
+	}
+
+	#stat {
+		color: white;
+z-index: 99;
+width: 100%;
+height: 100%;
+position: fixed;
+top: 68%;
+left: 10%;
+font-size:0.7rem;
+line-height: 1.2;
+	}
+	</style>
+
+
+
+
+	<div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b994" class="navbar" style="padding:1rem 0.5vw 0 2.5vw ">
+
+				<div id="stat" >
+					<div class="title"></div>
+					<div class="table">
+						<div class="col">
+							<img class="drawing" src=""/>
+							<div class="table">
+								<div class="col">
+									<!-- <div class="statline"><span>名字:</span><span class="value monospace semi">观无量寿经变</span></div> -->
+									<div class="statline"><span>年代:</span><span class="value monospace semi">盛唐</span></div>
+									<div class="statline"><span>石窟信息:</span><span class="value monospace semi"> 莫高窟112窟南壁 </span></div>
+									<div class="statline"><span>舞姿描述:</span><span class="value monospace semi"> 丰腴饱满，雍容华贵的舞者，点脚吸腿翘趾，出胯旋身“反弹琵琶”，亦奏亦舞。</span></div>
+									<div class="statline"><span>舞蹈时期:</span><span class="value monospace semi">观无量寿经变</span></div>
+								</div>
+
+								<div class="col" style="margin-top:2vw">
+									<!-- <div class="monospace"></div> -->
+									<div class="statline"><span>Motion Capture Parameters:</span></div>
+									<!-- <div class="statline"><span>File name:</span><span class="value monospace semi"> 36pose_male.bvh</span></div> -->
+									<div class="statline"><span>File size:</span><span class="value monospace semi"> 201 KB</span></div>
+									<div class="statline"><span>File duration:</span><span class="value monospace semi"> 10 s</span></div>
+									<div class="statline"><span>Frame Count:</span><span class="value monospace semi"> 124</span></div>
+									<div class="statline"><span>Collaborator:</span><span class="value monospace semi">Beijing Dance Academy</span></div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<div class="n-block left">
+			<div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b996" class="n-wrap">
+				<div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b997" class="n-trigger menu-trigger">
+					<div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b998" class="n-line"></div>
+					<div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b999" class="n-line bottom"></div>
+				</div>
+			</div>
+
+			<!-- Site Navigation Menu -->
+			<div class="menu">
+			  <div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99b" class="m-inner">
+			    <a class="title-row" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99c" href="index.html" class="m-link w-inline-block">
+			      <span  data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99d" >
+			        <img src="assets/img/nodes.png" loading="eager"/>
+			        <h2 class="h-h2 menu-li title linkable">Cave Dance</h2>
+			        <!--
+
+			        <img src="assets/img/active_item.png" class="menu-li-active-img" loading="eager"/>
+
+			        -->
+			      </span>
+			    </a>
+
+			    <link rel="prefetch" href="about.html" />
+			    <a aria-label="About" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="about.html" class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">About</h2>
+			    </a>
+
+			    <a aria-label="Connect" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="https://camlab.fas.harvard.edu/" target="_blank" class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">Connect</h2>
+			    </a>
+
+			    <div class="menu-li-border"></div>
+
+			    <link rel="prefetch" href="theater.html" />
+			    <a aria-label="Theater" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="theater.html" class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li bold">Theater</h2>
+			    </a>
+
+			    <div class="menu-li-border"></div>
+
+			    <a aria-label="Academic" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f"  class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li bold">Academic</h2>
+			    </a>
+
+			    <link rel="prefetch" href="cave.html" />
+			    <a aria-label="Cave 220" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="cave.html" class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">Cave 220</h2>
+			    </a>
+
+			    <link rel="prefetch" href="music.html" />
+			    <a aria-label="Music Studies" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="music.html" class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">Music Studies </h2>
+			    </a>
+
+			    <link rel="prefetch" href="tech.html" />
+			    <a aria-label="Technical Roadmap" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="tech.html" class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">Technical Roadmap </h2>
+			    </a>
+
+			    <div class="menu-li-border"></div>
+
+			    <a aria-label="Experiments" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li bold">Experiments</h2>
+			    </a>
+
+			    <link rel="prefetch" href="reconstruction.html" />
+			    <a aria-label="Reconstructing Celestial Dance" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="reconstruction.html" class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable bold">Reconstructing Celestial Dance</h2>
+						  <img src="assets/img/active_item.png" class="menu-li-active-img" loading="eager"/>
+			    </a>
+
+			    <link rel="prefetch" href="visualization.html" />
+			    <a aria-label="Visualizing Celestial Body" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="visualization.html" class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable thin">Visualizing Celestial Body</h2>
+			    </a>
+
+			    <div class="menu-li-border"></div>
+
+			    <link rel="prerender" href="education.html" />
+			    <a aria-label="Education" draggable="false" rel="noopener" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a2" href="education.html" class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a3" class="h-h2 menu-li linkable bold">Education</h2>
+			    </a>
+
+			    <div class="menu-li-border"></div>
+
+			    <link rel="prefetch" href="events.html" />
+			    <a aria-label="Events" rel="noopener" draggable="false" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b99f" href="events.html" class="m-link w-inline-block">
+			      <h2 data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a0" class="h-h2 menu-li linkable bold">Events</h2>
+			    </a>
+
+			  </div>
+
+			  <!-- <div class="menu-content">
+			    <div class="menu-mask"><img src="https://chunweb.files.wordpress.com/2022/03/amo1.png" loading="eager" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a7" alt="" class="menu-img" /><img src="https://chunweb.files.wordpress.com/2022/03/amo3.png"
+			        loading="eager" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a8" alt="" class="menu-img" />
+			      <img src="https://chunweb.files.wordpress.com/2022/03/amo2.png" loading="eager" data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b9a9" alt="" class="menu-img" /></div>
+			  </div> -->
+
+			  <div class="m-bg"></div>
+
+			  <div data-animation="cursor" rel="noopener" data-w-id="94bf8e40-acca-479f-14ca-8485acd952d1" class="cta-wrap close">
+			    <div class="cta-bg"></div>
+			    <div class="cta-img menu-close"><img src="assets/img/close.svg" loading="lazy" alt="" class="img ico" /></div>
+			    <div class="cta-back">
+			      <div class="cta-inner"></div>
+			    </div>
+			  </div>
+			</div>
+
+
+		</div>
+		<div id="overlay" style="display:none">
+			<div id="dataset" class="collection" style="margin-top: 7vw">
+
+				<div class="campaign">
+					<div class="coll-desc" style="margin-top: 1vw; ">
+						<h2 class="h-h2 desc" style="font-size: 1.5rem; line-height: 1.3; font-weight: 300;">
+							Explore Cave Dance Technical Roadmap <br />
+						</h2>
+					</div>
+
+					<a style=" text-align: center; margin: auto; margin-top: 1rem;" data-animation="cursor" rel="noopener" data-w-id="73b1b8a3-7054-c5b2-891a-6669786943a8" href="" class="cta-wrap w-inline-block">
+						<div class="cta-bg"></div>
+						<div class="cta-img menu-close"><img src="https://assets-global.website-files.com/603fe89ec4bbcece7ee6a53a/60c339990e8c2e33a380b5c6_arrow.svg" loading="lazy" alt="" class="img ico" /></div>
+						<div class="cta-back">
+							<div class="cta-inner"></div>
+						</div>
+					</a>
+
+				</div>
+			</div>
+
+			<div id="overlay-close" data-animation="cursor" rel="noopener" data-w-id="94bf8e40-acca-479f-14ca-8485acd952d1" class="cta-wrap close">
+				<div class="cta-bg"></div>
+				<div class="cta-img menu-close"><img src="assets/img/close.svg" loading="lazy" alt="" class="img ico" /></div>
+				<div class="cta-back">
+					<div class="cta-inner"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="menu">
+			<div class="info">
+				<div class="titleline">Reconstructing Celestial Dance</div>
+
+			</div>
+		</div>
+
+		<main data-template="home" class="content demo">
+			<script src="./composition_master.js" type="text/javascript"></script>
+			<canvas id="bg"></canvas>
+			<div class="footer" style="position:absolute; z-index:999; bottom: 2vw">
+			  <div class="f-row">
+			    <div class="f-col left" id="about">
+			      <div class="f-link"><span aria-label="about" rel="noopener" draggable="false"  class="h-h2 disclaimer bold">About</span></div>
+			    </div>
+			    <div class="f-col center">
+			      <div class="h-h2 disclaimer bold"></div>
+			    </div>
+			    <div class="f-col right">
+			      <div class="h-h2 disclaimer bold">
+			        <a href="https://camlab.fas.harvard.edu/About" target="_blank" aria-label="Contact" rel="noopener" draggable="false">Connect</a>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+		</main>
+
+
+	</div>
+
+
+	<script type="module">
+		import * as THREE from "../build/three.module.js";
+    import { OrbitControls } from './jsm/controls/OrbitControls.js';
+    import { BVHLoader } from './jsm/loaders/BVHLoader.js';
+    import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
+    import * as SkeletonUtils from './jsm/utils/SkeletonUtils.js';
+		import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
+		import { RenderPass } from './jsm/postprocessing/RenderPass.js';
+
+    let composer, effectSobel;
+		let animated_drawing, animated_mocap, animated_wire;
+		let animated_drawing_clicked, animated_mocap_clicked, animated_wire_clicked;
+		let mural, drawing, mixer, wire;
+		let skeletonHelper,boneContainer;
+		// Constants
+		const Z_offset = 0;
+		let mural_x = 2, mural_y = 0, mural_z = -5 , mural_scale = 3;
+		let drawing_x = 0, drawing_y = 0, drawing_z   = 0, drawing_z_target = 5 , drawing_scale = 2.5;
+		let mocap_x = 0, mocap_y = -4, mocap_z = 10;
+		const model_scale = 0.004;
+		let wire_x = 0, wire_y = -4, wire_z = -4, wire_z_target = 18, wire_scale = 40;
+
+		// File paths
+		const SCENE_BACKGROUND = 'textures/dunhuang/amo_data_bg_dimmed_black.png';
+		const BVH_MODEL = "models/bvh/36pose_female_02.bvh"; //0-6000.bvh //36pose_female_02.bvh
+		const MURAL = 'textures/dunhuang/反弹琵琶一式壁画trimmed2.jpeg';
+		const DRAWING = 'textures/dunhuang/反弹琵琶一式inverted.jpg';
+
+		const OUTLINE_ON_MOUSEPOINT = false;
+		let selectedObjects = [];
+		const raycaster = new THREE.Raycaster();
+		const mouse = new THREE.Vector2();
+
+    const scene = new THREE.Scene();
+		scene.background = new THREE.Color( 0x000000 );
+		scene.fog = new THREE.Fog( 0x000000, 500, 4000 );
+
+		const clock = new THREE.Clock();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+		camera.position.set( -12, 6, 18 );
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.querySelector('#bg'),
+			antialias: true
+    });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.render(scene, camera);
+
+
+    // Lights
+    const pointLight = new THREE.PointLight(0xffffff);
+    pointLight.position.set(5, 5, 5);
+    const ambientLight = new THREE.AmbientLight(0xffffff);
+    scene.add(pointLight, ambientLight);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+
+    // Background
+    const spaceTexture = new THREE.TextureLoader().load(SCENE_BACKGROUND);
+    scene.background = spaceTexture;
+
+		// Mural Image
+    const muralTexture = new THREE.TextureLoader().load(MURAL);
+    mural = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 0.05), new THREE.MeshBasicMaterial({ map: muralTexture }));
+		composer = new EffectComposer( renderer );
+		const renderPass = new RenderPass( scene, camera );
+		composer.addPass( renderPass );
+    mural.scale.set(mural_scale, mural_scale, mural_scale);
+    scene.add(mural);
+
+    //  Drawing Image
+		const drawingloader = new THREE.TextureLoader();
+		const opacity = 0.5;
+		const drawingCubeMaterials = [
+				new THREE.MeshPhongMaterial({ opacity: opacity,transparent: true, map: drawingloader.load('textures/dunhuang/black.jpg') }), //right side
+				new THREE.MeshPhongMaterial({ opacity: opacity, transparent: true,map: drawingloader.load('textures/dunhuang/black.jpg')}), //left side
+				new THREE.MeshPhongMaterial({ opacity: opacity,transparent: true, map: drawingloader.load('textures/dunhuang/black.jpg')}), //top side
+				new THREE.MeshPhongMaterial({ opacity: opacity,transparent: true,map: drawingloader.load('textures/dunhuang/black.jpg')}), //bottom side
+				new THREE.MeshPhongMaterial({ opacity: opacity,transparent: true,map: drawingloader.load(DRAWING)}), //front side
+				new THREE.MeshPhongMaterial({ opacity: opacity, transparent: true,map: drawingloader.load(DRAWING)}), //back side
+		];
+		const geometry = new THREE.BoxGeometry(3, 3, 0.01);
+		drawing = new THREE.Mesh(geometry, drawingCubeMaterials);
+		drawing.scale.set(drawing_scale, drawing_scale, drawing_scale);
+    scene.add(drawing);
+		drawing.position.set(drawing_x, drawing_y, drawing_z);
+
+		// const lightHelper = new THREE.PointLightHelper(pointLight);
+    // const size = 200;
+    // const divisions = 50;
+    // const gridHelper = new THREE.GridHelper( size, divisions );
+    // const axesHelper = new THREE.AxesHelper( 20 );
+    // scene.add(lightHelper, gridHelper);
+    // scene.add(axesHelper);
+
+    // 3D Object - BVH Mo-Cap Skeleton
+    const bvh = new BVHLoader();
+    bvh.load( BVH_MODEL, function ( result ) {
+      skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
+      skeletonHelper.skeleton = result.skeleton; // allow animation mixer to bind to THREE.SkeletonHelper directly
+
+      boneContainer = new THREE.Group();
+      boneContainer.add( result.skeleton.bones[ 0 ] );
+
+      scene.add( skeletonHelper );
+      scene.add( boneContainer );
+
+      boneContainer.scale.set(model_scale, model_scale, model_scale);
+      skeletonHelper.scale.set(model_scale, model_scale, model_scale);
+			skeletonHelper.material = new THREE.MeshBasicMaterial({
+				 color:"white",
+				 transparent:"true",
+				 opacity:"0.0",
+				 wireframe: "true",
+				 wireframeLinewidth: "10.0"
+			});
+
+			let x = mocap_x;
+			let y = mocap_y;
+			let z = mocap_z;
+      boneContainer.translateX(x);
+      boneContainer.translateY(y);
+      boneContainer.translateZ(z);
+      skeletonHelper.translateX(x);
+      skeletonHelper.translateY(y);
+      skeletonHelper.translateZ(z);
+
+      // play animation
+      mixer = new THREE.AnimationMixer( skeletonHelper );
+      mixer.clipAction( result.clip ).setEffectiveWeight( 1.0 ).play();
+    } );
+
+    if (!animated_drawing_clicked) animated_drawing_clicked = true;
+    if (!animated_mocap_clicked) animated_mocap_clicked = true;
+    if (!animated_wire_clicked) animated_wire_clicked = true;
+    animated_drawing = false;
+    animated_mocap = false;
+    animated_wire = false;
+
+    // Animation Loop
+    function animate() {
+      requestAnimationFrame(animate);
+
+			const time = - performance.now() * 0.0003;
+			controls.update(); // for the helpers
+
+      // 	animate the skeleton
+      const delta = clock.getDelta();
+      if ( mixer ) mixer.update( delta );
+
+
+			// animations on demand
+			if (animated_drawing_clicked && !animated_drawing) {
+				if (drawing.position.z <= drawing_z_target) {
+	        drawing.position.z += 0.05;
+	    	} else {
+					animated_drawing = true;
+				}
+			}
+
+			if (skeletonHelper && animated_mocap_clicked && !animated_mocap) {
+				const o = Number(skeletonHelper.material.opacity);
+				if (o <= 1) {
+	        skeletonHelper.material.opacity = String(o + 0.002) ;
+	    	} else {
+					animated_mocap = true;
+				}
+			}
+
+			if (wire && animated_wire_clicked && !animated_wire) {
+				const model = wire.children[0];
+				if (model.material.opacity <= 1) {
+					model.material.opacity = model.material.opacity + 0.002;
+					model.traverse(n => { if ( n.isMesh ) {
+						n.castShadow = true;
+						n.receiveShadow = true;
+						if(n.material.map) n.material.map.anisotropy = 1;
+					}});
+	    	} else {
+					animated_wire = true;
+				}
+			}
+
+      renderer.render(scene, camera);
+
+			if (composer) {
+					composer.render();
+			}
+    }
+
+    animate();
+
+		if (OUTLINE_ON_MOUSEPOINT) {
+			renderer.domElement.addEventListener( 'pointermove', onPointerMove );
+		}
+
+		function onPointerMove( event ) {
+
+			if ( event.isPrimary === false ) return;
+
+			mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+			mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+		}
+
+  </script>
+
+	<style>
+		#overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 1000;
+			display: none;
+			width: 100%;
+			height: 100%;
+			background-color: #030303;
+		}
+
+		#about:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	</style>
+	<script>
+		const aboutLink = $("#about");
+		if (aboutLink) {
+			aboutLink.click(() => {
+				TweenMax.to("#overlay", 2, {
+					display: "block"
+				});
+			});
+		}
+		const overlayClose = $("#overlay-close");
+		if (overlayClose) {
+			overlayClose.click(() => {
+				$("#overlay").hide();
+			});
+		}
+	</script>
+
+</body>
+
+</html>

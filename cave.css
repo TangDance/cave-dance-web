@@ -28,6 +28,36 @@ body {
   font-size: 4rem;
 }
 
+.mobile {
+  display: none;
+}
+
+
+
+@media screen and (max-width: 900px) {
+  canvas {
+    display: none;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: inline;
+  }
+
+  .video-cave {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+
+
 #menu {
   position: absolute;
   top: 33%;
@@ -40,11 +70,12 @@ body {
 }
 
 .tour {
+
   opacity: 0;
   padding-top: 1.2vw;
-  padding-bottom: 0.5vw;
-  padding-left: 0.5vw;
-  padding-right: 1.5vw;
+padding-bottom: 0.5vw;
+padding-left: 0.5vw;
+padding-right: 1.5vw;
   text-align: right;
   color: rgba(255, 255, 255, 0.75);
   font-family: Metropolis, sans-serif;
@@ -65,11 +96,11 @@ body {
 }
 
 .buttonline path {
-  fill: white;
-}
+    fill: white;
+}​
 
-​ button.menu.active {
-  color: white;
+button.menu.active {
+      color: white;
 }
 
 .scene_start {
@@ -78,20 +109,15 @@ body {
 }
 
 .scene_start .menu.continue {
-  outline: 1px solid rgba(255, 255, 255, 0.75);
-  margin-right: -0.2rem;
-  transform: scale(0.8);
-  padding: 0 0.5rem 0;
-  color: white;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  box-shadow: 0 0 10px rgb(189 216 216 / 95%);
-  margin-top: -0.1rem;
-}
-
-.scene_start .menu.continue .text {
-  display: inline;
-  vertical-align: middle;
+      outline: 1px solid rgba(255, 255, 255, 0.75);
+      margin-right: -0.2rem;
+      transform: scale(0.8);
+      padding: 0 0.5rem 0;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      box-shadow: 0 0 10px rgb(189 216 216 / 95%);
+      margin-top: -0.1rem;
 }
 
 .scene_start svg {
@@ -237,82 +263,7 @@ button#scene1_start {
   left: 39%;
 }
 
-#instructions {
-  height: 190px;
-  left: 0px;
-  padding: 0;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  z-index: 1;
-}
 
-#instructions h2 {
-  background-color: rgba(0, 0, 0, .5);
-  color: #fff;
-  font-family: Orbitron;
-  font-size: 0.9rem;
-  left: 15px;
-  margin: 0;
-  position: absolute;
-}
-
-#instructions ul {
-  color: #fff;
-  font-family: Orbitron;
-  margin: 0 auto;
-  padding: 8px 16px;
-  position: absolute;
-}
-
-#instructions ul:after {
-  color: #bbb;
-  font-family: helvetica;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-#instructions ul li {
-  background-color: rgba(0, 0, 0, .5);
-  border: 1px solid #444;
-  display: inline-block;
-  /* height: calc(.75 * var(--button-width)); */
-  line-height: 1.6rem;
-  list-style-type: none;
-  padding: 0.2rem 0.1rem 0.1rem;
-  position: absolute;
-  text-align: center;
-  max-width: var(--button-width);
-  width: var(--button-width);
-}
-
-#instructions ul li:before {
-  color: #777;
-  display: inline;
-  font-size: 3rem;
-  position: absolute;
-}
-
-#instructions ul li:nth-child(1) {
-  left: var(--button-width);
-  top: calc(2 * var(--button-spacing));
-}
-
-#instructions ul li:nth-child(2) {
-  left: calc(var(--button-width) / 2);
-  top: calc(var(--button-width) + 2 * var(--button-spacing));
-}
-
-#instructions ul li:nth-child(3) {
-  left: calc(1.5 * var(--button-width) + var(--button-spacing));
-  top: calc(var(--button-width) + 2 * var(--button-spacing));
-}
-
-#instructions ul li:nth-child(4) {
-  left: var(--button-width);
-  top: calc(2 * var(--button-width) + 2 * var(--button-spacing));
-}
 
 #directional {
   left: 40px;
