@@ -1,4 +1,4 @@
-3D website for Cave Dance Project built with Three.js
+3D Website for Harvard CAMLab Cave Dance Project, built with Three.js
 
 Local:
 

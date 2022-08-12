@@ -321,7 +321,7 @@ line-height: 1.5;
 		let mural_x = 2, mural_y = 0, mural_z = -5 , mural_scale = 3;
 		let drawing_x = 0, drawing_y = 0, drawing_z   = 0, drawing_z_target = 5 , drawing_scale = 2.5;
 		let mocap_x = 0, mocap_y = -4, mocap_z = 10;
-		const model_scale = 0.0035;
+		const model_scale = 0.003;
 		let wire_x = 0, wire_y = -4, wire_z = -4, wire_z_target = 18, wire_scale = 40;
 
 		// File paths
@@ -466,7 +466,7 @@ line-height: 1.5;
 			if (skeletonHelper && animated_mocap_clicked && !animated_mocap) {
 				const o = Number(skeletonHelper.material.opacity);
 				if (o <= 1) {
-	        skeletonHelper.material.opacity = String(o + 0.0003) ;
+	        skeletonHelper.material.opacity = String(o + 0.005) ;
 	    	} else {
 					animated_mocap = true;
 				}
