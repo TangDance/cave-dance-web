@@ -29,31 +29,30 @@
       if (filteredCookies.length > 0) {
         const has_shown_video_cookie_value = filteredCookies[0].split('=')[1];
         const show_video_cookie_expires_value = Number(filteredExpiresCookies[0].split('=')[1]);
-        console.log("show_video_cookie_expires_value = ", show_video_cookie_expires_value);
+      //  console.log("show_video_cookie_expires_value = ", show_video_cookie_expires_value);
         let cookieTime = new Date();
         cookieTime.setTime(show_video_cookie_expires_value);
-        console.log("show_video_cookie_expires_value = ", cookieTime.toUTCString(), "now = ", date.toUTCString());
+        // console.log("show_video_cookie_expires_value = ", cookieTime.toUTCString(), "now = ", date.toUTCString());
         if (has_shown_video_cookie_value === "true" && date.getTime() < show_video_cookie_expires_value) {
           document.showLandingVideo = false;
-          console.log ("do nothing, cookie not expired yet" );
+          //console.log ("do nothing, cookie not expired yet" );
         } else {
           document.showLandingVideo = true;
           document.cookie = has_shown_video_cookie+"=true;";
           document.cookie = show_video_cookie_expires + "=" + (date.getTime() + extendDuration) + ";"
-          console.log("write new cookie");
+          //console.log("write new cookie");
         }
       } else {
         document.showLandingVideo = true;
         document.cookie = has_shown_video_cookie+"=true;";
         document.cookie = show_video_cookie_expires + "=" + (date.getTime() + extendDuration) + ";"
-        console.log("write new cookie");
+        //console.log("write new cookie");
       }
     } catch (e) {
       document.showLandingVideo = true;
-      console.log("catch block - not writing cookie: ", e );
+      //console.log("catch block - not writing cookie: ", e );
     }
-    console.log("showLandingVideo= " + document.showLandingVideo);
-
+//    console.log("showLandingVideo= " + document.showLandingVideo);
   }
   setCookie();
 </script>
@@ -114,7 +113,8 @@
   }
   </style>
 
-  <div class="loader" id="loader" style="">
+  <div class="loader" id="loader">
+    <link rel="prefetch" href="https://camlab-cave-dance.oss-cn-hongkong.aliyuncs.com/assets/video/d2_3_.mp4" />
     <video autoplay muted autoplay="autoplay" defaultmuted playsinline id="landingVideo">
       <source src="https://camlab-cave-dance.oss-cn-hongkong.aliyuncs.com/assets/video/d2_3_.mp4" type="video/mp4">
     </video>
@@ -122,8 +122,6 @@
       <button>ENTER</button>
     </div>
   </div>
-
-
 
   <div data-w-id="2264dfe2-412c-a750-b778-fffb7eb6b994" class="navbar">
     <div class="n-block left">
@@ -270,21 +268,6 @@
 
 
     <div id="3d-graph" style="width:100%; height:100%"></div>
-
-
-    <!-- const LABELS_MAP = { // node id => display name
-    	0: "Cave Dance", // root node
-    	1: "Experiments",
-    	2: "Academic",
-    	3: "Education",
-    	4: "Events",
-    	5: "Theater",
-    	6: "Technical Roadmap",
-    	7: "Music Studies",
-    	8: "Reconstructing Celestial Dance",
-    	9: "Visualizing Celestial Body",
-    	10: "Cave 220"
-    } -->
 
     <div id="hidden-buttons" style="display:none">
       <a href="about.html" id="0"></a>

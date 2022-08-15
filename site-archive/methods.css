@@ -1,0 +1,137 @@
+/* 3D SCROLL SECTION */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+.toggle {
+  height: 24px;
+  position: fixed;
+  bottom: 1vw;
+  right: 2vw;
+  cursor: pointer;
+  text-decoration: underline;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.listitems {
+    text-align: center;
+    position: fixed;
+    top: 20%;
+    text-decoration: none;
+    right: 2vw;
+    font-weight: 700;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.listitems .lookbook__navigation__media {
+  margin-bottom: 0vw;
+}
+
+.listitems .lookbook__navigation__media.dot {
+  margin-bottom: 0vw;
+  opacity: 0.5;
+}
+
+.footer {
+  padding-top: 5vw;
+  padding-bottom: 0;
+}
+
+.threeDscroll h2 {
+  font-size: 5vw;
+  line-height: 1.2;
+}
+
+.threeDscroll #mainText {
+  color: rgb(187, 185, 185);
+  /*  z-index: 99; */
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  margin: 0px auto;
+  padding: 120px 0px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.threeDscroll #mainText .text {
+  opacity: 1;
+}
+
+
+.threeDscroll canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.threeDscroll header {
+  background: var(--dark-bg);
+  grid-column: 2 / span 5;
+  font-size: 1.5rem;
+  padding: 2rem;
+  padding-top: 0;
+  padding-left: 0;
+  margin-bottom: var(--spacing);
+}
+
+.threeDscroll section {
+  grid-column: 2 / 6;
+  background: var(--dark-bg);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
+  margin-top: 3rem;
+  opacity: 1;
+  height: auto;
+  width: auto;
+  backdrop-filter: blur(2PX);
+  -webkit-backdrop-filter: blur(10PX);
+  border-radius: 1rem;
+  border: 1px solid RGBA(255, 255, 255, 0.18);
+  box-shadow: 0px 2PX 20PX 0px RGBA(0, 0, 0, 0.3);
+  padding: 2rem;
+}
+
+.threeDscroll header p {
+      padding: 2vw 0 0 0.5vw;
+}
+
+.threeDscroll section p {
+  padding: 2vw 0 0;
+  font-weight: 500;
+
+}
+
+.threeDscroll blockquote {
+  margin: 0;
+  padding: 0;
+  grid-column: 2 / span 9;
+  margin-bottom: var(--spacing);
+  padding-left: 3vw;
+}
+
+.threeDscroll blockquote p {
+  color: black;
+  background-color: white;
+  font-size: 4rem;
+  display: inline;
+  line-height: 1;
+}
+
+.threeDscroll .left {
+  grid-column: 6 / 12;
+}

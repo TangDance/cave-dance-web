@@ -22,15 +22,24 @@
   </script>
 
 	<style>
+	.centered {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
 		/* https://codepen.io/carpenumidium/pen/vNNzyG */
 	html {
 		background-color: hsl(0deg 0% 0%);
 		background-image: url('https://camlab-cave-dance.oss-cn-hongkong.aliyuncs.com/assets/img/desktop-bg-mindmap.png');
 		background-repeat: repeat-x;
 
-		/*
+
 		height: 100%;
 		width: 100%;
+
+		/*
 		background-color: hsl(0deg 0% 0%);
 		background-image:
 			url('https://chunweb.files.wordpress.com/2022/04/220cave1-removebg.png'),
@@ -60,9 +69,51 @@
 				1000px 100%;
 			}
 		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			font-family: Arial;
+			font-size: 17px;
+		}
+
+		#myVideo {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+			min-width: 100%;
+			min-height: 100%;
+		}
+
+		.content {
+			position: fixed;
+			bottom: 0;
+			/* background: rgba(0, 0, 0, 0.5); */
+			color: #f1f1f1;
+			width: 100%;
+			padding: 20px;
+		}
+
+		#myBtn {
+			width: 200px;
+			font-size: 18px;
+			padding: 10px;
+			border: none;
+			background: #000;
+			color: #fff;
+			cursor: pointer;
+		}
+
+		#myBtn:hover {
+			background: #ddd;
+			color: black;
+		}
   </style>
 
-	<style>
+	<!-- <style>
 		/* Flashlight Overlay */
 		:root {
 			cursor: none;
@@ -96,52 +147,7 @@
 
 		document.addEventListener('mousemove', updateFlashlight);
 		document.addEventListener('touchmove', updateFlashlight);
-	</script>
-
-	<style>
-		* {
-			box-sizing: border-box;
-		}
-
-		body {
-			margin: 0;
-			font-family: Arial;
-			font-size: 17px;
-		}
-
-		#myVideo {
-			position: fixed;
-			right: 0;
-			bottom: 0;
-			min-width: 100%;
-			min-height: 100%;
-		}
-
-		.content {
-			position: fixed;
-			bottom: 0;
-			background: rgba(0, 0, 0, 0.5);
-			color: #f1f1f1;
-			width: 100%;
-			padding: 20px;
-		}
-
-		#myBtn {
-			width: 200px;
-			font-size: 18px;
-			padding: 10px;
-			border: none;
-			background: #000;
-			color: #fff;
-			cursor: pointer;
-		}
-
-		#myBtn:hover {
-			background: #ddd;
-			color: black;
-		}
-	</style>
-
+	</script> -->
 
 </head>
 
@@ -257,9 +263,6 @@
 			  </div>
 			</div>
 
-
-
-
     </div>
     <div class="n-block center"><a rel="noopener" draggable="false" href="/" aria-current="page" class="n-link w-inline-block w--current"><img style="opacity: 0.9; width: 200px;" src="https://freight.cargo.site/w/217/q/94/i/fb2b46cd634f8600d388c1fddfc23c48e2c1e3593988f576bbec4237426c8fcb/CAMLab.png"
           loading="lazy" class="n-brand" /></a>
@@ -269,7 +272,7 @@
 
 
   <main data-template="home" class="content demo">
-		<script src="./composition_master.js" type="text/javascript"></script>
+		<!-- <script src="./composition_master.js" type="text/javascript"></script> -->
 	</main>
 
 
@@ -279,16 +282,6 @@
 			<p>Location | Date </p>
 		</div>
 	</div>
-
-	<style>
-		.centered {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			text-align: center;
-		}
-	</style>
 
 </body>
 

@@ -59,7 +59,7 @@
 
 		<div class="mobile">
 			<video class="video-cave" width="100%" height="100%" controls>
-				<source src="movie.mp4" type="video/mp4">
+				<source src="assets/video/mocap-beiwu.mp4" type="video/mp4">
 			</video>
 		</div>
 
@@ -260,10 +260,6 @@
 			let xMin = params.xMin;
 			let zMax = params.zMax;
 			let zMin = params.zMin;
-
-			init();
-			animate();
-
 
 
 			function setupGUI() {
@@ -593,15 +589,27 @@
 			}
 
 			function clearTour() {
-			$("#button_scene1").removeClass("active");
-			$("#button_scene2").removeClass("active");
+				$("#button_scene1").removeClass("active");
+				$("#button_scene2").removeClass("active");
 
-			$("#scene1_start").animate({ opacity: 0 }, 30);
-			$("#scene2_start").animate({ opacity: 0 }, 30);
-		}
+				$("#scene1_start").animate({ opacity: 0 }, 30);
+				$("#scene2_start").animate({ opacity: 0 }, 30);
+			}
 
 
-			setEventListeners()
+			setEventListeners();
+
+			$( document ).ready(function() {
+		      document.is_mobile = $('.mobile').css('display') === 'inline';
+		      if (document.is_mobile) {
+						// show video
+		      } else {
+						// load 3D scene
+						init();
+						animate();
+					}
+
+		   });
 		</script>
 	</body>
 </html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-wf-page="61c5e06d4c32b4d376aaf502" data-wf-site="603fe89ec4bbcece7ee6a53a" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Cave Dance | CAMLab </title>
+  <meta content="Cave Dance | CAMLab" property="og:title" />
+  <meta content="Cave Dance Project | Harvard CAMLab" property="og:description" />
+  <meta property="og:type" content="website" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link href="base.css" rel="stylesheet" type="text/css" />
+  <link href="mindmap.css" rel="stylesheet" type="text/css" />
+  <link href="assets/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <link href="assets/img/favicon.png" rel="apple-touch-icon" />
+    <script>
+    document.showLandingVideo = false;
+
+    function setCookie() {
+      const show_video_cookie_expires = 'showcavedancelandingvideoexpires';
+      const has_shown_video_cookie = 'hasshowncavedancelandingvideo';
+      const extendDuration = 10 * 1000; // 10 seconds
+      try {
+        const filteredCookies = document.cookie.split(";").filter(cookie => cookie.indexOf(has_shown_video_cookie+"=")>-1);
+        const filteredExpiresCookies = document.cookie.split(";").filter(cookie => cookie.indexOf(show_video_cookie_expires+"=")>-1);
+        let date = new Date();
+        if (filteredCookies.length > 0) {
+          const has_shown_video_cookie_value = filteredCookies[0].split('=')[1];
+          const show_video_cookie_expires_value = Number(filteredExpiresCookies[0].split('=')[1]);
+          console.log("show_video_cookie_expires_value = ", show_video_cookie_expires_value);
+          let cookieTime = new Date();
+          cookieTime.setTime(show_video_cookie_expires_value);
+          console.log("show_video_cookie_expires_value = ", cookieTime.toUTCString(), "now = ", date.toUTCString());
+          if (has_shown_video_cookie_value === "true" && date.getTime() < show_video_cookie_expires_value) {
+            document.showLandingVideo = false;
+            console.log ("do nothing, cookie not expired yet" );
+          } else {
+            document.showLandingVideo = true;
+            document.cookie = has_shown_video_cookie+"=true;";
+            document.cookie = show_video_cookie_expires + "=" + (date.getTime() + extendDuration) + ";"
+            console.log("write new cookie");
+          }
+        } else {
+          document.showLandingVideo = true;
+          document.cookie = has_shown_video_cookie+"=true;";
+          document.cookie = show_video_cookie_expires + "=" + (date.getTime() + extendDuration) + ";"
+          console.log("write new cookie");
+        }
+      } catch (e) {
+        document.showLandingVideo = true;
+        console.log("catch block - not writing cookie: ", e );
+      }
+      console.log("showLandingVideo= " + document.showLandingVideo);
+    }
+    setCookie();
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

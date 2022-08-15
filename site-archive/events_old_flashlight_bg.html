@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Cave Dance | Events | CAMLab </title>
+	<meta content="Dunhuang Cave Dance" name="description" />
+	<meta content="Dunhuang Cave Dance" property="og:title" />
+	<meta content="Dunhuang Cave Dance" property="og:description" />
+	<meta property="og:type" content="website" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<link href="assets/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+	<link href="assets/img/favicon.png" rel="apple-touch-icon" />
+	<link href="base.css" rel="stylesheet" type="text/css" />
+	<link type="text/css" rel="stylesheet" href="flashlight.css">
+	<style>
+	/* https://codepen.io/carpenumidium/pen/vNNzyG */
+	html {
+		height: 100%;
+		width: 100%;
+		background-color: hsl(0deg 0% 0%);
+		background-image:
+			url('https://chunweb.files.wordpress.com/2022/04/220cave1-removebg.png'),
+			url('https://chunweb.files.wordpress.com/2022/04/jam1-removebg.png'),
+			url('https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png'),
+			url('https://chunweb.files.wordpress.com/2022/04/drawing_210_invert.jpg');
+		background-repeat: repeat-x;
+		background-position:
+			0 20%,
+			0 100%,
+			0 50%,
+			0 0;
+		background-size:
+			2500px,
+			800px,
+			500px 200px,
+			751px 777px;
+		animation: 50s para infinite linear;
+		}
+
+	@keyframes para {
+		100% {
+			background-position:
+				-5000px 20%,
+				-800px 95%,
+				500px 50%,
+				1000px 100%;
+			}
+		}
+  </style>
+
+	<style>
+		/* Flashlight Overlay */
+		:root {
+			cursor: none;
+			--cursorX: 50vw;
+			--cursorY: 50vh;
+		}
+		:root:before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			pointer-events: none;
+			background: radial-gradient(
+				circle 20vmax at var(--cursorX) var(--cursorY),
+				rgba(0,0,0,0) 0%,
+				rgba(0,0,0,.5) 80%,
+				rgba(0,0,0,.95) 100%
+			)
+		}
+	</style>
+	<script type="text/javascript">
+		// Flashlight effect
+		function updateFlashlight(e) {
+			var x = e.clientX || e.touches[0].clientX;
+			var y = e.clientY || e.touches[0].clientY;
+			document.documentElement.style.setProperty('--cursorX', x + 'px');
+			document.documentElement.style.setProperty('--cursorY', y + 'px');
+		}
+
+		document.addEventListener('mousemove',updateFlashlight);
+		document.addEventListener('touchmove',updateFlashlight);
+	</script>
+
+
+</head>
+
+<body>
+	<div class="explore"><a href="home.html">Exhibition</a></div>
+
+	<!-- <div class="events">
+		<div class="campaign" style="padding-bottom:0">
+			<div style="text-align: center;padding: 2rem; " class="lookbook__head__title">
+				<h2 style="font-size: 5rem;
+					line-height: 1.1;
+					padding-top: 2rem;" class="h-h2 gradient">The Music World of Dunhuang Caves
+				</h2>
+			</div>
+
+		</div>
+	</div> -->
+
+</body>
+
+</html>
